@@ -45,7 +45,7 @@ export default function Contact() {
         </div>
 
         {/* Right - Form */}
-        <div className="bg-gray-50 pt-[40px] border border-[#D1D5DB] p-[20px] rounded-[20px] shadow-md">
+        <div className="bg-gray-50 pt-[40px] border border-[#D1D5DB] p-[20px] pr-[50px] rounded-[20px] shadow-md">
           <form className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-[8px]">

@@ -17,7 +17,7 @@ export default function Certificate(){
       <img
         src={item}
         alt="Certificate"
-        className="w-[600px] h-[700px] object-cover"
+        className="w-[600px] h-[900px] object-cover"
       />
     </div>
   ))}

@@ -6,6 +6,7 @@ import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import Products from './pages/Product';
 import Certificate from './pages/Certificate';
+import ContactUs from './pages/ContactUs';
 
 import './App.css'
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/products" element={<Products/>}/>
       <Route path="/certificates" element={<Certificate/>}/>
+      <Route path="/contact-us" element={<ContactUs/>}/>
     </Routes>
     <Footer/>
     </Suspense>
