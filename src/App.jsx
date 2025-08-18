@@ -3,6 +3,7 @@ import React, { useEffect, lazy, Suspense } from "react";
 import Home from './pages/Home';
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from './components/navbar';
+import Footer from './components/Footer';
 
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
     </Routes>
+    <Footer/>
     </Suspense>
   )
 }
