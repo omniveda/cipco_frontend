@@ -5,6 +5,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import Products from './pages/Product';
+import Certificate from './pages/Certificate';
 
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/products" element={<Products/>}/>
+      <Route path="/certificates" element={<Certificate/>}/>
     </Routes>
     <Footer/>
     </Suspense>
