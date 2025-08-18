@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
+import Products from './pages/Product';
 
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
       <Navbar/>
     <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route path="/products" element={<Products/>}/>
     </Routes>
     <Footer/>
     </Suspense>
