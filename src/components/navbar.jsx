@@ -3,23 +3,18 @@ import logo from "../assets/logo/logo-nav.png";
 export default function Navbar() {
 
     const topMenuItems = [
-        { name: 'About Us' , path: '/about'},
-        { name: 'Facilities', path: '/facilities' },
-        { name: 'Resources', path: '/resources' },
-        { name: 'News & Media',path: '/news' },
-        { name: 'Events', path: '/events' },
-        { name: 'Sustainability', path: '/sustainability' },
-        { name: 'Patient Centricity', path: '/patient-centricity' },
-        { name: 'Careers', path: '/careers' },
-        { name: 'Contact Us', path: '/contact' }
+        { name: 'About Us' , path: '/about-us'},
+        { name: 'Products', path: '/products' },
+        { name: 'Manufacturing',path: '/news' },        
+        { name: 'Media', path: '/patient-centricity' },
+        { name: 'Certificate', path: '/certificates' },
+        { name: 'Contact Us', path: '/contact-us' }
     ];
 
     const bottomMenuItems = [
-        { name: 'Drug Discovery' },
-        { name: 'Drug Substance' },
-        { name: 'Drug Product' },
-        { name: 'Specialized Offering' },
-        { name: 'Nutrition Solution' }
+        { name: 'R&D and Innovation'},
+        { name: 'PCD & Franchise Business', path: '/sustainability' },   
+        { name: 'Investor Relations', path: '/events' },     
     ];
 
     return (
@@ -31,7 +26,7 @@ export default function Navbar() {
         }}
       >
         {/* Top Navigation Row */}
-        <div className="flex items-center mx-[180px] justify-between px-4 py-4">
+        <div className="flex items-center mx-[180px] justify-center px-4 py-4 gap-[100px]">
           {/* Logo */}
           <div className="flex items-center">
             <img src={logo} alt="CIPCO LIMITED" className="h-[60px] w-[180px]" onClick={() => window.location.href = ("/")} />

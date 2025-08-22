@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Products from './pages/Product';
 import Certificate from './pages/Certificate';
 import ContactUs from './pages/ContactUs';
+import AboutUs from './pages/AboutUs';
 
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
       <Route path="/products" element={<Products/>}/>
       <Route path="/certificates" element={<Certificate/>}/>
       <Route path="/contact-us" element={<ContactUs/>}/>
+      <Route path="/about-us" element={<AboutUs/>}/>
     </Routes>
     <Footer/>
     </Suspense>
