@@ -44,7 +44,7 @@ export default function Navbar() {
                 key={index}
                 to={item.path} 
                 // style={{color: '#374151'}} 
-                className="hover:text-gray-700 cursor-pointer text-[14px] my-[10px] mx-[18px] font-[400]"
+                className="block no-underline hover:text-gray-700 cursor-pointer text-[14px] my-[10px] mx-[18px] font-[400]"
               >
                 {item.name}
               </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
                 to={item.path} 
                 // style={{color: '#1e40af'}} 
                 // style={{fontWeight: 'semibold'}}
-                className="hover:text-blue-600 mx-[20px] my-[16px] text-[14px] font-[600] cursor-pointer"
+                className="block no-underline hover:text-blue-600 mx-[20px] my-[16px] text-[14px] font-[600] cursor-pointer"
               >
                 {item.name}
               </Link>
