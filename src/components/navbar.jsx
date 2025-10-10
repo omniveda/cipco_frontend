@@ -1,4 +1,5 @@
 import logo from "../assets/logo/logo-nav.png";
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
 
@@ -30,22 +31,23 @@ export default function Navbar() {
         <div className="flex items-center mx-[180px] justify-center px-4 py-4 gap-[100px]">
           {/* Logo */}
           <div className="flex items-center">
-            <img src={logo} alt="CIPCO LIMITED" className="h-[60px] w-[180px]" onClick={() => window.location.href = ("/")} />
+            <Link to="/">
+              <img src={logo} alt="CIPCO LIMITED" className="h-[60px] w-[180px]" />
+            </Link>
           </div>
   
           {/* Top Navigation Links */}
           <div>
           <nav className="flex space-x-6">
             {topMenuItems.map((item, index) => (
-              <div 
+              <Link 
                 key={index}
-                href="#" 
+                to={item.path} 
                 // style={{color: '#374151'}} 
                 className="hover:text-gray-700 cursor-pointer text-[14px] my-[10px] mx-[18px] font-[400]"
-                onClick={() => window.location.href = item.path} // Navigate on click
               >
                 {item.name}
-              </div>
+              </Link>
             ))}
           </nav>
 
@@ -55,16 +57,15 @@ export default function Navbar() {
           {/* Bottom Navigation Links */}
           <nav className="flex space-x-8">
             {bottomMenuItems.map((item, index) => (
-              <div
+              <Link
                 key={index}
-                href="#" 
+                to={item.path} 
                 // style={{color: '#1e40af'}} 
                 // style={{fontWeight: 'semibold'}}
                 className="hover:text-blue-600 mx-[20px] my-[16px] text-[14px] font-[600] cursor-pointer"
-                onClick={() => window.location.href = item.path}
               >
                 {item.name}
-              </div>
+              </Link>
             ))}
           {/* CTA Button */}
 <button style={{borderRadius:"6px"}} className="border border-[#76A9FA] bg-[white] text-[#3F83F8] px-[12px] my-[8px] rounded-xl hover:bg-gray-50 text-sm font-semibold transition-colors">
