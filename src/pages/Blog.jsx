@@ -1,0 +1,250 @@
+import React, { useState, useEffect } from 'react';
+
+const Blog = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const blogPosts = [
+    {
+      id: 1,
+      title: "Advancements in Pharmaceutical Research",
+      date: "October 15, 2023",
+      summary: "Exploring the latest breakthroughs in pharmaceutical research and development.",
+      image: "🔬",
+      category: "Research"
+    },
+    {
+      id: 2,
+      title: "Sustainable Manufacturing Practices",
+      date: "September 20, 2023",
+      summary: "How Cipco is leading the way in environmentally conscious manufacturing.",
+      image: "🌱",
+      category: "Sustainability"
+    },
+    {
+      id: 3,
+      title: "Innovations in Drug Delivery Systems",
+      date: "August 5, 2023",
+      summary: "New technologies revolutionizing how medications are delivered to patients.",
+      image: "💊",
+      category: "Innovation"
+    },
+    {
+      id: 4,
+      title: "The Future of Personalized Medicine",
+      date: "July 12, 2023",
+      summary: "How personalized medicine is transforming healthcare outcomes.",
+      image: "🧬",
+      category: "Future"
+    },
+    {
+      id: 5,
+      title: "Quality Assurance in Pharma",
+      date: "June 28, 2023",
+      summary: "Ensuring the highest standards of quality in pharmaceutical production.",
+      image: "✅",
+      category: "Quality"
+    },
+    {
+      id: 6,
+      title: "Global Health Initiatives",
+      date: "May 15, 2023",
+      summary: "Cipco's contributions to global health and accessibility to medicines.",
+      image: "🌍",
+      category: "Global Health"
+    }
+  ];
+
+  return (
+    <div style={styles.container}>
+      {/* Hero Section */}
+      <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
+        <h1 style={styles.title}>Blog</h1>
+        <p style={styles.subtitle}>
+          Insights, innovations, and updates from the world of pharmaceuticals and healthcare.
+        </p>
+      </div>
+
+      {/* Blog Posts Grid */}
+      <div style={styles.blogGrid}>
+        {blogPosts.map((post, index) => (
+          <div
+            key={post.id}
+            style={{
+              ...styles.blogCard,
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transitionDelay: `${index * 100}ms`
+            }}
+          >
+            <div style={styles.blogImage}>{post.image}</div>
+            <div style={styles.blogContent}>
+              <span style={styles.blogCategory}>{post.category}</span>
+              <h3 style={styles.blogTitle}>{post.title}</h3>
+              <p style={styles.blogDate}>{post.date}</p>
+              <p style={styles.blogSummary}>{post.summary}</p>
+              <button style={styles.readMoreButton}>Read More →</button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Newsletter Subscription */}
+      <div style={styles.newsletterSection}>
+        <h2 style={styles.newsletterTitle}>Stay Updated</h2>
+        <p style={styles.newsletterText}>
+          Subscribe to our newsletter for the latest blog posts and industry insights.
+        </p>
+        <div style={styles.newsletterForm}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            style={styles.newsletterInput}
+          />
+          <button style={styles.newsletterButton}>Subscribe</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    padding: '40px 20px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    minHeight: '100vh',
+  },
+  hero: {
+    textAlign: 'center',
+    marginBottom: '60px',
+    transition: 'all 0.8s ease-out',
+  },
+  title: {
+    fontSize: '3.5rem',
+    color: '#2e7d32',
+    marginBottom: '20px',
+    fontWeight: 'bold',
+    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  },
+  subtitle: {
+    fontSize: '1.3rem',
+    color: '#666',
+    maxWidth: '600px',
+    margin: '0 auto',
+    lineHeight: '1.6',
+  },
+  blogGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+    gap: '30px',
+    marginBottom: '60px',
+  },
+  blogCard: {
+    background: 'linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)',
+    borderRadius: '20px',
+    overflow: 'hidden',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+    transition: 'all 0.6s ease-out',
+    border: '1px solid #e0e0e0',
+  },
+  blogImage: {
+    height: '200px',
+    background: 'linear-gradient(135deg, #b8c9d4 0%, #a0b4c0 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '4rem',
+  },
+  blogContent: {
+    padding: '25px',
+  },
+  blogCategory: {
+    background: '#e8f5e8',
+    color: '#2e7d32',
+    padding: '5px 15px',
+    borderRadius: '15px',
+    fontSize: '0.85rem',
+    fontWeight: '600',
+    marginBottom: '15px',
+    display: 'inline-block',
+  },
+  blogTitle: {
+    fontSize: '1.4rem',
+    color: '#2e7d32',
+    marginBottom: '10px',
+    fontWeight: '600',
+    lineHeight: '1.4',
+  },
+  blogDate: {
+    color: '#888',
+    fontSize: '0.9rem',
+    marginBottom: '15px',
+  },
+  blogSummary: {
+    color: '#555',
+    lineHeight: '1.6',
+    marginBottom: '20px',
+  },
+  readMoreButton: {
+    background: 'transparent',
+    border: 'none',
+    color: '#2e7d32',
+    cursor: 'pointer',
+    fontWeight: '600',
+    fontSize: '1rem',
+    padding: '0',
+    transition: 'all 0.3s ease',
+  },
+  newsletterSection: {
+    textAlign: 'center',
+    padding: '60px 30px',
+    background: '#f8f9fa',
+    borderRadius: '20px',
+  },
+  newsletterTitle: {
+    fontSize: '2.5rem',
+    color: '#2e7d32',
+    marginBottom: '20px',
+    fontWeight: 'bold',
+  },
+  newsletterText: {
+    fontSize: '1.2rem',
+    color: '#666',
+    marginBottom: '30px',
+    maxWidth: '500px',
+    margin: '0 auto 30px',
+  },
+  newsletterForm: {
+    display: 'flex',
+    gap: '10px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  newsletterInput: {
+    padding: '15px 20px',
+    border: '2px solid #e0e0e0',
+    borderRadius: '25px',
+    fontSize: '1rem',
+    minWidth: '300px',
+  },
+  newsletterButton: {
+    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+    color: 'white',
+    padding: '15px 30px',
+    border: 'none',
+    borderRadius: '25px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 5px 15px rgba(46, 125, 50, 0.3)',
+  },
+};
+
+export default Blog;

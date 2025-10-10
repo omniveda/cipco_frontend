@@ -5,16 +5,17 @@ export default function Navbar() {
     const topMenuItems = [
         { name: 'About Us' , path: '/about-us'},
         { name: 'Products', path: '/products' },
-        { name: 'Manufacturing',path: '/news' },        
-        { name: 'Media', path: '/patient-centricity' },
+        { name: 'Manufacturing',path: '/manufacturing' },        
+        { name: 'Media', path: '/media' },
         { name: 'Certificate', path: '/certificates' },
-        { name: 'Contact Us', path: '/contact-us' }
+        { name: 'Contact Us', path: '/contact-us' },
+        { name: 'Blog', path: '/blog' },     
     ];
 
     const bottomMenuItems = [
-        { name: 'R&D and Innovation'},
-        { name: 'PCD & Franchise Business', path: '/sustainability' },   
-        { name: 'Investor Relations', path: '/events' },     
+        { name: 'R&D and Innovation', path: '/rnd-innovation'},
+        { name: 'PCD & Franchise Business', path: '/pcd-franchise' },   
+        { name: 'Investor Relations', path: '/investor-relations' },     
     ];
 
     return (
@@ -59,7 +60,8 @@ export default function Navbar() {
                 href="#" 
                 // style={{color: '#1e40af'}} 
                 // style={{fontWeight: 'semibold'}}
-                className="hover:text-blue-600 mx-[20px] my-[16px] text-[14px] font-[600]"
+                className="hover:text-blue-600 mx-[20px] my-[16px] text-[14px] font-[600] cursor-pointer"
+                onClick={() => window.location.href = item.path}
               >
                 {item.name}
               </div>
