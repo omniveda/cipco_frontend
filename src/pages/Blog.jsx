@@ -10,51 +10,35 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Advancements in Pharmaceutical Research",
-      date: "October 15, 2023",
-      summary: "Exploring the latest breakthroughs in pharmaceutical research and development.",
-      image: "🔬",
-      category: "Research"
+      title: "From Humble Beginnings to a Trusted Healthcare Partner: The Inspiring Journey of CIPCO LIMITED",
+      date: "October 20, 2023",
+      summary: "Every great company starts with a dream. At CIPCO LTD, that dream began with Mr. Arun Kumar Jhawar, whose vision was simple yet profound — to provide affordable, high-quality healthcare for everyone. What started as a modest initiative decades ago has transformed into a trusted pharmaceutical brand delivering life-saving medicines across India.",
+      image: "🌟",
+      category: "Journey"
     },
     {
       id: 2,
-      title: "Sustainable Manufacturing Practices",
-      date: "September 20, 2023",
-      summary: "How Cipco is leading the way in environmentally conscious manufacturing.",
-      image: "🌱",
-      category: "Sustainability"
-    },
-    {
-      id: 3,
-      title: "Innovations in Drug Delivery Systems",
-      date: "August 5, 2023",
-      summary: "New technologies revolutionizing how medications are delivered to patients.",
-      image: "💊",
-      category: "Innovation"
-    },
-    {
-      id: 4,
-      title: "The Future of Personalized Medicine",
-      date: "July 12, 2023",
-      summary: "How personalized medicine is transforming healthcare outcomes.",
-      image: "🧬",
-      category: "Future"
-    },
-    {
-      id: 5,
-      title: "Quality Assurance in Pharma",
-      date: "June 28, 2023",
-      summary: "Ensuring the highest standards of quality in pharmaceutical production.",
+      title: "Why Quality is Non-Negotiable in Pharma — A Core Value at CIPCO LIMITED",
+      date: "September 25, 2023",
+      summary: "In healthcare, quality isn’t optional — it’s life-saving. At CIPCO, every step of our production process is guided by rigorous quality standards. From sourcing raw materials to final packaging, our team follows GMP-certified processes to ensure consistency, safety, and trust.",
       image: "✅",
       category: "Quality"
     },
     {
-      id: 6,
-      title: "Global Health Initiatives",
-      date: "May 15, 2023",
-      summary: "Cipco's contributions to global health and accessibility to medicines.",
+      id: 3,
+      title: "Partnering for Health: How Collaborations Drive Better Access to Medicines",
+      date: "August 10, 2023",
+      summary: "Healthcare transformation happens when organizations work together. That’s why partnerships are central to CIPCO’s mission. We proudly serve almost all state governments in India through tenders and institutional supply, ensuring that critical medicines reach every corner of the nation.",
+      image: "🤝",
+      category: "Partnership"
+    },
+    {
+      id: 4,
+      title: "CIPCO LTD’s Vision 2030: Building a Global Healthcare Brand from India",
+      date: "July 15, 2023",
+      summary: "Our transformation into a Public Limited Company in 2025 is just the beginning. CIPCO’s Vision 2030 outlines a clear roadmap toward global expansion, including expanding manufacturing capacity, entering new global markets, listing on the stock exchange, and strengthening R&D and innovation.",
       image: "🌍",
-      category: "Global Health"
+      category: "Vision"
     }
   ];
 

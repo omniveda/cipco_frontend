@@ -9,9 +9,9 @@ import Certificate from './pages/Certificate';
 import ContactUs from './pages/ContactUs';
 import Manufacturing from './pages/Manufacturing';
 import Media from './pages/Media';
-import RnDInnovation from './pages/RnDInnovation';
+import RTADetailsComplianceOfficer from './pages/RTADetailsComplianceOfficer';
 import PCDFranchise from './pages/PCDFranchise';
-import InvestorRelations from './pages/InvestorRelations';
+import ShareholdingPattern from './pages/ShareholdingPattern';
 import Blog from './pages/Blog';
 import AboutUs from './pages/AboutUs';
 import CodeOfBusinessConductEthics from './pages/CodeOfBusinessConductEthics';
@@ -25,6 +25,9 @@ import POSHPolicy from './pages/POSHPolicy';
 import RelatedPartyTransactionPolicy from './pages/RelatedPartyTransactionPolicy';
 import RiskManagementPolicy from './pages/RiskManagementPolicy';
 import WhistleBlowerPolicy from './pages/WhistleBlowerPolicy';
+import Terms from './pages/Terms';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import WhyPartnerWithUs from './pages/WhyPartnerWithUs';
 
 import './App.css'
 
@@ -44,9 +47,12 @@ function App() {
       <Route path="/certificates" element={<Certificate/>}/>
       <Route path="/contact-us" element={<ContactUs/>}/>
       <Route path="/about-us" element={<AboutUs/>}/>
-      <Route path="/rnd-innovation" element={<RnDInnovation/>}/>
+      <Route path="/rta-details-compliance-officer" element={<RTADetailsComplianceOfficer/>}/>
+      <Route path="/terms" element={<Terms/>}/>
+      <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+      <Route path="/why-partner-with-us" element={<WhyPartnerWithUs/>}/>
       <Route path="/pcd-franchise" element={<PCDFranchise/>}/>
-      <Route path="/investor-relations" element={<InvestorRelations/>}/>
+      <Route path="/Shareholding-Pattern" element={<ShareholdingPattern/>}/>
       <Route path="/blog" element={<Blog/>}/>
       <Route path="/manufacturing" element={<Manufacturing/>}/>
       <Route path="/media" element={<Media/>}/>

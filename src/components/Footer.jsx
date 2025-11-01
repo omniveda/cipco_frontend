@@ -6,7 +6,7 @@ import logo from "../assets/logo/logo-nav.png";
 
 export default function Footer() {
     return (
-        <div className='mt-[100px]' style={{ backgroundColor: '#101014', color: 'white', padding: '20px',paddingInline:'80px', textAlign: 'left' }}>
+        <div style={{ backgroundColor: '#101014', color: 'white', padding: '20px',paddingInline:'80px', textAlign: 'left' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '20px' }}>
                 <div className='flex gap-[100px]'>
                     <img src={logo} alt="Cipco Pharmaceuticals Logo" className='w-[350px] h-[100px] mt-[40px]' style={{ borderTopLeftRadius: '20px', borderBottomRightRadius: '20px' }} />
@@ -61,8 +61,8 @@ export default function Footer() {
                 <div className='flex justify-between items-center mt-[20px]'>
             <p>© 2025 Cipco Pharmaceuticals. All rights reserved.</p>
             <div className='flex gap-[20px]'>
-                <div className='cursor-pointer'>Privacy Policy</div>
-                <div className='cursor-pointer'>Terms & Condition</div>
+                <div className='cursor-pointer'><Link to="/privacy-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Privacy Policy</Link></div>
+                <div className='cursor-pointer'><Link to="/terms" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Terms & Condition</Link></div>
             </div>
             </div>
         </div>

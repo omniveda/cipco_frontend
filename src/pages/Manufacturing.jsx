@@ -2,217 +2,815 @@ import React, { useState, useEffect } from 'react';
 
 const Manufacturing = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const manufacturingFeatures = [
-    {
-      title: "State-of-the-Art Facilities",
-      description: "Our manufacturing plants are equipped with the latest technology and adhere to strict GMP standards.",
-      icon: "🏭"
-    },
-    {
-      title: "Quality Control",
-      description: "Rigorous quality checks at every stage of production ensure product excellence.",
-      icon: "🔍"
-    },
-    {
-      title: "Research & Development",
-      description: "Continuous innovation drives our commitment to developing better pharmaceutical solutions.",
-      icon: "🧪"
-    },
-    {
-      title: "Sustainability",
-      description: "Environmentally conscious manufacturing practices for a healthier planet.",
-      icon: "🌱"
-    }
+  const productionCapacity = [
+    { section: "Tablet (Non-Ferrous)", capacity: "9 crore tablets", icon: "💊" },
+    { section: "Tablet (Ferrous Section)", capacity: "12 crore tablets", icon: "🩸" },
+    { section: "Liquid Orals", capacity: "27 lakh bottles", icon: "🧴" }
+  ];
+
+  const productPortfolio = [
+    { name: "Anti-Malarial & Anti-Bacterial drugs", icon: "🦠", color: "linear-gradient(135deg, #f87171, #ec4899)" },
+    { name: "Analgesics & Antipyretics", icon: "🌡️", color: "linear-gradient(135deg, #60a5fa, #06b6d4)" },
+    { name: "Anti-Cold and Anti-Cough formulations", icon: "🤧", color: "linear-gradient(135deg, #a78bfa, #6366f1)" },
+    { name: "Hematinics & Iron Supplements", icon: "🩸", color: "linear-gradient(135deg, #ef4444, #f43f5e)" },
+    { name: "Antispasmodics, Anti-Protozoals, Anti-Asthmatics", icon: "🫁", color: "linear-gradient(135deg, #4ade80, #10b981)" },
+    { name: "Beta Blockers, Anti-Histamines, Anti-Diabetics", icon: "💊", color: "linear-gradient(135deg, #fb923c, #eab308)" },
+    { name: "Antivirals, Antihelminthics", icon: "🦠", color: "linear-gradient(135deg, #14b8a6, #22c55e)" },
+    { name: "Vitamin & Calcium supplements", icon: "🦴", color: "linear-gradient(135deg, #f59e0b, #ea580c)" },
+    { name: "Enzyme preparations", icon: "⚗️", color: "linear-gradient(135deg, #8b5cf6, #a855f7)" }
+  ];
+
+  const infrastructureHighlights = [
+    { text: "Controlled AHU system with minimum 20 air changes per hour", icon: "🌬️" },
+    { text: "RLAF stations for sampling and dispensing", icon: "🔬" },
+    { text: "Separate zones for \"Under Test,\" \"Approved,\" and \"Rejected\" materials", icon: "🏷️" },
+    { text: "In-house water treatment and preventive maintenance systems", icon: "💧" },
+    { text: "Comprehensive pest control, sanitation, and safety measures", icon: "🧹" },
+    { text: "Secure finished goods warehouse with FIFO distribution system", icon: "📦" }
+  ];
+
+  const stats = [
+    { number: "35+", label: "Years of Experience", icon: "📅" },
+    { number: "200+", label: "Qualified Professionals", icon: "👥" },
+    { number: "42,000", label: "Sq. Ft. Facility", icon: "🏭" },
+    { number: "100%", label: "Quality Compliance", icon: "✅" }
   ];
 
   return (
-    <div style={styles.container}>
-      {/* Hero Section */}
-      <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
-        <h1 style={styles.title}>Manufacturing Excellence</h1>
-        <p style={styles.subtitle}>
-          Precision, Quality, and Innovation in Pharmaceutical Manufacturing
-        </p>
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(to bottom right, #f0fdf4, #ffffff, #dbeafe)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Background Pattern */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        opacity: 0.05
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
       </div>
 
-      {/* Features Grid */}
-      <div style={styles.featuresGrid}>
-        {manufacturingFeatures.map((feature, index) => (
-          <div 
-            key={index}
-            style={{
-              ...styles.featureCard,
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transitionDelay: `${index * 100}ms`
+      <div style={{
+        position: 'relative',
+        maxWidth: '80rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        paddingTop: '3rem',
+        paddingBottom: '3rem'
+      }}>
+        {/* Hero Section */}
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '5rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)'
+        }}>
+          <div style={{ position: 'relative' }}>
+            <div style={{
+              position: 'absolute',
+              top: '-1rem',
+              left: '-1rem',
+              width: '5rem',
+              height: '5rem',
+              background: 'linear-gradient(to right, #4ade80, #3b82f6)',
+              borderRadius: '50%',
+              opacity: 0.2,
+              animation: 'pulse 2s infinite'
+            }}></div>
+            <div style={{
+              position: 'absolute',
+              bottom: '-1rem',
+              right: '-1rem',
+              width: '4rem',
+              height: '4rem',
+              background: 'linear-gradient(to right, #a78bfa, #ec4899)',
+              borderRadius: '50%',
+              opacity: 0.2,
+              animation: 'pulse 2s infinite 1s'
+            }}></div>
+            <h1 style={{
+              fontSize: '4rem',
+              fontWeight: 'bold',
+              background: 'linear-gradient(to right, #059669, #2563eb, #9333ea)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '1.5rem',
+              position: 'relative',
+              zIndex: 10,
+              animation: 'fadeIn 1s ease-in-out'
+            }}>
+              Manufacturing Excellence
+            </h1>
+          </div>
+          <p style={{
+            fontSize: '1.5rem',
+            color: '#4b5563',
+            maxWidth: '56rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            lineHeight: '1.625',
+            fontWeight: '300'
+          }}>
+            A Legacy of Quality Since 1989
+          </p>
+          <div style={{
+            marginTop: '2rem',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1rem'
+          }}>
+            <div style={{
+              width: '4rem',
+              height: '0.25rem',
+              background: 'linear-gradient(to right, #10b981, #3b82f6)',
+              borderRadius: '9999px'
+            }}></div>
+            <div style={{
+              width: '2rem',
+              height: '0.25rem',
+              background: 'linear-gradient(to right, #3b82f6, #9333ea)',
+              borderRadius: '9999px'
+            }}></div>
+            <div style={{
+              width: '1rem',
+              height: '0.25rem',
+              background: 'linear-gradient(to right, #9333ea, #ec4899)',
+              borderRadius: '9999px'
+            }}></div>
+          </div>
+        </div>
+
+        {/* Introduction Section */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.2s'
+        }}>
+          <div style={{
+            maxWidth: '56rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center'
+          }}>
+            <h2 style={{
+              fontSize: '1.875rem',
+              fontWeight: 'bold',
+              color: '#166534',
+              marginBottom: '1.5rem'
+            }}>About CIPCO LIMITED</h2>
+            <p style={{
+              color: '#374151',
+              fontSize: '1.125rem',
+              lineHeight: '1.75',
+              marginBottom: '1.5rem'
+            }}>
+              CIPCO LIMITED is a trusted pharmaceutical manufacturer with over three decades of experience in delivering high-quality medicines to domestic and international markets. Our state-of-the-art WHO-GMP certified manufacturing facility at Pigdamber, Indore (Madhya Pradesh) is designed to meet the highest standards of quality, safety, and regulatory compliance.
+            </p>
+            <p style={{
+              color: '#374151',
+              fontSize: '1.125rem',
+              lineHeight: '1.75'
+            }}>
+              We specialize in the development and production of non-sterile, non-β-lactam, non-hormonal formulations in tablet and liquid oral dosage forms.
+            </p>
+          </div>
+        </div>
+
+        {/* Manufacturing Facility Section */}
+        <div style={{
+          background: 'linear-gradient(to right, #059669, #047857)',
+          color: 'white',
+          borderRadius: '1rem',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.3s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Our Manufacturing Facility</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(28rem, 1fr))',
+            gap: '2rem'
+          }}>
+            <div>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                marginBottom: '1rem'
+              }}>Facility Details</h3>
+              <ul style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                color: '#d1fae5'
+              }}>
+                <li>• Location: 35-36/1, A.B. Road, Pigdamber, Indore – 453331 (M.P.)</li>
+                <li>• Built-up Area: 42,000 sq. ft. on a 45,000 sq. ft. plot</li>
+                <li>• Pollution-free and well-connected industrial zone</li>
+                <li>• In-house power station, water purification & SS recirculation loop</li>
+                <li>• Controlled temperature and humidity with advanced AHU systems</li>
+                <li>• Purified water system with RO, UV and stainless-steel loop</li>
+              </ul>
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(4px)',
+                borderRadius: '0.75rem',
+                padding: '1.5rem',
+                textAlign: 'center'
+              }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏭</div>
+                <p style={{ color: '#d1fae5' }}>WHO-GMP Certified Facility</p>
+                <p style={{
+                  fontSize: '0.875rem',
+                  color: '#a7f3d0',
+                  marginTop: '0.5rem'
+                }}>Ensuring contamination control and smooth material movement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Production Capacity Section */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.4s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            color: '#166534',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Production Capacity</h2>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              border: '1px solid #d1d5db',
+              borderRadius: '0.5rem'
+            }}>
+              <thead>
+                <tr style={{ backgroundColor: '#059669', color: 'white' }}>
+                  <th style={{
+                    border: '1px solid #d1d5db',
+                    padding: '1.5rem',
+                    textAlign: 'left',
+                    fontWeight: '600'
+                  }}>Section</th>
+                  <th style={{
+                    border: '1px solid #d1d5db',
+                    padding: '1.5rem',
+                    textAlign: 'left',
+                    fontWeight: '600'
+                  }}>Capacity / Month</th>
+                </tr>
+              </thead>
+              <tbody>
+                {productionCapacity.map((item, index) => (
+                  <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9fafb' : 'white' }}>
+                    <td style={{
+                      border: '1px solid #d1d5db',
+                      padding: '1.5rem',
+                      fontWeight: '500'
+                    }}>{item.section}</td>
+                    <td style={{
+                      border: '1px solid #d1d5db',
+                      padding: '1.5rem'
+                    }}>{item.capacity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{
+            color: '#4b5563',
+            textAlign: 'center',
+            marginTop: '1.5rem',
+            fontStyle: 'italic'
+          }}>
+            We employ advanced production technologies and rigorous quality control to ensure that every product meets the highest standards of safety, efficacy, and consistency.
+          </p>
+        </div>
+
+        {/* Product Portfolio Section */}
+        <div style={{
+          background: 'linear-gradient(to right, #dbeafe, #dcfce7)',
+          borderRadius: '1rem',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.5s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            color: '#166534',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Product Portfolio</h2>
+          <p style={{
+            color: '#374151',
+            fontSize: '1.125rem',
+            textAlign: 'center',
+            marginBottom: '2rem'
+          }}>
+            CIPCO LIMITED manufactures a wide range of therapeutic products, including:
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(20rem, 1fr))',
+            gap: '1.5rem'
+          }}>
+            {productPortfolio.map((product, index) => (
+              <div
+                key={index}
+                style={{
+                  background: product.color,
+                  color: 'white',
+                  borderRadius: '0.75rem',
+                  padding: '1.5rem',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                  transition: 'all 0.5s',
+                  transform: hoveredCard === index ? 'scale(1.05) translateY(-0.5rem)' : 'scale(1)',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginBottom: '1rem'
+                }}>
+                  <div style={{
+                    fontSize: '2.5rem',
+                    marginRight: '1rem',
+                    animation: 'bounce 1s infinite'
+                  }}>{product.icon}</div>
+                  <div style={{
+                    width: '3rem',
+                    height: '3rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <span style={{ fontSize: '1.5rem' }}>💊</span>
+                  </div>
+                </div>
+                <h3 style={{
+                  fontSize: '1.125rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}>{product.name}</h3>
+                <div style={{
+                  width: '100%',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  height: '0.25rem',
+                  borderRadius: '9999px'
+                }}>
+                  <div style={{
+                    backgroundColor: 'white',
+                    height: '0.25rem',
+                    borderRadius: '9999px',
+                    animation: 'pulse 2s infinite',
+                    width: `${Math.random() * 60 + 40}%`
+                  }}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p style={{
+            color: '#4b5563',
+            textAlign: 'center',
+            marginTop: '2rem',
+            fontSize: '0.875rem',
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            borderRadius: '0.5rem',
+            padding: '1rem',
+            backdropFilter: 'blur(4px)'
+          }}>
+            All products are manufactured under valid drug manufacturing licenses (25/7/89 and 28/7/89), issued by the Madhya Pradesh Drugs Control Administration.
+          </p>
+        </div>
+
+        {/* Quality Assurance Section */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '1rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.6s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            color: '#166534',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Quality Assurance and Control</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(28rem, 1fr))',
+            gap: '2rem'
+          }}>
+            <div>
+              <h3 style={{
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                color: '#047857',
+                marginBottom: '1rem'
+              }}>Certifications & Labs</h3>
+              <ul style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                color: '#374151'
+              }}>
+                <li>• WHO-GMP and GLP Certified Facility</li>
+                <li>• Fully equipped Chemical, Instrumental & Microbiology Labs</li>
+                <li>• HPLC, UV Spectrophotometer, Dissolution Testing, Stability Chambers</li>
+                <li>• Robust QA systems ensuring compliance with GMP, GLP, and regulatory guidelines</li>
+              </ul>
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔬</div>
+                <p style={{ color: '#4b5563' }}>Advanced Quality Control</p>
+              </div>
+            </div>
+          </div>
+          <p style={{
+            color: '#4b5563',
+            textAlign: 'center',
+            marginTop: '1.5rem',
+            fontStyle: 'italic'
+          }}>
+            Our Quality Assurance team ensures product quality at every stage — from raw material sourcing to final batch release. Each product undergoes rigorous in-process checks, validations, and stability testing before it reaches the market.
+          </p>
+        </div>
+
+        {/* Infrastructure Highlights */}
+        <div style={{
+          background: 'linear-gradient(to right, #faf5ff, #fce7f3)',
+          borderRadius: '1rem',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '0.7s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            color: '#166534',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Infrastructure Highlights</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(28rem, 1fr))',
+            gap: '1.5rem'
+          }}>
+            {infrastructureHighlights.map((highlight, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: '0.75rem',
+                  padding: '1.5rem',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                  transition: 'all 0.5s',
+                  transform: 'scale(1)',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.05) translateY(-0.25rem)';
+                  e.target.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'flex-start'
+                }}>
+                  <div style={{
+                    fontSize: '2rem',
+                    marginRight: '1rem',
+                    transition: 'animation 0.3s'
+                  }}>{highlight.icon}</div>
+                  <div>
+                    <div style={{
+                      width: '3rem',
+                      height: '0.25rem',
+                      background: 'linear-gradient(to right, #a855f7, #ec4899)',
+                      borderRadius: '9999px',
+                      marginBottom: '0.75rem'
+                    }}></div>
+                    <span style={{
+                      color: '#374151',
+                      fontWeight: '500'
+                    }}>{highlight.text}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* People and Compliance Sections */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(28rem, 1fr))',
+          gap: '2rem',
+          marginBottom: '3rem'
+        }}>
+          {/* People Behind Excellence */}
+          <div style={{
+            background: 'linear-gradient(135deg, #fffbeb, #fed7aa)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            transition: 'all 1s',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.8s'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              color: '#166534',
+              marginBottom: '1.5rem',
+              textAlign: 'center'
+            }}>People Behind the Excellence</h2>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👥</div>
+              <p style={{
+                color: '#374151',
+                lineHeight: '1.75'
+              }}>
+                With a team of over 200 trained and qualified professionals, CIPCO LIMITED combines technical expertise with a commitment to quality. Continuous training and internal audits ensure adherence to best manufacturing practices and regulatory standards.
+              </p>
+            </div>
+          </div>
+
+          {/* Commitment to Regulatory Compliance */}
+          <div style={{
+            background: 'linear-gradient(135deg, #eef2ff, #ddd6fe)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            transition: 'all 1s',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.9s'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              color: '#166534',
+              marginBottom: '1.5rem',
+              textAlign: 'center'
+            }}>Commitment to Regulatory Compliance</h2>
+            <ul style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              color: '#374151'
+            }}>
+              <li>• Licensed and regulated by the Madhya Pradesh Food and Drug Administration</li>
+              <li>• WHO-GMP certified for manufacturing excellence</li>
+              <li>• Comprehensive SOPs for production, quality, hygiene, safety, and distribution</li>
+              <li>• Regular self-inspection, preventive maintenance, and process validation</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Global Reach Section */}
+        <div style={{
+          background: 'linear-gradient(to right, #059669, #166534)',
+          color: 'white',
+          borderRadius: '1rem',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '1s'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <h2 style={{
+              fontSize: '1.875rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>Global Reach, Trusted Quality</h2>
+            <p style={{
+              fontSize: '1.25rem',
+              lineHeight: '1.75',
+              maxWidth: '56rem',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}>
+              CIPCO LIMITED serves both domestic and international markets, delivering trusted medicines to governments, institutions, and healthcare providers. Our manufacturing excellence and quality systems enable us to meet diverse market needs with reliability and consistency.
+            </p>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div style={{
+          background: 'linear-gradient(to right, #059669, #2563eb, #9333ea)',
+          color: 'white',
+          borderRadius: '1rem',
+          padding: '2rem',
+          marginBottom: '3rem',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '1s'
+        }}>
+          <h2 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>Our Achievements</h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))',
+            gap: '1.5rem'
+          }}>
+            {stats.map((stat, index) => (
+              <div key={index} style={{
+                textAlign: 'center',
+                transition: 'all 0.3s',
+                transform: 'scale(1)'
+              }}
+              onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+              onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+              >
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{stat.icon}</div>
+                <div style={{
+                  fontSize: '1.875rem',
+                  fontWeight: 'bold',
+                  marginBottom: '0.25rem'
+                }}>{stat.number}</div>
+                <div style={{
+                  fontSize: '0.875rem',
+                  opacity: 0.9
+                }}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div style={{
+          background: 'linear-gradient(135deg, #f9fafb, #ffffff)',
+          borderRadius: '1rem',
+          padding: '2rem',
+          textAlign: 'center',
+          transition: 'all 1s',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+          animationDelay: '1.1s',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to right, rgba(74, 222, 128, 0.1), rgba(59, 130, 246, 0.1))',
+            borderRadius: '1rem'
+          }}></div>
+          <div style={{
+            position: 'relative',
+            zIndex: 10
+          }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: 'bold',
+              color: '#166534',
+              marginBottom: '1rem'
+            }}>Ready to Partner with Us?</h2>
+            <p style={{
+              fontSize: '1.25rem',
+              color: '#4b5563',
+              marginBottom: '2rem',
+              maxWidth: '42rem',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}>
+              Discover how our manufacturing capabilities can support your pharmaceutical needs.
+            </p>
+            <button style={{
+              background: 'linear-gradient(to right, #059669, #047857)',
+              color: 'white',
+              padding: '1.25rem 2.5rem',
+              borderRadius: '9999px',
+              fontWeight: '600',
+              fontSize: '1.125rem',
+              transition: 'all 0.3s',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+              border: 'none',
+              cursor: 'pointer',
+              position: 'relative',
+              overflow: 'hidden'
             }}
-          >
-            <div style={styles.featureIcon}>{feature.icon}</div>
-            <h3 style={styles.featureTitle}>{feature.title}</h3>
-            <p style={styles.featureDescription}>{feature.description}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Statistics Section */}
-      <div style={styles.statsSection}>
-        <h2 style={styles.statsTitle}>Our Manufacturing Impact</h2>
-        <div style={styles.statsGrid}>
-          <div style={styles.statItem}>
-            <div style={styles.statNumber}>50+</div>
-            <div style={styles.statLabel}>Products Manufactured</div>
-          </div>
-          <div style={styles.statItem}>
-            <div style={styles.statNumber}>100%</div>
-            <div style={styles.statLabel}>Quality Compliance</div>
-          </div>
-          <div style={styles.statItem}>
-            <div style={styles.statNumber}>24/7</div>
-            <div style={styles.statLabel}>Production Capacity</div>
+            onMouseEnter={(e) => {
+              e.target.style.background = 'linear-gradient(to right, #047857, #065f46)';
+              e.target.style.transform = 'translateY(-0.25rem) scale(1.05)';
+              e.target.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'linear-gradient(to right, #059669, #047857)';
+              e.target.style.transform = 'translateY(0) scale(1)';
+              e.target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            }}
+            >
+              <span style={{
+                position: 'relative',
+                zIndex: 10
+              }}>Get in Touch</span>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'linear-gradient(to right, #10b981, #3b82f6)',
+                opacity: 0,
+                transition: 'opacity 0.3s'
+              }}></div>
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Call to Action */}
-      <div style={styles.ctaSection}>
-        <h2 style={styles.ctaTitle}>Ready to Partner with Us?</h2>
-        <p style={styles.ctaText}>
-          Discover how our manufacturing capabilities can support your pharmaceutical needs.
-        </p>
-        <button style={styles.ctaButton}>Get in Touch</button>
-      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: '40px 20px',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    minHeight: '100vh',
-  },
-  hero: {
-    textAlign: 'center',
-    marginBottom: '60px',
-    transition: 'all 0.8s ease-out',
-  },
-  title: {
-    fontSize: '3.5rem',
-    color: '#2e7d32',
-    marginBottom: '20px',
-    fontWeight: 'bold',
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-  },
-  subtitle: {
-    fontSize: '1.3rem',
-    color: '#666',
-    maxWidth: '600px',
-    margin: '0 auto',
-    lineHeight: '1.6',
-  },
-  featuresGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '30px',
-    marginBottom: '60px',
-  },
-  featureCard: {
-    background: 'linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)',
-    padding: '30px',
-    borderRadius: '20px',
-    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-    textAlign: 'center',
-    transition: 'all 0.6s ease-out',
-    border: '1px solid #e0e0e0',
-  },
-  featureIcon: {
-    fontSize: '3rem',
-    marginBottom: '20px',
-  },
-  featureTitle: {
-    fontSize: '1.5rem',
-    color: '#2e7d32',
-    marginBottom: '15px',
-    fontWeight: '600',
-  },
-  featureDescription: {
-    color: '#666',
-    lineHeight: '1.6',
-    fontSize: '1rem',
-  },
-  statsSection: {
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
-    padding: '60px 30px',
-    borderRadius: '20px',
-    marginBottom: '60px',
-    color: 'white',
-    textAlign: 'center',
-  },
-  statsTitle: {
-    fontSize: '2.5rem',
-    marginBottom: '40px',
-    fontWeight: 'bold',
-  },
-  statsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '40px',
-  },
-  statItem: {
-    textAlign: 'center',
-  },
-  statNumber: {
-    fontSize: '3rem',
-    fontWeight: 'bold',
-    marginBottom: '10px',
-  },
-  statLabel: {
-    fontSize: '1.1rem',
-    opacity: '0.9',
-  },
-  ctaSection: {
-    textAlign: 'center',
-    padding: '60px 30px',
-    background: '#f8f9fa',
-    borderRadius: '20px',
-  },
-  ctaTitle: {
-    fontSize: '2.5rem',
-    color: '#2e7d32',
-    marginBottom: '20px',
-    fontWeight: 'bold',
-  },
-  ctaText: {
-    fontSize: '1.2rem',
-    color: '#666',
-    marginBottom: '30px',
-    maxWidth: '500px',
-    margin: '0 auto 30px',
-  },
-  ctaButton: {
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
-    color: 'white',
-    padding: '15px 40px',
-    border: 'none',
-    borderRadius: '50px',
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    boxShadow: '0 5px 15px rgba(46, 125, 50, 0.3)',
-  },
-  ctaButtonHover: {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 8px 25px rgba(46, 125, 50, 0.4)',
-  },
 };
 
 export default Manufacturing;

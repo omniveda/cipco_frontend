@@ -14,9 +14,10 @@ export default function Navbar() {
     ];
 
     const bottomMenuItems = [
-        { name: 'R&D and Innovation', path: '/rnd-innovation'},
-        { name: 'PCD & Franchise Business', path: '/pcd-franchise' },   
-        { name: 'Investor Relations', path: '/investor-relations' },     
+        // { name: 'R&D and Innovation', path: '/rnd-innovation'},
+        // { name: 'PCD & Franchise Business', path: '/pcd-franchise' },   
+        { name: 'RTA Details & Compliance officer details', path: '/rta-details-compliance-officer' },
+        { name: 'Shareholding Pattern', path: '/Shareholding-Pattern' },     
     ];
 
     return (
@@ -68,9 +69,11 @@ export default function Navbar() {
               </Link>
             ))}
           {/* CTA Button */}
-<button style={{borderRadius:"6px"}} className="border border-[#76A9FA] bg-[white] text-[#3F83F8] px-[12px] my-[8px] rounded-xl hover:bg-gray-50 text-sm font-semibold transition-colors">
+<Link to="/why-partner-with-us">
+<button style={{borderRadius:"6px"}} className="border border-[#76A9FA] bg-[white] text-[#3F83F8] px-[12px] py-[6px] my-[8px] rounded-xl hover:bg-gray-50 text-sm font-semibold transition-colors">
             Why partner with us?
           </button>
+</Link>
           </nav>
   
         </div>
