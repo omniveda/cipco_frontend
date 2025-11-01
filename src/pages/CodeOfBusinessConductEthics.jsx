@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CodeOfBusinessConductEthics() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <section className='mx-[100px] mt-[100px] animate-fadeInUp'>
+        <section className={`${isMobile ? 'mt-[100px] animate-fadeInUp' : 'mx-[100px] mt-[100px] animate-fadeInUp'}`}>
         <div className="container p-8 max-w-screen-lg overflow-x-hidden animate-fadeInUp animate-delay-200">
 
             <h1 className="text-3xl font-bold mb-4 break-words animate-fadeInLeft">CODE OF BUSINESS CONDUCT AND ETHICS “CODE”</h1>

@@ -1,8 +1,19 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 
 export default function FamiliarizationProgrammeForIndependentDirectors() {
-    return (
-        <section className='mx-[100px] mt-[100px] animate-fadeInUp'>
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    
+        useEffect(() => {
+            const handleResize = () => {
+                setIsMobile(window.innerWidth < 768);
+            };
+    
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }, []);
+    
+        return (
+            <section className={`${isMobile ? 'mt-[100px] animate-fadeInUp' : 'mx-[100px] mt-[100px] animate-fadeInUp'}`}>
         <div className="container p-8 mx-4 sm:mx-8 md:mx-16 lg:mx-[100px] mt-[100px] max-w-screen-lg overflow-x-hidden">
             <h1 className="text-3xl font-bold mb-4 break-words">FAMILIARIZATION PROGRAMME FOR INDEPENDENT DIRECTORS</h1>
             <p className="text-gray-700 mb-4 break-words">(In terms of Regulation 25(7) of the SEBI (LODR) Regulations, 2015)</p>
