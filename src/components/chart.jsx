@@ -1,4 +1,20 @@
+import { useState, useEffect } from "react";
+
 export default function Chart() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            // Close menu when switching to desktop
+            if (!mobile) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
   return (
     <div className="chart-wrapper">
       <svg className="chart-lines" xmlns="http://www.w3.org/2000/svg">

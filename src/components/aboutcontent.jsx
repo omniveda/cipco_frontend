@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react';
 
 const data = [
     {id:1, title:"Location", info:"35-36/1, A.B. Road, Pigdamber, 15km from Indore, Madhya Pradesh’s trade capital", svg:<svg xmlns="http://www.w3.org/2000/svg" width="23.333" height="33.333" fill="none" overflow="visible"><g><path d="M 11.667 28.333 C 7.75 25.444 4.826 22.639 2.896 19.917 C 0.965 17.194 0 14.528 0 11.917 C 0 8.444 1.083 5.59 3.25 3.354 C 5.417 1.118 8.222 0 11.667 0 C 15.111 0 17.917 1.118 20.083 3.354 C 22.25 5.59 23.333 8.444 23.333 11.917 C 23.333 14.528 22.368 17.194 20.438 19.917 C 18.507 22.639 15.583 25.444 11.667 28.333 Z M 11.667 15 C 12.583 15 13.368 14.674 14.021 14.021 C 14.674 13.368 15 12.583 15 11.667 C 15 10.75 14.674 9.965 14.021 9.313 C 13.368 8.66 12.583 8.333 11.667 8.333 C 10.75 8.333 9.965 8.66 9.313 9.313 C 8.66 9.965 8.333 10.75 8.333 11.667 C 8.333 12.583 8.66 13.368 9.313 14.021 C 9.965 14.674 10.75 15 11.667 15 Z M 0 33.333 L 0 30 L 23.333 30 L 23.333 33.333 Z" fill="rgb(65,135,12)"></path></g></svg>},
@@ -9,10 +9,24 @@ const data = [
 
 
 export default function AboutContent(){
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            // Close menu when switching to desktop
+            if (!mobile) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return(
-        <div className="flex gap-[100px] mx-[40px] mt-[60px]">
+        <div className={isMobile?"flex flex-col gap-[100px] mt-[60px]":"flex gap-[100px] mx-[40px] mt-[60px]"}>
       {/* Left column */}
-      <div className="flex flex-col gap-[20px] w-[45%]">
+      <div className={isMobile?"flex flex-col gap-[20px] w-[100%]":"flex flex-col gap-[20px] w-[45%]"}>
         {data.map((item) => (
           <div
             key={item.id}
@@ -28,10 +42,10 @@ export default function AboutContent(){
       </div>
 
       {/* Right column */}
-      <div className="bg-[#f5fbf1] px-[40px] py-[40px] rounded-[10px] w-[55%]">
-        <div className="flex items-center gap-3 mb-4">
+      <div className={isMobile?"bg-[#f5fbf1] py-[20px] rounded-[10px] w-[100%]":"bg-[#f5fbf1] px-[40px] py-[40px] rounded-[10px] w-[55%]"}>
+        <div className={isMobile?"flex flex-col items-center gap-3 mb-4":"flex items-center gap-3 mb-4"}>
           <svg xmlns="http://www.w3.org/2000/svg" width="66.667" height="66.667" fill="none" overflow="visible"><path d="M 0 66.667 L 0 26.583 L 23.333 16.667 L 23.333 23.333 L 40 16.667 L 40 26.667 L 66.667 26.667 L 66.667 66.667 Z M 30 53.333 L 36.667 53.333 L 36.667 40 L 30 40 Z M 16.667 53.333 L 23.333 53.333 L 23.333 40 L 16.667 40 Z M 43.333 53.333 L 50 53.333 L 50 40 L 43.333 40 Z M 66 21.667 L 50.583 21.667 L 53.417 0 L 63.333 0 Z" fill="rgb(65,135,12)"></path></svg>
-          <div className="text-[40px] font-[700] pl-[30px] text-[#0e0e0e]">Advanced Facility Systems</div>
+          <div className={isMobile?"text-[30px] font-[700] pl-[30px] text-[#0e0e0e]":"text-[40px] font-[700] pl-[30px] text-[#0e0e0e]"}>Advanced Facility Systems</div>
         </div>
         <ul className="list-disc list-inside text-[#444] leading-[1.8] text-[18px]">
           <li>Transformer Power–Station for reliable power supply</li>

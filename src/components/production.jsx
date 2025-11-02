@@ -1,6 +1,7 @@
 import greentick from '../assets/element/green-tick.png';
 import med from '../assets/element/med.png'
 import tab from '../assets/element/tab.png';
+import { useState, useEffect } from 'react';
 
 const data = [
     {
@@ -36,14 +37,28 @@ const data = [
 ];
 
 export default function Production(){
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            // Close menu when switching to desktop
+            if (!mobile) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
-    <div className="px-[100px] mt-[60px]">
-      <h2 className="text-[40px] font-bold mb-8">Production Excellence</h2>
+    <div className={isMobile?"px-[0px] mt-[60px] mb-[20px]":"px-[100px] mt-[60px]"}>
+      <h2 className="text-[40px] text-center font-bold mb-8">Production Excellence</h2>
       <p className="text-[18px] mb-[50px]">
         We specialize in producing both tablets and liquid formulations to the highest standards.
       </p>
       
-      <div className="flex gap-[50px]">
+      <div className={isMobile?"flex flex-col gap-[50px]":"flex gap-[50px]"}>
         {data.map((item) => (
           <div
             key={item.id}
