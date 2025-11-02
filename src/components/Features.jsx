@@ -114,7 +114,7 @@ export default function Features() {
                 }
 
                 .mobile-padding {
-                    padding: 50px 10px;
+                    padding: 0px 10px;
                 }
 
                 .features-wrapper {

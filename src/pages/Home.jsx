@@ -101,7 +101,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          style={{ marginTop: '110px', marginLeft: isMobile?'10px': '100px', marginRight:isMobile?'10px': '100px', borderRadius: '40px', overflow: 'hidden', position: 'relative', height: '600px' }}
+          style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'0px': '40px', overflow: 'hidden', position: 'relative', height: '600px' }}
         >
             <div style={{ position: 'relative', width: '100%', height: '100%'}}>
 
@@ -118,7 +118,7 @@ export default function Home() {
 
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'inline-flex text-[black] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] mr-[20px] border border-black':'inline-flex text-[white] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] mr-[20px]'}
+                      className={isMobile?'inline-flex text-[black] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] border border-black':'inline-flex text-[white] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] mr-[20px]'}
                     >
                         <svg className='pr-[8px]' xmlns="http://www.w3.org/2000/svg" width="18.057" height="18" fill="none" overflow="visible"><g><path d="M 2.029 18 C 1.179 18 0.574 17.621 0.216 16.863 C -0.142 16.104 -0.055 15.4 0.479 14.75 L 6.029 8 L 6.029 2 L 5.029 2 C 4.745 2 4.508 1.904 4.316 1.713 C 4.124 1.521 4.029 1.283 4.029 1 C 4.029 0.717 4.124 0.479 4.316 0.288 C 4.508 0.096 4.745 0 5.029 0 L 13.028 0 C 13.312 0 13.549 0.096 13.741 0.288 C 13.933 0.479 14.028 0.717 14.028 1 C 14.028 1.283 13.933 1.521 13.741 1.713 C 13.549 1.904 13.312 2 13.028 2 L 12.028 2 L 12.028 8 L 17.578 14.75 C 18.112 15.4 18.199 16.104 17.841 16.863 C 17.483 17.621 16.878 18 16.028 18 Z M 4.029 15 L 14.028 15 L 10.628 11 L 7.428 11 Z" fill="rgb(255,255,255)"></path></g></svg>
                         Trusted Pharma Solutions
@@ -126,11 +126,11 @@ export default function Home() {
 
                     <motion.h1
                       variants={childVariants}
-                      className={isMobile?'text-[50px] font-bold text-[black] mr-[20px]':'text-[50px] font-bold text-[white] mr-[20px]'}
+                      className={isMobile?'text-[50px] font-bold text-[black] ':'text-[50px] font-bold text-[white] mr-[20px]'}
                     >Precision Formulations for Better Health</motion.h1>
                     <motion.p
                       variants={childVariants}
-                      className={isMobile?'mt-4 text-[18px] text-[black] mr-[20px]':'mt-4 text-[18px] text-[white] mr-[20px]'}
+                      className={isMobile?'mt-4 text-[18px] text-[black]':'mt-4 text-[18px] text-[white] mr-[20px]'}
                     >From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose.</motion.p>
                     <motion.button
                       variants={childVariants}
@@ -187,7 +187,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className={isMobile?'mt-[100px]':'mx-[100px] mt-[100px] px-[50px]'}
+          className={isMobile?'mt-[60px]':'mx-[100px] mt-[100px] px-[50px]'}
         >
             <motion.div variants={childVariants} className='flex justify-center items-center gap-[20px]'>
                 {!isMobile && (
@@ -217,7 +217,7 @@ export default function Home() {
                 >Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible.</motion.p>
                 <motion.div
                   variants={containerVariants}
-                  className='grid grid-cols-2 gap-[20px] mt-[50px]'
+                  className={isMobile?'grid grid-cols-2 gap-[0px] mt-[50px]':'grid grid-cols-2 gap-[20px] mt-[50px]'}
                 >
                 <motion.div variants={statVariants} className='flex flex-col '>
                     <motion.div
@@ -237,7 +237,7 @@ export default function Home() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1, delay: 0.2 }}
                     >400+</motion.div>
-                    <div className='text-[#4B5563] text-[20px] pr-[80px]'>High Quality Products For Life</div>
+                    <div className={isMobile?'text-[#4B5563] text-[20px]':'text-[#4B5563] text-[20px] pr-[80px]'}>High Quality Products For Life</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='flex flex-col mt-[20px]'>
                     <motion.div
@@ -391,11 +391,11 @@ export default function Home() {
                     </motion.div>
                 </motion.div>
                 </motion.div>
-                <motion.div
+               {!isMobile &&  <motion.div
                   variants={childVariants}
                   className="flex ml-[60px] gap-[40px] justify-center items-start flex-wrap"
                 >
-{!isMobile && data.map((item, index) => (
+{data.map((item, index) => (
     <motion.div
       key={index}
       variants={cardVariants}
@@ -433,7 +433,7 @@ export default function Home() {
       </motion.div>
     </motion.div>
 ))}
-</motion.div>
+</motion.div>}
 
             </motion.div>
         </motion.section>
@@ -455,7 +455,7 @@ export default function Home() {
                       alt="hello is this is about"
                     />}
                 </motion.div>
-                <motion.div variants={childVariants} className={isMobile?'w-[auto] pr-[4px] text-center':'w-[50%] ml-[80px] pr-[4px]'}>
+                <motion.div variants={childVariants} className={isMobile?'text-center':'w-[50%] ml-[80px] pr-[4px]'}>
                 <motion.p
                   variants={childVariants}
                   className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold'
@@ -509,7 +509,7 @@ export default function Home() {
                 </motion.div>
                 <motion.div
                   variants={childVariants}
-                  className={isMobile?'relative w-[600px] h-[100px] flex items-center justify-center':'relative w-[600px] h-[300px] flex items-center justify-center'}
+                  className={isMobile?'relative w-[0px] h-[100px] flex items-center justify-center':'relative w-[600px] h-[300px] flex items-center justify-center'}
                 >
                     {!isMobile&&<div className='absolute inset-0 flex justify-between'>
                     <motion.svg

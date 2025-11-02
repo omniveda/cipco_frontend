@@ -5,8 +5,23 @@ import Chart from '../components/chart';
 import Slider from '../components/imgslider';
 import AboutContent from '../components/aboutcontent';
 import Production from '../components/production';
+import { useState, useEffect } from 'react';
 
 export default function AboutUs(){
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            // Close menu when switching to desktop
+            if (!mobile) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return(
         <>
         <section style={{ marginTop: '110px', marginLeft: '100px', marginRight: '100px', borderRadius: '40px', overflow: 'hidden', position: 'relative', height: '600px' }}>
