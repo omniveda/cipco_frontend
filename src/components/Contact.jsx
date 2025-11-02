@@ -1,18 +1,34 @@
+import { useState, useEffect } from 'react';
+
 export default function Contact() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+          const handleResize = () => {
+              const mobile = window.innerWidth < 768;
+              setIsMobile(mobile);
+              // Close menu when switching to desktop
+              if (!mobile) {
+                  setMenuOpen(false);
+              }
+          };
+  
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+      }, []);
   return (
-    <div className="px-[40px] py-20 bg-white text-[#111827] font-sans">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 gap-10">
+    <div className={isMobile?"px-[10px] py-20 bg-white text-[#111827] font-sans":"px-[40px] py-20 bg-white text-[#111827] font-sans"}>
+      <div className={isMobile?"max-w-7xl mx-auto flex flex-col gap-10":"max-w-7xl mx-auto grid grid-cols-2 gap-10"}>
         
         {/* Left - Contact Info */}
-        <div className="mr-[100px]">
+        <div className={isMobile?"mr-[0px]":"mr-[100px]"}>
           <h2 className="text-[50px] font-bold mb-[6px]">Get in touch</h2>
-          <p className="text-gray-600 mb-8 text-[18px] pr-[100px]">
+          <p className={isMobile?"text-gray-600 mb-8 text-[18px]":"text-gray-600 mb-8 text-[18px] pr-[100px]"}>
             For any inquiries or to explore your vision further, we invite you to contact our professional team using the details provided below.
           </p>
 
           <div className="mb-6 flex justify-between items-center">
             <p className="font-[600]">Office</p>
-            <p className="text-gray-700">
+            <p className={isMobile?"text-gray-700 w-[80%]":"text-gray-700"}>
               35-36/1 A.B. Road, Pigdamber, Indore – 453331 (MP) INDIA”
             </p>
           </div>

@@ -4,7 +4,7 @@ import logo3 from '../assets/features/logo3.png';
 import dataimg1 from '../assets/features/dataimg1.jpg';
 import dataimg2 from '../assets/features/dataimg2.jpg';
 import dataimg3 from '../assets/features/dataimg3.jpg';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 
 const data = [
     {
@@ -32,9 +32,24 @@ const data = [
 
 export default function Features() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            // Close menu when switching to desktop
+            if (!mobile) {
+                setMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
-        <div className="features-container">
+        <div className={isMobile?"mobile-padding":"features-container"}>
             <div className="features-wrapper">
                 {data.map((item, index) => (
                     <div
@@ -96,6 +111,10 @@ export default function Features() {
                     margin: 0 auto;
                     padding: 50px 20px;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                }
+
+                .mobile-padding {
+                    padding: 50px 10px;
                 }
 
                 .features-wrapper {
