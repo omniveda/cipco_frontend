@@ -50,7 +50,7 @@ const ShareholdingPattern = () => {
           <h1 style={{
             fontSize: '3.5rem',
             fontWeight: 'bold',
-            background: 'linear-gradient(to right, #2563eb, #16a34a, #9333ea)',
+            background: 'linear-gradient(to right, #305d94, #33b0c5)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
@@ -69,7 +69,7 @@ const ShareholdingPattern = () => {
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
           marginBottom: '3rem'
         }}>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', color: '#1e3a8a', marginBottom: '1rem' }}>
+          <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', color: '#305d94', marginBottom: '1rem' }}>
             Company Details
           </h2>
           <ul style={{ color: '#374151', fontSize: '1.125rem', lineHeight: '1.75' }}>
@@ -82,7 +82,7 @@ const ShareholdingPattern = () => {
 
         {/* Summary Section */}
         <div style={{
-          background: 'linear-gradient(to right, #10b981, #3b82f6)',
+          background: 'linear-gradient(to right, #33b0c5, #305d94)',
           color: 'white',
           borderRadius: '1rem',
           padding: '2rem',
@@ -123,7 +123,7 @@ const ShareholdingPattern = () => {
           <h2 style={{
             fontSize: '1.75rem',
             fontWeight: 'bold',
-            color: '#166534',
+            color: '#305d94',
             marginBottom: '1.5rem',
             textAlign: 'center'
           }}>
@@ -137,7 +137,7 @@ const ShareholdingPattern = () => {
               textAlign: 'left'
             }}>
               <thead>
-                <tr style={{ backgroundColor: '#047857', color: 'white' }}>
+                <tr style={{ backgroundColor: '#305d94', color: 'white' }}>
                   <th style={{ padding: '1rem', border: '1px solid #d1d5db' }}>Name</th>
                   <th style={{ padding: '1rem', border: '1px solid #d1d5db' }}>PAN</th>
                   <th style={{ padding: '1rem', border: '1px solid #d1d5db' }}>No. of Shares</th>
@@ -196,8 +196,8 @@ const ShareholdingPattern = () => {
               transition: 'background-color 0.3s',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
             }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#1d4ed8'}
-            onMouseOut={(e) => e.target.style.backgroundColor = '#2563eb'}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#305d94'}
+            onMouseOut={(e) => e.target.style.backgroundColor = '#305d94'}
           >
             View Full Shareholding Pattern PDF
           </button>

@@ -64,10 +64,10 @@ const Blog = () => {
     },
     title: {
       fontSize: '3.5rem',
-      color: '#2e7d32',
+      color: '#305d94',
       marginBottom: '20px',
       fontWeight: 'bold',
-      background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+      background: 'linear-gradient(135deg, #305d94 0%, #33b0c5 100%)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
     },
@@ -105,7 +105,7 @@ const Blog = () => {
     },
     blogCategory: {
       background: '#e8f5e8',
-      color: '#2e7d32',
+      color: '#305d94',
       padding: '5px 15px',
       borderRadius: '15px',
       fontSize: '0.85rem',
@@ -115,7 +115,7 @@ const Blog = () => {
     },
     blogTitle: {
       fontSize: '1.4rem',
-      color: '#2e7d32',
+      color: '#305d94',
       marginBottom: '10px',
       fontWeight: '600',
       lineHeight: '1.4',
@@ -133,7 +133,7 @@ const Blog = () => {
     readMoreButton: {
       background: 'transparent',
       border: 'none',
-      color: '#2e7d32',
+      color: '#305d94',
       cursor: 'pointer',
       fontWeight: '600',
       fontSize: '1rem',
@@ -148,7 +148,7 @@ const Blog = () => {
     },
     newsletterTitle: {
       fontSize: '2.5rem',
-      color: '#2e7d32',
+      color: '#305d94',
       marginBottom: '20px',
       fontWeight: 'bold',
     },
@@ -173,7 +173,7 @@ const Blog = () => {
       minWidth: '300px',
     },
     newsletterButton: {
-      background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+      background: 'linear-gradient(135deg, #305d94 0%, #33b0c5 100%)',
       color: 'white',
       padding: '15px 30px',
       border: 'none',

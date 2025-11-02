@@ -124,7 +124,7 @@ const Manufacturing = () => {
             <h1 style={{
               fontSize: isMobile ? '2rem' : '4rem',
               fontWeight: 'bold',
-              background: 'linear-gradient(to right, #059669, #2563eb, #9333ea)',
+              background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -195,7 +195,7 @@ const Manufacturing = () => {
             <h2 style={{
               fontSize: '1.875rem',
               fontWeight: 'bold',
-              color: '#166534',
+              color: '#305d94',
               marginBottom: '1.5rem'
             }}>About CIPCO LIMITED</h2>
             <p style={{
@@ -218,7 +218,7 @@ const Manufacturing = () => {
 
         {/* Manufacturing Facility Section */}
         <div style={{
-          background: 'linear-gradient(to right, #059669, #047857)',
+          background: 'linear-gradient(to right, #305d94, #33b0c5)',
           color: 'white',
           borderRadius: '1rem',
           padding: '2rem',
@@ -300,7 +300,7 @@ const Manufacturing = () => {
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
-            color: '#166534',
+            color: '#305d94',
             marginBottom: '2rem',
             textAlign: 'center'
           }}>Production Capacity</h2>
@@ -312,7 +312,7 @@ const Manufacturing = () => {
               borderRadius: '0.5rem'
             }}>
               <thead>
-                <tr style={{ backgroundColor: '#059669', color: 'white' }}>
+                <tr style={{ backgroundColor: '#305d94', color: 'white' }}>
                   <th style={{
                     border: '1px solid #d1d5db',
                     padding: '1.5rem',
@@ -368,7 +368,7 @@ const Manufacturing = () => {
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
-            color: '#166534',
+            color: '#305d94',
             marginBottom: '2rem',
             textAlign: 'center'
           }}>Product Portfolio</h2>
@@ -474,7 +474,7 @@ const Manufacturing = () => {
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
-            color: '#166534',
+            color: '#305d94',
             marginBottom: '2rem',
             textAlign: 'center'
           }}>Quality Assurance and Control</h2>
@@ -487,7 +487,7 @@ const Manufacturing = () => {
               <h3 style={{
                 fontSize: '1.25rem',
                 fontWeight: '600',
-                color: '#047857',
+                color: '#305d94',
                 marginBottom: '1rem'
               }}>Certifications & Labs</h3>
               <ul style={{
@@ -538,7 +538,7 @@ const Manufacturing = () => {
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
-            color: '#166534',
+            color: '#305d94',
             marginBottom: '2rem',
             textAlign: 'center'
           }}>Infrastructure Highlights</h2>
@@ -618,7 +618,7 @@ const Manufacturing = () => {
             <h2 style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
-              color: '#166534',
+              color: '#305d94',
               marginBottom: '1.5rem',
               textAlign: 'center'
             }}>People Behind the Excellence</h2>
@@ -647,7 +647,7 @@ const Manufacturing = () => {
             <h2 style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
-              color: '#166534',
+              color: '#305d94',
               marginBottom: '1.5rem',
               textAlign: 'center'
             }}>Commitment to Regulatory Compliance</h2>
@@ -667,7 +667,7 @@ const Manufacturing = () => {
 
         {/* Global Reach Section */}
         <div style={{
-          background: 'linear-gradient(to right, #059669, #166534)',
+          background: 'linear-gradient(to right, #33b0c5, #305d94)',
           color: 'white',
           borderRadius: '1rem',
           padding: '2rem',
@@ -697,7 +697,7 @@ const Manufacturing = () => {
 
         {/* Stats Section */}
         <div style={{
-          background: 'linear-gradient(to right, #059669, #2563eb, #9333ea)',
+          background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
           color: 'white',
           borderRadius: '1rem',
           padding: '2rem',
@@ -771,7 +771,7 @@ const Manufacturing = () => {
             <h2 style={{
               fontSize: '2.5rem',
               fontWeight: 'bold',
-              color: '#166534',
+              color: '#305d94',
               marginBottom: '1rem'
             }}>Ready to Partner with Us?</h2>
             <p style={{
@@ -799,12 +799,12 @@ const Manufacturing = () => {
               overflow: 'hidden'
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = 'linear-gradient(to right, #047857, #065f46)';
+              e.target.style.background = 'linear-gradient(to right, #305d94, #305d94)';
               e.target.style.transform = 'translateY(-0.25rem) scale(1.05)';
               e.target.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = 'linear-gradient(to right, #059669, #047857)';
+              e.target.style.background = 'linear-gradient(to right, #305d94, #305d94)';
               e.target.style.transform = 'translateY(0) scale(1)';
               e.target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
             }}
@@ -819,7 +819,7 @@ const Manufacturing = () => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: 'linear-gradient(to right, #10b981, #3b82f6)',
+                background: 'linear-gradient(to right, #305d94, #3b82f6)',
                 opacity: 0,
                 transition: 'opacity 0.3s'
               }}></div>

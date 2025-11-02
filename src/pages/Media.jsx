@@ -160,10 +160,10 @@ const styles = {
   },
   title: {
     fontSize: '3.5rem',
-    color: '#2e7d32',
+    color: '#305d94',
     marginBottom: '20px',
     fontWeight: 'bold',
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+    background: 'linear-gradient(135deg, #305d94 0%, #33b0c5 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   },
@@ -183,9 +183,9 @@ const styles = {
   },
   tabButton: {
     padding: '15px 30px',
-    border: '2px solid #2e7d32',
+    border: '2px solid #305d94',
     background: 'transparent',
-    color: '#2e7d32',
+    color: '#305d94',
     borderRadius: '25px',
     cursor: 'pointer',
     fontSize: '1rem',
@@ -193,7 +193,7 @@ const styles = {
     transition: 'all 0.3s ease',
   },
   activeTab: {
-    background: '#2e7d32',
+    background: '#305d94',
     color: 'white',
     transform: 'translateY(-2px)',
     boxShadow: '0 5px 15px rgba(46, 125, 50, 0.3)',
@@ -224,7 +224,7 @@ const styles = {
   },
   newsTitle: {
     fontSize: '1.4rem',
-    color: '#2e7d32',
+    color: '#305d94',
     marginBottom: '10px',
     fontWeight: '600',
     lineHeight: '1.4',
@@ -243,7 +243,7 @@ const styles = {
   readMoreButton: {
     background: 'transparent',
     border: 'none',
-    color: '#2e7d32',
+    color: '#305d94',
     cursor: 'pointer',
     fontWeight: '600',
     fontSize: '1rem',
@@ -251,7 +251,7 @@ const styles = {
     transition: 'all 0.3s ease',
   },
   mediaKitSection: {
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+    background: 'linear-gradient(135deg, #305d94 0%, #33b0c5 100%)',
     padding: '60px 30px',
     borderRadius: '20px',
     marginBottom: '60px',
@@ -296,7 +296,7 @@ const styles = {
   },
   contactTitle: {
     fontSize: '2.5rem',
-    color: '#2e7d32',
+    color: '#305d94',
     marginBottom: '20px',
     fontWeight: 'bold',
   },
@@ -312,17 +312,17 @@ const styles = {
   },
   contactEmail: {
     fontSize: '1.1rem',
-    color: '#2e7d32',
+    color: '#305d94',
     marginBottom: '10px',
     fontWeight: '600',
   },
   contactPhone: {
     fontSize: '1.1rem',
-    color: '#2e7d32',
+    color: '#305d94',
     fontWeight: '600',
   },
   contactButton: {
-    background: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
+    background: 'linear-gradient(135deg, #305d94 0%, #33b0c5 100%)',
     color: 'white',
     padding: '15px 40px',
     border: 'none',

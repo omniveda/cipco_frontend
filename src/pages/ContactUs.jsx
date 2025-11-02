@@ -169,7 +169,7 @@ const styles = {
   },
   title: {
     fontSize: '2.5em',
-    color: '#2e7d32',
+    color: '#305d94',
     marginBottom: '20px',
   },
   description: {
@@ -194,7 +194,7 @@ const styles = {
   },
   infoTitle: {
     fontSize: '1.2em',
-    color: '#2e7d32',
+    color: '#305d94',
     margin: '0 0 10px 0',
   },
   infoText: {
@@ -236,7 +236,7 @@ const styles = {
   },
   button: {
     padding: '10px 20px',
-    backgroundColor: '#2e7d32',
+    backgroundColor: '#305d94',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
@@ -245,7 +245,7 @@ const styles = {
     transition: 'background-color 0.3s',
   },
   buttonHover: {
-    backgroundColor: '#1b5e20',
+    backgroundColor: '#305d94',
   },
 };
 
