@@ -3,6 +3,18 @@ import React, { useState, useEffect } from 'react';
 const Manufacturing = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [isMobile,setIsMobile]=useState(window.innerWidth<768);
+  useEffect(()=>{
+    const handleResize=()=>{
+      const mobile=window.innerWidth<768;
+      setIsMobile(mobile);
+      if(!mobile){
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize',handleResize);
+    return()=>window.removeEventListener('resize',handleResize);
+  },[]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -110,7 +122,7 @@ const Manufacturing = () => {
               animation: 'pulse 2s infinite 1s'
             }}></div>
             <h1 style={{
-              fontSize: '4rem',
+              fontSize: isMobile ? '2rem' : '4rem',
               fontWeight: 'bold',
               background: 'linear-gradient(to right, #059669, #2563eb, #9333ea)',
               WebkitBackgroundClip: 'text',
@@ -236,8 +248,9 @@ const Manufacturing = () => {
               <ul style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.5rem',
-                color: '#d1fae5'
+                gap: '0.5rem',  
+                color: '#d1fae5',
+                width: isMobile ? '30vh' : 'auto'
               }}>
                 <li>• Location: 35-36/1, A.B. Road, Pigdamber, Indore – 453331 (M.P.)</li>
                 <li>• Built-up Area: 42,000 sq. ft. on a 45,000 sq. ft. plot</li>
@@ -250,14 +263,15 @@ const Manufacturing = () => {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: isMobile? 'flex-start':'center',
             }}>
               <div style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 backdropFilter: 'blur(4px)',
                 borderRadius: '0.75rem',
                 padding: '1.5rem',
-                textAlign: 'center'
+                textAlign: 'center',
+                width: isMobile ? '30vh' : 'auto'
               }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏭</div>
                 <p style={{ color: '#d1fae5' }}>WHO-GMP Certified Facility</p>
@@ -480,7 +494,8 @@ const Manufacturing = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '0.5rem',
-                color: '#374151'
+                color: '#374151',
+                width: isMobile ? '30vh' : 'auto'
               }}>
                 <li>• WHO-GMP and GLP Certified Facility</li>
                 <li>• Fully equipped Chemical, Instrumental & Microbiology Labs</li>
@@ -491,9 +506,9 @@ const Manufacturing = () => {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent:isMobile?'flex-start': 'center'
             }}>
-              <div style={{ textAlign: 'center' }}>
+              <div style={{ textAlign:'center' }}>
                 <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔬</div>
                 <p style={{ color: '#4b5563' }}>Advanced Quality Control</p>
               </div>
@@ -542,7 +557,8 @@ const Manufacturing = () => {
                   boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
                   transition: 'all 0.5s',
                   transform: 'scale(1)',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  width: isMobile ? '30vh' : 'auto'
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.transform = 'scale(1.05) translateY(-0.25rem)';
@@ -596,7 +612,8 @@ const Manufacturing = () => {
             transition: 'all 1s',
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-            animationDelay: '0.8s'
+            animationDelay: '0.8s',
+            width: isMobile ? '35vh' : 'auto'
           }}>
             <h2 style={{
               fontSize: '1.5rem',
@@ -624,7 +641,8 @@ const Manufacturing = () => {
             transition: 'all 1s',
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-            animationDelay: '0.9s'
+            animationDelay: '0.9s',
+            width: isMobile ? '35vh' : 'auto'
           }}>
             <h2 style={{
               fontSize: '1.5rem',
