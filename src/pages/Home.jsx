@@ -101,42 +101,41 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'0px': '40px', overflow: 'hidden', position: 'relative', height: '600px' }}
+          style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'0px': '40px', overflow: 'hidden', position: 'relative', height: isMobile ? '500px' : '600px' }}
         >
-            <div style={{ position: 'relative', width: '100%', height: '100%'}}>
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
 
-
-
-               {!isMobile&& <img src={heroimg} alt="hero img" className="w-full h-auto object-cover" />}
-
+               <img src={heroimg} alt="hero img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
 
                 {/* Content Overlaid */}
                 <motion.div
                   variants={heroVariants}
-                  className={isMobile?"absolute transform p-[10px] text-black z-20 text-center":"absolute left-1/2 top-1/2 transform -translate-y-1/2 w-1/2 p-8 text-white z-20 text-center"}
+                  style={{ position: 'absolute', inset: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: isMobile ? '20px' : '20px', textAlign: 'center', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', zIndex: 20 }}
                 >
 
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'inline-flex text-[black] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] border border-black':'inline-flex text-[white] items-center bg-[rgba(255,255,255,0.4)] p-[10px] rounded-[40px] mr-[20px]'}
+                      style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.4)', padding: '10px', borderRadius: '40px', border: '1px solid white', marginBottom: isMobile ? '20px' : '20px' }}
                     >
-                        <svg className='pr-[8px]' xmlns="http://www.w3.org/2000/svg" width="18.057" height="18" fill="none" overflow="visible"><g><path d="M 2.029 18 C 1.179 18 0.574 17.621 0.216 16.863 C -0.142 16.104 -0.055 15.4 0.479 14.75 L 6.029 8 L 6.029 2 L 5.029 2 C 4.745 2 4.508 1.904 4.316 1.713 C 4.124 1.521 4.029 1.283 4.029 1 C 4.029 0.717 4.124 0.479 4.316 0.288 C 4.508 0.096 4.745 0 5.029 0 L 13.028 0 C 13.312 0 13.549 0.096 13.741 0.288 C 13.933 0.479 14.028 0.717 14.028 1 C 14.028 1.283 13.933 1.521 13.741 1.713 C 13.549 1.904 13.312 2 13.028 2 L 12.028 2 L 12.028 8 L 17.578 14.75 C 18.112 15.4 18.199 16.104 17.841 16.863 C 17.483 17.621 16.878 18 16.028 18 Z M 4.029 15 L 14.028 15 L 10.628 11 L 7.428 11 Z" fill="rgb(255,255,255)"></path></g></svg>
+                        <svg style={{ marginRight: '8px' }} xmlns="http://www.w3.org/2000/svg" width="18.057" height="18" fill="none" overflow="visible"><g><path d="M 2.029 18 C 1.179 18 0.574 17.621 0.216 16.863 C -0.142 16.104 -0.055 15.4 0.479 14.75 L 6.029 8 L 6.029 2 L 5.029 2 C 4.745 2 4.508 1.904 4.316 1.713 C 4.124 1.521 4.029 1.283 4.029 1 C 4.029 0.717 4.124 0.479 4.316 0.288 C 4.508 0.096 4.745 0 5.029 0 L 13.028 0 C 13.312 0 13.549 0.096 13.741 0.288 C 13.933 0.479 14.028 0.717 14.028 1 C 14.028 1.283 13.933 1.521 13.741 1.713 C 13.549 1.904 13.312 2 13.028 2 L 12.028 2 L 12.028 8 L 17.578 14.75 C 18.112 15.4 18.199 16.104 17.841 16.863 C 17.483 17.621 16.878 18 16.028 18 Z M 4.029 15 L 14.028 15 L 10.628 11 L 7.428 11 Z" fill="rgb(255,255,255)"></path></g></svg>
                         Trusted Pharma Solutions
                     </motion.div>
 
                     <motion.h1
                       variants={childVariants}
-                      className={isMobile?'text-[50px] font-bold text-[black] ':'text-[50px] font-bold text-[white] mr-[20px]'}
+                      style={{ fontSize: isMobile ? '30px' : '50px', fontWeight: 'bold', color: 'white', marginBottom: isMobile ? '10px' : '10px' }}
                     >Precision Formulations for Better Health</motion.h1>
                     <motion.p
                       variants={childVariants}
-                      className={isMobile?'mt-4 text-[18px] text-[black]':'mt-4 text-[18px] text-[white] mr-[20px]'}
+                      style={{ marginTop: '4px', fontSize: isMobile ? '16px' : '18px', color: 'white', marginBottom: isMobile ? '20px' : '20px' }}
                     >From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose.</motion.p>
                     <motion.button
                       variants={childVariants}
                       whileHover={{ scale: 1.05 }}
                       onClick={() => navigate('/products')}
-                      className="mt-[8px] border border-[#76A9FA] text-[#2A9CB6] px-[6px] py-2 rounded-[40px] text-[13px] p-[10px] px-[12px] hover:bg-gray-50 text-sm font-semibold transition-colors mr-[20px]"
+                      style={{ border: '1px solid white', color: 'white', padding: '10px 12px', borderRadius: '40px', fontSize: '13px', backgroundColor: 'transparent', cursor: 'pointer', transition: 'all 0.3s' }}
+                      onMouseEnter={(e) => { e.target.style.backgroundColor = 'white'; e.target.style.color = 'black'; }}
+                      onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'white'; }}
                     >
                         View Products
                     </motion.button>
@@ -331,7 +330,7 @@ export default function Home() {
                         height="11.225"
                         fill="none"
                         overflow="visible"
-                      >
+                      > <g><path d="M 5.288 8.775 L 13.763 0.3 C 13.963 0.1 14.196 0 14.463 0 C 14.73 0 14.963 0.1 15.163 0.3 C 15.363 0.5 15.463 0.738 15.463 1.012 C 15.463 1.287 15.363 1.525 15.163 1.725 L 5.988 10.925 C 5.788 11.125 5.555 11.225 5.288 11.225 C 5.021 11.225 4.788 11.125 4.588 10.925 L 0.288 6.625 C 0.088 6.425 -0.008 6.188 0 5.913 C 0.009 5.637 0.113 5.4 0.313 5.2 C 0.513 5 0.75 4.9 1.025 4.9 C 1.3 4.9 1.538 5 1.738 5.2 Z" fill="rgb(255,255,255)"></path></g>
                       </motion.svg>
                       General Medicine
                     </motion.div>
@@ -462,7 +461,7 @@ export default function Home() {
                 >ABOUT US</motion.p>
                 <motion.p
                   variants={childVariants}
-                  className='text-left text-[40px] mt-[8px] font-[600]'
+                  className={isMobile?'text-center text-[30px] mt-[8px] font-[600]':'text-left text-[40px] mt-[8px] font-[600]'}
                 >Committed to Quality Healthcare Since 1989</motion.p>
                 <motion.p
                   variants={childVariants}
@@ -557,7 +556,8 @@ export default function Home() {
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       onClick={() => navigate('/contact-us')}
-                      className='bg-[white] text-[#0057A0] rounded-[40px] p-[15px] text-[20px] font-[600] relative z-10'
+                      className='bg-[white] text-[#0057A0] rounded-[40px] p-[15px] px-[20px] text-[20px] font-[600] relative z-10'
+                      style={{ whiteSpace: 'nowrap' }}
                     >Contact Us</motion.div>
 
 

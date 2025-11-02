@@ -72,7 +72,7 @@ export default function Features() {
                             <div className="feature-content">
                                 <div className="feature-text">
                                 <img className='w-[50px] h-[50px]' src={item.logo} alt=""/>
-                                    <h3 className="feature-title-expanded">{item.title}</h3>
+                                    <h3 className={isMobile?'font-[10px]':"feature-title-expanded"}>{item.title}</h3>
                                     <p className="feature-description">{item.content}</p>
                                 </div>
                                 <div className="feature-image">
@@ -88,7 +88,7 @@ export default function Features() {
                         </div>
 
                         {/* Navigation Arrows */}
-                        <div className="nav-arrows">
+                        {!isMobile&&<div className="nav-arrows">
                             <button className="nav-arrow nav-arrow-left">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -99,7 +99,7 @@ export default function Features() {
                                     <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
                                 </svg>
                             </button>
-                        </div>
+                        </div>}
                     </div>
                 ))}
             </div>

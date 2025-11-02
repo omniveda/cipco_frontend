@@ -16,7 +16,7 @@ export default function Contact() {
           return () => window.removeEventListener('resize', handleResize);
       }, []);
   return (
-    <div className={isMobile?"px-[10px] py-20 bg-white text-[#111827] font-sans":"px-[40px] py-20 bg-white text-[#111827] font-sans"}>
+    <div className={isMobile?"px-[10px] mb-[20px] py-20 bg-white text-[#111827] font-sans":"px-[40px] py-20 bg-white text-[#111827] font-sans"}>
       <div className={isMobile?"max-w-7xl mx-auto flex flex-col gap-10":"max-w-7xl mx-auto grid grid-cols-2 gap-10"}>
         
         {/* Left - Contact Info */}
@@ -26,25 +26,26 @@ export default function Contact() {
             For any inquiries or to explore your vision further, we invite you to contact our professional team using the details provided below.
           </p>
 
-          <div className="mb-6 flex justify-between items-center">
-            <p className="font-[600]">Office</p>
+          <div className={isMobile?"mb-6 flex items-center":"mb-6 flex justify-between items-center"}>
+            <p className="font-[600]">Office:  </p>
             <p className={isMobile?"text-gray-700 w-[80%]":"text-gray-700"}>
-              35-36/1 A.B. Road, Pigdamber, Indore – 453331 (MP) INDIA”
+              35-36/1 A.B. Road, Pigdamber , Indore – 453331 (MP) INDIA
             </p>
           </div>
 
-          <div className="mb-6 flex justify-between items-center">
-            <p className="font-[600]">Email</p>
-            <p className="text-gray-700">info@cipcopharma.com</p>
+          <div className={isMobile?"mb-6 flex items-center":"mb-6 flex justify-between items-center"}>
+            <p className="font-[600]">Email: </p>
+            <p className="text-gray-700"> info@cipcopharma.com</p>
           </div>
 
-          <div className="mb-6 flex justify-between items-center">
-            <p className="font-[600]">Phone Number</p>
-            <p className="text-gray-700">0731 4020311, 07869920311</p>
+          <div className={isMobile?"mb-6 flex items-center":"mb-6 flex justify-between items-center"}>
+            <p className="font-[600]">Phone Number:</p>
+            <p className="text-gray-700">0731 4020311,</p>
+            <p className="text-gray-700"> 07869920311</p>
           </div>
 
-          <div className="flex flex-col gap-6 mt-[40px]">
-            <p className="font-[600]">Follow us</p>
+          <div className={isMobile?"flex  gap-6 mt-[40px]":"flex flex-col gap-6 mt-[40px]"}>
+            <p className="font-[600]">Follow us:</p>
             {/* Icons (use real SVGs or icon libraries like react-icons) */}
             <div className="flex gap-4 items-center text-2xl">
               <a href="#" className="hover:opacity-80">
