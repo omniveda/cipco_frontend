@@ -183,7 +183,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[0px]':'mx-[100px] mt-[100px]'}
         >
             <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]'}>
@@ -208,7 +208,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[10px]':'mx-[100px] mt-[80px]'}
         >
             <motion.div variants={childVariants}>
@@ -220,7 +220,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[60px]':'mx-[100px] mt-[100px] px-[50px]'}
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex justify-center items-center gap-[20px]'}>
@@ -232,7 +232,7 @@ export default function Home() {
                           transition={{ duration: 0.8 }}
                           src={whogmpcert}
                           alt="who gmp certificate"
-                          className={isMobile?'w-[400px] h-[340px]':'w-[600px] h-[500px]'}
+                          className={isMobile?'w-[200px] h-[150px]':'w-[600px] h-[500px]'}
                         />
                     </motion.div>
                 
@@ -317,7 +317,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[10px]':'mx-[100px] mt-[100px]'}
         >
             <motion.div variants={childVariants} className={!isMobile&&'grid grid-cols-2 items-center'}>
@@ -476,7 +476,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className=' mt-[100px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-row bg-[#F3F4F6] pb-[10px] rounded-[40px]':'flex flex-row bg-[#F3F4F6] p-[80px] rounded-[40px]'}>
@@ -521,7 +521,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className='mt-[100px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-col bg-[#0057A0] p-[0px] rounded-[40px]  items-center':'flex flex-row bg-[#0057A0] p-[80px] rounded-[40px] pl-[120px] items-center'}>
@@ -604,7 +604,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className='mt-[100px] mx-[100px]'
         >
             <motion.div variants={childVariants}>
@@ -616,7 +616,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[20px] mx-[0px]':'mt-[100px] mx-[100px]'}
         >
             <motion.div variants={childVariants}>
