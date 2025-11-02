@@ -16,7 +16,7 @@ export default function Contact() {
           return () => window.removeEventListener('resize', handleResize);
       }, []);
   return (
-    <div className={isMobile?"px-[10px] mb-[20px] py-20 bg-white text-[#111827] font-sans":"px-[40px] py-20 bg-white text-[#111827] font-sans"}>
+    <div className={isMobile?"px-[10px] mb-[20px] py-20 bg-white text-[#111827] font-sans":"px-[40px] mb-[40px] py-20 bg-white text-[#111827] font-sans"}>
       <div className={isMobile?"max-w-7xl mx-auto flex flex-col gap-10":"max-w-7xl mx-auto grid grid-cols-2 gap-10"}>
         
         {/* Left - Contact Info */}

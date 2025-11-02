@@ -188,8 +188,8 @@ export default function Home() {
           viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[60px]':'mx-[100px] mt-[100px] px-[50px]'}
         >
-            <motion.div variants={childVariants} className='flex justify-center items-center gap-[20px]'>
-                {!isMobile && (
+            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex justify-center items-center gap-[20px]'}>
+                 
                     <motion.div variants={childVariants}>
                         <motion.img
                           initial={{ opacity: 0, scale: 0.9 }}
@@ -197,10 +197,10 @@ export default function Home() {
                           transition={{ duration: 0.8 }}
                           src={whogmpcert}
                           alt="who gmp certificate"
-                          className='w-[600px] h-[500px]'
+                          className={isMobile?'w-[300px] h-[260px]':'w-[600px] h-[500px]'}
                         />
                     </motion.div>
-                )}
+                
                 <motion.div variants={childVariants} className={isMobile ? 'w-full' : 'w-[50%] ml-[80px] pr-[4px]'}>
                 <motion.p
                   variants={childVariants}
@@ -220,33 +220,33 @@ export default function Home() {
                 >
                 <motion.div variants={statVariants} className='flex flex-col '>
                     <motion.div
-                      className='text-[50px]'
+                      className={isMobile?'text-[30px]':'text-[50px]'}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1 }}
                     >32+</motion.div>
-                    <div className='text-[#4B5563] text-[20px] pr-[10px]'>Years of Serving Excellence</div>
+                    <div className={isMobile?'text-[#4B5563] text-[16px] pr-[10px]':'text-[#4B5563] text-[20px] pr-[10px]'}>Years of Serving Excellence</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='flex flex-col '>
                     <motion.div
-                      className='text-[50px]'
+                      className={isMobile?'text-[30px]':'text-[50px]'}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1, delay: 0.2 }}
                     >400+</motion.div>
-                    <div className={isMobile?'text-[#4B5563] text-[20px]':'text-[#4B5563] text-[20px] pr-[80px]'}>High Quality Products For Life</div>
+                    <div className={isMobile?'text-[#4B5563] text-[16px]':'text-[#4B5563] text-[20px] pr-[80px]'}>High Quality Products For Life</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='flex flex-col mt-[20px]'>
                     <motion.div
-                      className='text-[50px]'
+                      className={isMobile?'text-[30px]':'text-[50px]'}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1, delay: 0.4 }}
                     >10,000+</motion.div>
-                    <div className='text-[#4B5563] text-[20px]'>Orders Delivered</div>
+                    <div className={isMobile?'text-[#4B5563] text-[16px] pr-[10px]':'text-[#4B5563] text-[20px] pr-[10px]'}>Orders Delivered</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='mt-[20px]'>
                     <motion.div
@@ -255,7 +255,7 @@ export default function Home() {
                     >
                       <motion.p
                         whileHover={{ scale: 1.05 }}
-                        className='bg-[#1C64F2] text-[white] inline-block px-[20px] py-[20px] rounded-[40px] cursor-pointer'
+                        className={isMobile?'bg-[#1C64F2] text-[white] inline-block px-[8px] py-[20px] rounded-[40px] cursor-pointer':'bg-[#1C64F2] text-[white] inline-block px-[20px] py-[20px] rounded-[40px] cursor-pointer'}
                       >All Certificates</motion.p>
                       <motion.svg
                         whileHover={{ scale: 1.05, rotate: 360 }}
@@ -319,7 +319,7 @@ export default function Home() {
                 >
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'text-[#4B5563] text-[18px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
+                      className={isMobile?'text-[#4B5563] text-[16px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
                       whileHover={{ scale: 1.05 }}
                     >
                       <motion.svg
@@ -336,7 +336,7 @@ export default function Home() {
                     </motion.div>
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'text-[#4B5563] text-[18px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
+                      className={isMobile?'text-[#4B5563] text-[16px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
                       whileHover={{ scale: 1.05 }}
                     >
                       <motion.svg
@@ -354,7 +354,7 @@ export default function Home() {
                     </motion.div>
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'text-[#4B5563] text-[18px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
+                      className={isMobile?'text-[#4B5563] text-[16px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
                       whileHover={{ scale: 1.05 }}
                     >
                       <motion.svg
@@ -372,7 +372,7 @@ export default function Home() {
                     </motion.div>
                     <motion.div
                       variants={childVariants}
-                      className={isMobile?'text-[#4B5563] text-[18px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
+                      className={isMobile?'text-[#4B5563] text-[16px] flex items-center gap-[6px]':'text-[#4B5563] text-[23px] flex items-center gap-[6px]'}
                       whileHover={{ scale: 1.05 }}
                     >
                       <motion.svg
