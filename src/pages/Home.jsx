@@ -17,14 +17,62 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      duration: 0.6
+      staggerChildren: 0.3,
+      duration: 0.8,
+      type: 'spring',
+      stiffness: 100
     }
   }
 };
 
 const childVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 50, rotate: -5 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    transition: { duration: 0.8, ease: 'easeOut', type: 'spring', stiffness: 120 }
+  }
+};
+
+const heroVariants = {
+  hidden: { opacity: 0, x: -100, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 1, ease: 'easeOut', type: 'spring', stiffness: 80 }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.8 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+      delay: i * 0.3,
+      type: 'spring',
+      stiffness: 100
+    }
+  })
+};
+
+const statVariants = {
+  hidden: { opacity: 0, scale: 0.5, rotate: 10 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: { duration: 1, ease: 'easeOut', type: 'spring', stiffness: 150 }
+  }
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -32,34 +80,21 @@ const childVariants = {
   }
 };
 
-const heroVariants = {
-  hidden: { opacity: 0, x: 100 },
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: 'easeOut' }
+    transition: { duration: 0.8, ease: 'easeOut', type: 'spring', stiffness: 100 }
   }
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-      delay: i * 0.2
-    }
-  })
-};
-
-const statVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
   visible: {
     opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: 'easeOut' }
+    x: 0,
+    transition: { duration: 0.8, ease: 'easeOut', type: 'spring', stiffness: 100 }
   }
 };
 
@@ -100,7 +135,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'0px': '40px', overflow: 'hidden', position: 'relative', height: isMobile ? '500px' : '600px' }}
         >
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -188,8 +223,8 @@ export default function Home() {
           viewport={{ once: true, margin: "-100px" }}
           className={isMobile?'mt-[60px]':'mx-[100px] mt-[100px] px-[50px]'}
         >
-            <motion.div variants={childVariants} className='flex justify-center items-center gap-[20px]'>
-                {!isMobile && (
+            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex justify-center items-center gap-[20px]'}>
+                
                     <motion.div variants={childVariants}>
                         <motion.img
                           initial={{ opacity: 0, scale: 0.9 }}
@@ -197,10 +232,10 @@ export default function Home() {
                           transition={{ duration: 0.8 }}
                           src={whogmpcert}
                           alt="who gmp certificate"
-                          className='w-[600px] h-[500px]'
+                          className={isMobile?'w-[400px] h-[340px]':'w-[600px] h-[500px]'}
                         />
                     </motion.div>
-                )}
+                
                 <motion.div variants={childVariants} className={isMobile ? 'w-full' : 'w-[50%] ml-[80px] pr-[4px]'}>
                 <motion.p
                   variants={childVariants}
