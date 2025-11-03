@@ -85,6 +85,7 @@ const Manufacturing = () => {
         maxWidth: '80rem',
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop:'100px',
         paddingLeft: '1rem',
         paddingRight: '1rem',
         paddingTop: '3rem',
@@ -252,12 +253,12 @@ const Manufacturing = () => {
                 color: '#d1fae5',
                 width: isMobile ? '30vh' : 'auto'
               }}>
-                <li>• Location: 35-36/1, A.B. Road, Pigdamber, Indore – 453331 (M.P.)</li>
-                <li>• Built-up Area: 42,000 sq. ft. on a 45,000 sq. ft. plot</li>
-                <li>• Pollution-free and well-connected industrial zone</li>
-                <li>• In-house power station, water purification & SS recirculation loop</li>
-                <li>• Controlled temperature and humidity with advanced AHU systems</li>
-                <li>• Purified water system with RO, UV and stainless-steel loop</li>
+                <li> Location: 35-36/1, A.B. Road, Pigdamber, Indore – 453331 (M.P.)</li>
+                <li> Built-up Area: 42,000 sq. ft. on a 45,000 sq. ft. plot</li>
+                <li> Pollution-free and well-connected industrial zone</li>
+                <li> In-house power station, water purification & SS recirculation loop</li>
+                <li> Controlled temperature and humidity with advanced AHU systems</li>
+                <li> Purified water system with RO, UV and stainless-steel loop</li>
               </ul>
             </div>
             <div style={{
@@ -271,7 +272,7 @@ const Manufacturing = () => {
                 borderRadius: '0.75rem',
                 padding: '1.5rem',
                 textAlign: 'center',
-                width: isMobile ? '30vh' : 'auto'
+                width: isMobile ? '27vh' : 'auto'
               }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🏭</div>
                 <p style={{ color: '#d1fae5' }}>WHO-GMP Certified Facility</p>
@@ -358,7 +359,7 @@ const Manufacturing = () => {
         <div style={{
           background: 'linear-gradient(to right, #dbeafe, #dcfce7)',
           borderRadius: '1rem',
-          padding: '2rem',
+          padding: '2px',
           marginBottom: '3rem',
           transition: 'all 1s',
           opacity: isVisible ? 1 : 0,
@@ -497,10 +498,10 @@ const Manufacturing = () => {
                 color: '#374151',
                 width: isMobile ? '30vh' : 'auto'
               }}>
-                <li>• WHO-GMP and GLP Certified Facility</li>
-                <li>• Fully equipped Chemical, Instrumental & Microbiology Labs</li>
-                <li>• HPLC, UV Spectrophotometer, Dissolution Testing, Stability Chambers</li>
-                <li>• Robust QA systems ensuring compliance with GMP, GLP, and regulatory guidelines</li>
+                <li> WHO-GMP and GLP Certified Facility</li>
+                <li> Fully equipped Chemical, Instrumental & Microbiology Labs</li>
+                <li> HPLC, UV Spectrophotometer, Dissolution Testing, Stability Chambers</li>
+                <li> Robust QA systems ensuring compliance with GMP, GLP, and regulatory guidelines</li>
               </ul>
             </div>
             <div style={{
@@ -508,7 +509,7 @@ const Manufacturing = () => {
               alignItems: 'center',
               justifyContent:isMobile?'flex-start': 'center'
             }}>
-              <div style={{ textAlign:'center' }}>
+              <div style={{ textAlign:'center', paddingLeft:isMobile?'32px':'0'}}>
                 <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔬</div>
                 <p style={{ color: '#4b5563' }}>Advanced Quality Control</p>
               </div>
@@ -657,10 +658,10 @@ const Manufacturing = () => {
               gap: '0.5rem',
               color: '#374151'
             }}>
-              <li>• Licensed and regulated by the Madhya Pradesh Food and Drug Administration</li>
-              <li>• WHO-GMP certified for manufacturing excellence</li>
-              <li>• Comprehensive SOPs for production, quality, hygiene, safety, and distribution</li>
-              <li>• Regular self-inspection, preventive maintenance, and process validation</li>
+              <li> Licensed and regulated by the Madhya Pradesh Food and Drug Administration</li>
+              <li> WHO-GMP certified for manufacturing excellence</li>
+              <li> Comprehensive SOPs for production, quality, hygiene, safety, and distribution</li>
+              <li> Regular self-inspection, preventive maintenance, and process validation</li>
             </ul>
           </div>
         </div>

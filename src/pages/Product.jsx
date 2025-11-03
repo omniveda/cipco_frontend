@@ -10,25 +10,24 @@ import medi from '../assets/product/medi.webp';
 
 
 const Products = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState('tablets');
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [showViewMore, setShowViewMore] = useState(false);
 
-   useEffect(() => {
-        const handleResize = () => {
-            const mobile = window.innerWidth < 768;
-            setIsMobile(mobile);
-            // Close menu when switching to desktop
-            if (!mobile) {
-                setMenuOpen(false);
-            }
-        };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    useEffect(()=>{
+      const handleResize = () =>{
+        const mobile=window.innerWidth < 768;
+        setIsMobile(mobile);
+        if(!mobile){
+          setIsMobile(false);
+        }
+      };
+      window.addEventListener('resize',handleResize);
+      return()=>window.removeEventListener('resize',handleResize);
+    },[]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -570,7 +569,7 @@ const Products = () => {
   const currentProducts = productData[activeCategory] || [];
 
   return (
-    <div style={styles.container}>
+    <div style={isMobile ? styles.container1 : styles.container}>
       {/* Hero Section */}
       <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
         <h1 style={{...styles.title, fontSize: isMobile ? '2rem' : '3.5rem'}}>Our Pharmaceutical Products</h1>
@@ -709,10 +708,12 @@ const styles = {
     margintop: '100px',
     minHeight: '100vh',
   },
-  hero: {
-    textAlign: 'center',
-    marginBottom: '60px',
-    transition: 'all 0.8s ease-out',
+  container1: {
+    padding: '40px 0px',
+    maxWidth: '1400px',
+    margin: '100px auto',
+    margintop: '100px',
+    minHeight:'100vh'
   },
   title: {
     fontSize:'3.5rem',

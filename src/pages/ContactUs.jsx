@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,19 @@ const ContactUs = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(()=>{
+      const handleResize = () =>{
+        const mobile=window.innerWidth < 768;
+        setIsMobile(mobile);
+        if(!mobile){
+          setIsMobile(false);
+        }
+      };
+      window.addEventListener('resize',handleResize);
+      return()=>window.removeEventListener('resize',handleResize);
+    },[]);
 
   const handleChange = (e) => {
     setFormData({

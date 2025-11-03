@@ -57,6 +57,13 @@ const Blog = () => {
       margin: '0 auto',
       minHeight: '100vh',
     },
+    container1:{
+      padding: '40px 0px',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      minHeight: '100vh',
+      paddingTop: '100px',
+    },
     hero: {
       textAlign: 'center',
       marginBottom: '60px',
@@ -187,7 +194,7 @@ const Blog = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={isMobile?styles.container1:styles.container}>
       {/* Hero Section */}
       <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
         <h1 style={styles.title}>Blog</h1>
