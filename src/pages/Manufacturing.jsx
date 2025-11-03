@@ -1,23 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Manufacturing = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visibility, setVisibility] = useState({
+    hero: false,
+    introduction: false,
+    manufacturingFacility: false,
+    productionCapacity: false,
+    productPortfolio: false,
+    qualityAssurance: false,
+    infrastructureHighlights: false,
+    peopleCompliance: false,
+    globalReach: false,
+    stats: false,
+    callToAction: false
+  });
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isMobile,setIsMobile]=useState(window.innerWidth<768);
+
+  const heroRef = useRef(null);
+  const introductionRef = useRef(null);
+  const manufacturingFacilityRef = useRef(null);
+  const productionCapacityRef = useRef(null);
+  const productPortfolioRef = useRef(null);
+  const qualityAssuranceRef = useRef(null);
+  const infrastructureHighlightsRef = useRef(null);
+  const peopleComplianceRef = useRef(null);
+  const globalReachRef = useRef(null);
+  const statsRef = useRef(null);
+  const callToActionRef = useRef(null);
   useEffect(()=>{
     const handleResize=()=>{
       const mobile=window.innerWidth<768;
       setIsMobile(mobile);
-      if(!mobile){
-        setMenuOpen(false);
-      }
     };
     window.addEventListener('resize',handleResize);
     return()=>window.removeEventListener('resize',handleResize);
   },[]);
 
   useEffect(() => {
-    setIsVisible(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const section = entry.target.getAttribute('data-section');
+          setVisibility((prev) => ({ ...prev, [section]: entry.isIntersecting }));
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = [
+      heroRef.current,
+      introductionRef.current,
+      manufacturingFacilityRef.current,
+      productionCapacityRef.current,
+      productPortfolioRef.current,
+      qualityAssuranceRef.current,
+      infrastructureHighlightsRef.current,
+      peopleComplianceRef.current,
+      globalReachRef.current,
+      statsRef.current,
+      callToActionRef.current
+    ].filter(Boolean);
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
   }, []);
 
   const productionCapacity = [
@@ -92,13 +139,17 @@ const Manufacturing = () => {
         paddingBottom: '3rem'
       }}>
         {/* Hero Section */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '5rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)'
-        }}>
+        <div
+          ref={heroRef}
+          data-section="hero"
+          style={{
+            textAlign: 'center',
+            marginBottom: '5rem',
+            transition: 'all 1s',
+            opacity: visibility.hero ? 1 : 0,
+            transform: visibility.hero ? 'translateY(0)' : 'translateY(2rem)'
+          }}
+        >
           <div style={{ position: 'relative' }}>
             <div style={{
               position: 'absolute',
@@ -176,17 +227,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Introduction Section */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '1rem',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.2s'
-        }}>
+        <div
+          ref={introductionRef}
+          data-section="introduction"
+          style={{
+            backgroundColor: 'white',
+            borderRadius: '1rem',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.introduction ? 1 : 0,
+            transform: visibility.introduction ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.2s'
+          }}
+        >
           <div style={{
             maxWidth: '56rem',
             marginLeft: 'auto',
@@ -218,17 +273,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Manufacturing Facility Section */}
-        <div style={{
-          background: 'linear-gradient(to right, #305d94, #33b0c5)',
-          color: 'white',
-          borderRadius: '1rem',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.3s'
-        }}>
+        <div
+          ref={manufacturingFacilityRef}
+          data-section="manufacturingFacility"
+          style={{
+            background: 'linear-gradient(to right, #305d94, #33b0c5)',
+            color: 'white',
+            borderRadius: '1rem',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.manufacturingFacility ? 1 : 0,
+            transform: visibility.manufacturingFacility ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.3s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -287,17 +346,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Production Capacity Section */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '1rem',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.4s'
-        }}>
+        <div
+          ref={productionCapacityRef}
+          data-section="productionCapacity"
+          style={{
+            backgroundColor: 'white',
+            borderRadius: '1rem',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.productionCapacity ? 1 : 0,
+            transform: visibility.productionCapacity ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.4s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -356,16 +419,20 @@ const Manufacturing = () => {
         </div>
 
         {/* Product Portfolio Section */}
-        <div style={{
-          background: 'linear-gradient(to right, #dbeafe, #dcfce7)',
-          borderRadius: '1rem',
-          padding: '2px',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.5s'
-        }}>
+        <div
+          ref={productPortfolioRef}
+          data-section="productPortfolio"
+          style={{
+            background: 'linear-gradient(to right, #dbeafe, #dcfce7)',
+            borderRadius: '1rem',
+            padding: '2px',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.productPortfolio ? 1 : 0,
+            transform: visibility.productPortfolio ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.5s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -461,17 +528,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Quality Assurance Section */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '1rem',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.6s'
-        }}>
+        <div
+          ref={qualityAssuranceRef}
+          data-section="qualityAssurance"
+          style={{
+            backgroundColor: 'white',
+            borderRadius: '1rem',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.qualityAssurance ? 1 : 0,
+            transform: visibility.qualityAssurance ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.6s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -526,16 +597,20 @@ const Manufacturing = () => {
         </div>
 
         {/* Infrastructure Highlights */}
-        <div style={{
-          background: 'linear-gradient(to right, #faf5ff, #fce7f3)',
-          borderRadius: '1rem',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '0.7s'
-        }}>
+        <div
+          ref={infrastructureHighlightsRef}
+          data-section="infrastructureHighlights"
+          style={{
+            background: 'linear-gradient(to right, #faf5ff, #fce7f3)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.infrastructureHighlights ? 1 : 0,
+            transform: visibility.infrastructureHighlights ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '0.7s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -606,16 +681,20 @@ const Manufacturing = () => {
           marginBottom: '3rem'
         }}>
           {/* People Behind Excellence */}
-          <div style={{
-            background: 'linear-gradient(135deg, #fffbeb, #fed7aa)',
-            borderRadius: '1rem',
-            padding: '2rem',
-            transition: 'all 1s',
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-            animationDelay: '0.8s',
-            width: isMobile ? '35vh' : 'auto'
-          }}>
+          <div
+            ref={peopleComplianceRef}
+            data-section="peopleCompliance"
+            style={{
+              background: 'linear-gradient(135deg, #fffbeb, #fed7aa)',
+              borderRadius: '1rem',
+              padding: '2rem',
+              transition: 'all 1s',
+              opacity: visibility.peopleCompliance ? 1 : 0,
+              transform: visibility.peopleCompliance ? 'translateY(0)' : 'translateY(2rem)',
+              animationDelay: '0.8s',
+              width: isMobile ? '35vh' : 'auto'
+            }}
+          >
             <h2 style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
@@ -640,8 +719,8 @@ const Manufacturing = () => {
             borderRadius: '1rem',
             padding: '2rem',
             transition: 'all 1s',
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
+            opacity: visibility.peopleCompliance ? 1 : 0,
+            transform: visibility.peopleCompliance ? 'translateY(0)' : 'translateY(2rem)',
             animationDelay: '0.9s',
             width: isMobile ? '35vh' : 'auto'
           }}>
@@ -667,17 +746,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Global Reach Section */}
-        <div style={{
-          background: 'linear-gradient(to right, #33b0c5, #305d94)',
-          color: 'white',
-          borderRadius: '1rem',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '1s'
-        }}>
+        <div
+          ref={globalReachRef}
+          data-section="globalReach"
+          style={{
+            background: 'linear-gradient(to right, #33b0c5, #305d94)',
+            color: 'white',
+            borderRadius: '1rem',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.globalReach ? 1 : 0,
+            transform: visibility.globalReach ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '1s'
+          }}
+        >
           <div style={{ textAlign: 'center' }}>
             <h2 style={{
               fontSize: '1.875rem',
@@ -697,17 +780,21 @@ const Manufacturing = () => {
         </div>
 
         {/* Stats Section */}
-        <div style={{
-          background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
-          color: 'white',
-          borderRadius: '1rem',
-          padding: '2rem',
-          marginBottom: '3rem',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '1s'
-        }}>
+        <div
+          ref={statsRef}
+          data-section="stats"
+          style={{
+            background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
+            color: 'white',
+            borderRadius: '1rem',
+            padding: '2rem',
+            marginBottom: '3rem',
+            transition: 'all 1s',
+            opacity: visibility.stats ? 1 : 0,
+            transform: visibility.stats ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '1s'
+          }}
+        >
           <h2 style={{
             fontSize: '1.875rem',
             fontWeight: 'bold',
@@ -744,18 +831,22 @@ const Manufacturing = () => {
         </div>
 
         {/* Call to Action */}
-        <div style={{
-          background: 'linear-gradient(135deg, #f9fafb, #ffffff)',
-          borderRadius: '1rem',
-          padding: '2rem',
-          textAlign: 'center',
-          transition: 'all 1s',
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(2rem)',
-          animationDelay: '1.1s',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        <div
+          ref={callToActionRef}
+          data-section="callToAction"
+          style={{
+            background: 'linear-gradient(135deg, #f9fafb, #ffffff)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            textAlign: 'center',
+            transition: 'all 1s',
+            opacity: visibility.callToAction ? 1 : 0,
+            transform: visibility.callToAction ? 'translateY(0)' : 'translateY(2rem)',
+            animationDelay: '1.1s',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
           <div style={{
             position: 'absolute',
             top: 0,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import med1 from '../assets/product/otab5.webp';
 import med2 from '../assets/product/otab6.webp';
 import med3 from '../assets/product/otab7.webp';
@@ -16,6 +16,20 @@ const Products = () => {
   const [showViewMore, setShowViewMore] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const heroRef = useRef(null);
+  const productsRef = useRef(null);
+
+  const scrollToHero = () => {
+    setIsVisible(false);
+    heroRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => setIsVisible(true), 600);
+  };
+
+  const scrollToProducts = () => {
+    setIsVisible(false);
+    productsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => setIsVisible(true), 600);
+  };
 
     useEffect(()=>{
       const handleResize = () =>{
@@ -572,7 +586,7 @@ const Products = () => {
     <div style={isMobile ? styles.container1 : styles.container}>
       {/* Hero Section */}
       <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
-        <h1 style={{...styles.title, fontSize: isMobile ? '2rem' : '3.5rem'}}>Our Pharmaceutical Products</h1>
+        <h1 style={{...styles.title, textAlign:"center", fontSize: isMobile ? '2rem' : '3.5rem'}}>Our Pharmaceutical Products</h1>
         <p style={styles.subtitle}>
           Premium quality medications crafted with precision and care for better health outcomes
         </p>
