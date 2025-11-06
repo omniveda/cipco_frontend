@@ -113,7 +113,7 @@ export default function Footer() {
             </div>
             <div className='border border-[#374151] border-[0.8px]'></div>
             <div className={`flex ${isMobile ? 'flex-col items-start gap-[10px]' : 'justify-between items-center'} mt-[20px]`}>
-                <p>© 2025 Cipco Pharmaceuticals. All rights reserved.</p>
+                <p>© 2025 Cipco Limited. All rights reserved.</p>
                 <div className={`flex ${isMobile ? 'flex-col gap-[10px]' : 'gap-[20px]'}`}>
                     <div className='cursor-pointer'><Link to="/privacy-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Privacy Policy</Link></div>
                     <div className='cursor-pointer'><Link to="/terms" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Terms & Condition</Link></div>

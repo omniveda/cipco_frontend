@@ -159,7 +159,7 @@ export default function Home() {
                 <motion.p
                   variants={childVariants}
                   className='text-left text-[19px] mt-4 font-[600]'
-                >At Cipco Pharmaceuticals, we are committed to delivering more than just products—</motion.p>
+                >At Cipco Limited, we are committed to delivering more than just products—</motion.p>
                 <motion.p
                   variants={childVariants}
                   className='text-[#4B5563] text-[17px]'
@@ -294,11 +294,11 @@ export default function Home() {
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-left text-[30px] mt-[8px] font-[500]':'text-left text-[40px] mt-[8px] font-[500]'}
-                >About Cipco Pharma: Our Commitment</motion.p>
+                >About Cipco Ltd: Our Commitment</motion.p>
                 <motion.p
                   variants={childVariants}
                   className='text-[#4B5563] text-[20px] mt-[8px]'
-                >Cipco Pharma is dedicated to manufacturing and supplying high-quality medicines, focusing on general medicine, antibiotics, anti-inflammatories, and OTC products, ensuring global healthcare access.</motion.p>
+                >Cipco Limited is dedicated to manufacturing and supplying high-quality medicines, focusing on general medicine, antibiotics, anti-inflammatories, and OTC products, ensuring global healthcare access.</motion.p>
                 <motion.div
                   variants={childVariants}
                   className="border border-dashed border-[#4B5563]"
@@ -466,17 +466,17 @@ export default function Home() {
                 <motion.p
                   variants={childVariants}
                   className='text-[#4B5563] text-[20px]'
-                >At Cipco Pharmaceuticals, we’ve spent over three decades building a reputation for excellence in pharmaceutical manufacturing. Founded with a vision to make quality healthcare accessible, we specialize in WHO-GMP and ISO-certified formulations trusted by clients across the globe.</motion.p>
+                >At Cipco Limited, we’ve spent over three decades building a reputation for excellence in pharmaceutical manufacturing. Founded with a vision to make quality healthcare accessible, we specialize in WHO-GMP and ISO-certified formulations trusted by clients across the globe.</motion.p>
                 <motion.p
                   variants={childVariants}
                   className='text-[#4B5563] text-[20px]'
                 >Our experienced team, cutting-edge facility, and customer-first approach allow us to consistently deliver safe, effective, and reliable products that meet the highest industry standards.</motion.p>
-                <motion.div
+                {isMobile&&<motion.div
                   variants={childVariants}
                   whileHover={{ scale: 1.05 }}
                   onClick={() => navigate('/contact-us')}
                   className='bg-[#2A9CB6] p-[15px] px-[20px] text-[white] cursor-pointer text-[20px] font-[600] rounded-[40px] inline-block'
-                >Contact Us</motion.div>
+                >Contact Us</motion.div>}
                 </motion.div>
 
             </motion.div>
