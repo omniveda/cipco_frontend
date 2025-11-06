@@ -465,7 +465,7 @@ export default function Home() {
                 >Committed to Quality Healthcare Since 1989</motion.p>
                 <motion.p
                   variants={childVariants}
-                  className='text-[#4B5563] text-[20px]'
+                  className={isMobile?'text-[#4B5563] text-[20px] text-justify px-[10px]':'text-[#4B5563] text-[20px] '}
                 >At Cipco Limited, we’ve spent over three decades building a reputation for excellence in pharmaceutical manufacturing. Founded with a vision to make quality healthcare accessible, we specialize in WHO-GMP and ISO-certified formulations trusted by clients across the globe.</motion.p>
                 <motion.p
                   variants={childVariants}

@@ -146,7 +146,7 @@ export default function AboutUs(){
                         opacity: whoWeAreVisible ? 1 : 0,
                         transform: whoWeAreVisible ? 'translateY(0)' : 'translateY(20px)',
                         transition: 'all 0.8s ease-out 0.4s'
-                    }}>Cipco Pharmaceuticals is a partnership firm founded in 1939, building ISO-quality pharmaceutical formulations with WHO-GMP standards</p>
+                    }}>Cipco Limited is a partnership firm founded in 1939, building ISO-quality pharmaceutical formulations with WHO-GMP standards</p>
                 </div>
 
 
@@ -259,7 +259,7 @@ export default function AboutUs(){
                     opacity: qualityVisible ? 1 : 0,
                     transform: qualityVisible ? 'translateX(0)' : 'translateX(30px)',
                     transition: 'all 0.8s ease-out 1s'
-                }}>“We, at Cipco Pharmaceuticals, aim to provide satisfaction to our customers in domestic/ international market by fully meeting their requirements in terms of Quality, Cost and Delivery. We have created a company committed to quality by bringing about involvement of all employees at all levels for continuous improvement in Quality.”</div>
+                }}>“We, at Cipco Limited, aim to provide satisfaction to our customers in domestic/ international market by fully meeting their requirements in terms of Quality, Cost and Delivery. We have created a company committed to quality by bringing about involvement of all employees at all levels for continuous improvement in Quality.”</div>
               </div>
               </div>
               <div><img src={drhand} className={`${isMobile ? 'w-[200px] h-[200px] mt-[20px]' : 'w-[250px] h-[250px]'}`} style={{

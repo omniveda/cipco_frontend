@@ -280,7 +280,7 @@ const Manufacturing = () => {
             background: 'linear-gradient(to right, #305d94, #33b0c5)',
             color: 'white',
             borderRadius: '1rem',
-            padding: '2rem',
+            padding: isMobile?'1rem':'2rem',
             marginBottom: '3rem',
             transition: 'all 1s',
             opacity: visibility.manufacturingFacility ? 1 : 0,

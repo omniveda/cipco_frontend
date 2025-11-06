@@ -72,7 +72,7 @@ const Media = () => {
       <div style={{...styles.hero, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)'}}>
         <h1 style={styles.title}>Media Center</h1>
         <p style={styles.subtitle}>
-          Stay updated with the latest news, announcements, and insights from Cipco Pharmaceuticals
+          Stay updated with the latest news, announcements, and insights from Cipco Limited
         </p>
       </div>
 

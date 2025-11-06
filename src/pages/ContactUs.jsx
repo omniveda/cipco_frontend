@@ -79,7 +79,7 @@ const ContactUs = () => {
           <p style={styles.infoText}>info@cipcopharma.com</p>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4 w-1/2 justify-center mx-auto">
+      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 w-[60%] justify-center mx-auto":"space-y-4 w-1/2 justify-center mx-auto"}>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Name<span className="text-[red]">*</span>
