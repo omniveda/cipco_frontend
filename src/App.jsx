@@ -28,6 +28,8 @@ import WhistleBlowerPolicy from './pages/WhistleBlowerPolicy';
 import Terms from './pages/Terms';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import WhyPartnerWithUs from './pages/WhyPartnerWithUs';
+import AdminLogin from './pages/AdminLogin';
+import AdminPanel from './pages/AdminPanel';
 
 import './App.css'
 
@@ -38,9 +40,11 @@ function App() {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
     <Suspense fallback={<div className="w-full h-screen flex justify-center items-center text-2xl">Loading...</div>}>
-      <Navbar/>
+      {!isAdminRoute && <Navbar/>}
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/products" element={<Products/>}/>
@@ -67,8 +71,10 @@ function App() {
       <Route path="/related-party-transaction-policy" element={<RelatedPartyTransactionPolicy/>}/>
       <Route path="/risk-management-policy" element={<RiskManagementPolicy/>}/>
       <Route path="/whistle-blower-policy" element={<WhistleBlowerPolicy/>}/>
+      <Route path="/admin/login" element={<AdminLogin/>}/>
+      <Route path="/admin/panel" element={<AdminPanel/>}/>
     </Routes>
-    <Footer/>
+    {!isAdminRoute && <Footer/>}
     </Suspense>
   )
 }
