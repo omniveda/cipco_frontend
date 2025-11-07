@@ -101,7 +101,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'0px': '40px', overflow: 'hidden', position: 'relative', height: isMobile ? '500px' : '600px' }}
+          style={{ marginTop: '110px', marginLeft: isMobile?'0px': '100px', marginRight:isMobile?'0px': '100px', borderRadius: isMobile?'10px': '40px', overflow: 'hidden', position: 'relative', height: isMobile ? '500px' : '600px' }}
         >
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
 
@@ -255,11 +255,11 @@ export default function Home() {
                     >
                       <motion.p
                         whileHover={{ scale: 1.05 }}
-                        className={isMobile?'bg-[#1C64F2] text-[white] inline-block px-[8px] py-[20px] rounded-[40px] cursor-pointer':'bg-[#1C64F2] text-[white] inline-block px-[20px] py-[20px] rounded-[40px] cursor-pointer'}
+                        className={isMobile?'bg-[#305d94] text-[white] inline-block px-[8px] py-[20px] rounded-[40px] cursor-pointer':'bg-[#305d94] text-[white] inline-block px-[20px] py-[20px] rounded-[40px] cursor-pointer'}
                       >All Certificates</motion.p>
                       <motion.svg
                         whileHover={{ scale: 1.05, rotate: 360 }}
-                        className='bg-[#1C64F2] p-[10px] my-[20px] rounded-full'
+                        className='bg-[#305d94] p-[10px] my-[20px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
                         height="29"

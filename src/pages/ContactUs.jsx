@@ -60,7 +60,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={isMobile?styles.container2:styles.container}>
       <div style={styles.firstcontainer}>
       <h1 style={styles.title}>Contact Us</h1>
       <p style={styles.description}>
@@ -81,7 +81,8 @@ const ContactUs = () => {
         </div>
       </div>
       </div>
-      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 w-[60%] justify-center mx-auto":"space-y-4 w-1/2 mx-auto"}>
+      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 bg-[#cce4e8] w-[90%] justify-center mx-auto p-[10px] pt-[20px] mb-[20px] rounded-[10px]":"space-y-4 bg-[#cce4e8] p-[30px] rounded-[10px] w-1/2 mx-auto"}>
+      <div className='text-[20px] mb-[20px] '>Send us a Message</div>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Name<span className="text-[red]">*</span>
@@ -92,11 +93,11 @@ const ContactUs = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="John Smith"
-            className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
             required
           />
         </div>
-
+        <div className={isMobile?'':'flex gap-[60px]'}>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Email<span className="text-[red]">*</span>
@@ -107,7 +108,7 @@ const ContactUs = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="johnsmith@gmail.com"
-            className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+            className={`${isMobile?"w-[90%]":"w-[245px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
             required
           />
         </div>
@@ -120,8 +121,9 @@ const ContactUs = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="+44789 123456"
-            className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+            className={`${isMobile?"w-[90%]":"w-[245px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
           />
+        </div>
         </div>
 
         <div>
@@ -132,7 +134,7 @@ const ContactUs = () => {
             value={formData.subject}
             onChange={handleChange}
             placeholder="Inquiry about products"
-            className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
           />
         </div>
 
@@ -146,7 +148,7 @@ const ContactUs = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Hello, I'd like to enquire about..."
-            className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none resize-none"
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
             required
           ></textarea>
         </div>
@@ -178,6 +180,12 @@ const ContactUs = () => {
 const styles = {
   container: {
     padding: '20px',
+    // textAlign: 'center',
+    animation: 'fadeIn 1s',
+    marginTop: '100px',
+  },
+  container2: {
+    padding: '0px',
     // textAlign: 'center',
     animation: 'fadeIn 1s',
     marginTop: '100px',

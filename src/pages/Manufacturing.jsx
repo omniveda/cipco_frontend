@@ -133,8 +133,8 @@ const Manufacturing = () => {
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop:'100px',
-        paddingLeft: '1rem',
-        paddingRight: '1rem',
+        paddingLeft: isMobile?'0rem':'3rem',
+        paddingRight: isMobile?'0rem':'3rem',
         paddingTop: '3rem',
         paddingBottom: '3rem'
       }}>
