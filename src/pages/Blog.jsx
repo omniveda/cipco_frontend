@@ -221,7 +221,7 @@ const Blog = () => {
               <h3 style={styles.blogTitle}>{post.title}</h3>
               <p style={styles.blogDate}>{post.date}</p>
               <p style={styles.blogSummary}>{post.summary}</p>
-              <button style={styles.readMoreButton}>Read More →</button>
+              {/* <button style={styles.readMoreButton}>Read More →</button> */}
             </div>
           </div>
         ))}
