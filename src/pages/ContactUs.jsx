@@ -61,6 +61,7 @@ const ContactUs = () => {
 
   return (
     <div style={styles.container}>
+      <div style={styles.firstcontainer}>
       <h1 style={styles.title}>Contact Us</h1>
       <p style={styles.description}>
         We'd love to hear from you. Whether you have a question about our products, services, or anything else, our team is ready to assist you.
@@ -79,7 +80,8 @@ const ContactUs = () => {
           <p style={styles.infoText}>info@cipcopharma.com</p>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 w-[60%] justify-center mx-auto":"space-y-4 w-1/2 justify-center mx-auto"}>
+      </div>
+      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 w-[60%] justify-center mx-auto":"space-y-4 w-1/2 mx-auto"}>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Name<span className="text-[red]">*</span>
@@ -176,9 +178,12 @@ const ContactUs = () => {
 const styles = {
   container: {
     padding: '20px',
-    textAlign: 'center',
+    // textAlign: 'center',
     animation: 'fadeIn 1s',
     marginTop: '100px',
+  },
+  firstcontainer:{
+    textAlign: 'center',
   },
   title: {
     fontSize: '2.5em',

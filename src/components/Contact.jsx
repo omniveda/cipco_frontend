@@ -26,22 +26,22 @@ export default function Contact() {
             For any inquiries or to explore your vision further, we invite you to contact our professional team using the details provided below.
           </p>
 
-          <div className={isMobile?"mb-6 flex":"mb-6 flex justify-between items-center"}>
-            <p className="font-[600]">Office:  </p>
+          <div className={isMobile?"mb-6 flex":"mb-6 flex justify-between"}>
+            <p className="font-[600]">Office </p>
             <p className={isMobile?"text-gray-700 w-[80%]":"text-gray-700"}>
-              35-36/1 A.B. Road, Pigdamber , Indore – 453331 (MP) INDIA
+              : 35-36/1 A.B. Road, Pigdamber , Indore – 453331 (MP) INDIA
             </p>
           </div>
 
           <div className={isMobile?"mb-6 flex":"mb-6 flex justify-between items-center"}>
-            <p className="font-[600]">Email: </p>
-            <p className="text-gray-700"> info@cipcopharma.com</p>
+            <p className="font-[600]">Email </p>
+            <p className="text-gray-700">: info@cipcopharma.com</p>
           </div>
 
-          <div className={isMobile?"mb-6 flex items-center":"mb-6 flex justify-between items-center"}>
+          <div className={isMobile?"mb-6 flex":"mb-6 flex justify-between items-center"}>
             <p className="font-[600]">Phone Number:</p>
-            <p className="text-gray-700">0731 4020311,</p>
-            <p className="text-gray-700"> 07869920311</p>
+            <p className="text-gray-700">0731 4020311, 07869920311</p>
+            
           </div>
 
           <div className={isMobile?"flex  gap-6 mt-[40px]":"flex flex-col gap-6 mt-[40px]"}>

@@ -149,12 +149,12 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[0px]':'mx-[100px] mt-[100px]'}
+          className={isMobile?'mt-[0px]':'mx-[100px] mt-[100px] '}
         >
-            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]'}>
+            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%] border border-[#98d2de] bg-[#e8f7fa] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
                   variants={childVariants}
-                  className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold mt-10'
+                  className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px]  text-[#4B5563] font-bold mt-10'
                 >WHAT WE OFFER</motion.p>
                 <motion.p
                   variants={childVariants}

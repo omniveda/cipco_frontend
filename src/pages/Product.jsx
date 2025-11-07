@@ -104,14 +104,6 @@ const Products = () => {
         description: "In treatment of inflammation involving nerves, irritated or damage nerves, diabetes and drugs induced damage nerves.",
         features: ["Vitamin B1 (Thiamine)", "Vitamin B6 (Pyridoxine)", "Vitamin B12 (Cobalamin)"],
         category: "Neurological"
-      },
-      {
-        id: 8,
-        image: medi,
-        name: "View more",
-        description: "",
-        features: [""],
-        category: ""
       }
     ],
     liquid: [
@@ -627,75 +619,83 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <div style={styles.productsGrid}>
-          {currentProducts.map((product, index) => (
-            <div
-              key={product.id}
-              style={{
-                ...styles.productCard,
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transitionDelay: `${index * 100}ms`
-              }}
-              onMouseEnter={() => setHoveredProduct(product.id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-              onClick={() => product.id === 8 && setShowViewMore(true)}
-            >
-              {activeCategory === 'tablets' ? (
-                <>
-                  {/* Product Image */}
-                  <div style={styles.imageContainer}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      style={{
-                        ...styles.productImage,
-                        transform: hoveredProduct === product.id ? 'scale(1.1)' : 'scale(1)'
-                      }}
-                    />
-                    <div style={styles.categoryBadge}>{product.category}</div>
-                  </div>
+        <>
+          <div style={styles.productsGrid}>
+            {currentProducts.map((product, index) => (
+              <div
+                key={product.id}
+                style={{
+                  ...styles.productCard,
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transitionDelay: `${index * 100}ms`
+                }}
+                onMouseEnter={() => setHoveredProduct(product.id)}
+                onMouseLeave={() => setHoveredProduct(null)}
+              >
+                {activeCategory === 'tablets' ? (
+                  <>
+                    {/* Product Image */}
+                    <div style={styles.imageContainer}>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        style={{
+                          ...styles.productImage,
+                          transform: hoveredProduct === product.id ? 'scale(1.1)' : 'scale(1)'
+                        }}
+                      />
+                      <div style={styles.categoryBadge}>{product.category}</div>
+                    </div>
 
-                  {/* Product Info */}
+                    {/* Product Info */}
+                    <div style={styles.productInfo}>
+                      <h3 style={styles.productName}>{product.name}</h3>
+                      <p style={styles.productDescription}>{product.description}</p>
+
+                      {/* Features */}
+                      <div style={styles.featuresContainer}>
+                        {product.features.map((feature, featureIndex) => (
+                          <span key={featureIndex} style={styles.featureTag}>
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Buttons */}
+                      {/* <div style={styles.actionButtons}>
+                        <button style={styles.detailsButton}>View Details</button>
+                        <button style={styles.inquireButton}>Inquire Now</button>
+                      </div> */}
+                    </div>
+
+                    {/* Hover Overlay */}
+                    {hoveredProduct === product.id && (
+                      <div style={styles.hoverOverlay}>
+                        <div style={styles.overlayContent}>
+                          <span style={styles.overlayText}>Quick View</span>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  /* Liquid Product Card */
                   <div style={styles.productInfo}>
                     <h3 style={styles.productName}>{product.name}</h3>
-                    <p style={styles.productDescription}>{product.description}</p>
-
-                    {/* Features */}
-                    <div style={styles.featuresContainer}>
-                      {product.features.map((feature, featureIndex) => (
-                        <span key={featureIndex} style={styles.featureTag}>
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    {/* <div style={styles.actionButtons}>
-                      <button style={styles.detailsButton}>View Details</button>
-                      <button style={styles.inquireButton}>Inquire Now</button>
-                    </div> */}
+                    <p style={styles.productComposition}>{product.composition}</p>
                   </div>
+                )}
+              </div>
+            ))}
+          </div>
 
-                  {/* Hover Overlay */}
-                  {hoveredProduct === product.id && (
-                    <div style={styles.hoverOverlay}>
-                      <div style={styles.overlayContent}>
-                        <span style={styles.overlayText}>Quick View</span>
-                      </div>
-                    </div>
-                  )}
-                </>
-              ) : (
-                /* Liquid Product Card */
-                <div style={styles.productInfo}>
-                  <h3 style={styles.productName}>{product.name}</h3>
-                  <p style={styles.productComposition}>{product.composition}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+          {/* View More Button */}
+          <div style={styles.viewMoreButtonContainer}>
+            <button onClick={() => setShowViewMore(true)} style={styles.viewMoreButton}>
+              View More Products
+            </button>
+          </div>
+        </>
       )}
 
       {/* Call to Action */}
@@ -996,6 +996,23 @@ const styles = {
     fontSize: '0.95rem',
     color: '#333',
     lineHeight: '1.4',
+  },
+  viewMoreButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '60px',
+  },
+  viewMoreButton: {
+    background: 'linear-gradient(135deg, #123662ff 0%, #305d94 100%)',
+    color: 'white',
+    padding: '15px 40px',
+    border: 'none',
+    borderRadius: '50px',
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 5px 15px rgba(46, 125, 50, 0.3)',
   },
 };
 
