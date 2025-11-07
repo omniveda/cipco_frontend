@@ -154,13 +154,13 @@ const ContactUs = () => {
         </div>
 
         {submitStatus === 'success' && (
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+          <div className="bg-[#BCF0DA] border border-[#0E9F6E] text-[#046C4E] px-[4px] py-[3px] rounded-[10px] mb-[4px]">
             Thank you for your message! We will get back to you soon.
           </div>
         )}
 
         {submitStatus === 'error' && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-[#FBD5D5] border border-[#F05252] text-[#C81E1E] px-4 py-3 rounded mb-4">
             There was an error submitting your message. Please try again.
           </div>
         )}

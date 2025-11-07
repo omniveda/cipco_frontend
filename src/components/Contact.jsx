@@ -2,6 +2,16 @@ import { useState, useEffect } from 'react';
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   useEffect(() => {
           const handleResize = () => {
               const mobile = window.innerWidth < 768;
@@ -11,10 +21,45 @@ export default function Contact() {
                   setMenuOpen(false);
               }
           };
-  
+
           window.addEventListener('resize', handleResize);
           return () => window.removeEventListener('resize', handleResize);
       }, []);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('http://localhost:4000/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className={isMobile?"px-[10px] mb-[20px] py-20 bg-white text-[#111827] font-sans":"px-[40px] mb-[40px] py-20 bg-white text-[#111827] font-sans"}>
       <div className={isMobile?"max-w-7xl mx-auto flex flex-col gap-10":"max-w-7xl mx-auto grid grid-cols-2 gap-10"}>
@@ -68,15 +113,19 @@ export default function Contact() {
 
         {/* Right - Form */}
         <div className="bg-gray-50 pt-[40px] border border-[#D1D5DB] p-[20px] pr-[50px] rounded-[20px] shadow-md">
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-[8px]">
                 Name<span className="text-[red]">*</span>
               </label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="John Smith"
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+                required
               />
             </div>
 
@@ -86,8 +135,12 @@ export default function Contact() {
               </label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="johnsmith@gmail.com"
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+                required
               />
             </div>
 
@@ -95,7 +148,22 @@ export default function Contact() {
               <label className="block text-sm font-medium mb-[8px]">Phone Number</label>
               <input
                 type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="+44789 123456"
+                className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-[8px]">Subject</label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Inquiry about products"
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
               />
             </div>
@@ -106,16 +174,33 @@ export default function Contact() {
               </label>
               <textarea
                 rows="4"
-                placeholder="Hello, I’d like to enquire about..."
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Hello, I'd like to enquire about..."
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none resize-none"
+                required
               ></textarea>
             </div>
 
+            {submitStatus === 'success' && (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                Thank you for your message! We will get back to you soon.
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                There was an error submitting your message. Please try again.
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#111827] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200"
+              disabled={isSubmitting}
+              className="w-full bg-[#111827] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Send message
+              {isSubmitting ? 'Sending...' : 'Send message'}
             </button>
           </form>
         </div>

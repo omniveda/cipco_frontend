@@ -198,8 +198,7 @@ const AdminPanel = () => {
             )}
             {activeTab === 'contacts' && (
               <>
-                {renderForm(['name', 'email', 'message'], 'contacts')}
-                {renderTable(contacts, 'contacts', ['name', 'email', 'message', 'createdAt'])}
+                {renderTable(contacts, 'contacts', ['name', 'email', 'phone', 'subject', 'message', 'status', 'priority', 'createdAt'])}
               </>
             )}
             {activeTab === 'users' && (
