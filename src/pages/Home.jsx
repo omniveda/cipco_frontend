@@ -8,9 +8,53 @@ import about from '../assets/images/about.jpg';
 import Map from '../components/map.jsx';
 import Contact from '../components/Contact.jsx';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useState,useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+// TypingText component for typewriter effect
+const TypingText = ({ text, speed = 50, delay = 0, style, className }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [index, setIndex] = useState(0);
+  const ref = useRef();
+  const firstTime = useRef(true);
+
+  const isInView = useInView(ref, { once: false });
+
+  useEffect(() => {
+    if (isInView) {
+      if (firstTime.current) {
+        firstTime.current = false;
+        // Start with delay on first view
+        const startTimeout = setTimeout(() => {
+          setIndex(0);
+          setDisplayedText('');
+        }, delay);
+        return () => clearTimeout(startTimeout);
+      } else {
+        // Restart immediately on subsequent views
+        setIndex(0);
+        setDisplayedText('');
+      }
+    }
+  }, [isInView, delay]);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text, speed]);
+
+  return (
+    <span ref={ref} style={style} className={className}>
+      {displayedText}
+    </span>
+  );
+};
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -124,11 +168,25 @@ export default function Home() {
                     <motion.h1
                       variants={childVariants}
                       style={{ fontSize: isMobile ? '30px' : '50px', fontWeight: 'bold', color: 'white', marginBottom: isMobile ? '10px' : '10px' }}
-                    >Precision Formulations for Better Health</motion.h1>
+                    >
+                      <TypingText
+                        text="Precision Formulations for Better Health"
+                        speed={20}
+                        delay={0}
+                        style={{ fontSize: isMobile ? '30px' : '50px', fontWeight: 'bold', color: 'white' }}
+                      />
+                    </motion.h1>
                     <motion.p
                       variants={childVariants}
                       style={{ marginTop: '4px', fontSize: isMobile ? '16px' : '18px', color: 'white', marginBottom: isMobile ? '20px' : '20px' }}
-                    >From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose.</motion.p>
+                    >
+                      <TypingText
+                        text="From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose."
+                        speed={20}
+                        delay={2000}
+                        style={{ fontSize: isMobile ? '16px' : '18px', color: 'white' }}
+                      />
+                    </motion.p>
                     <motion.button
                       variants={childVariants}
                       whileHover={{ scale: 1.05 }}
@@ -149,7 +207,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[0px]':'mx-[100px] mt-[100px] '}
+          className={isMobile?'mt-[0px]':'mx-[100px] mt-[70px] '}
         >
             <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%] border border-[#98d2de] bg-[#e8f7fa] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
@@ -159,11 +217,23 @@ export default function Home() {
                 <motion.p
                   variants={childVariants}
                   className='text-left text-[19px] mt-4 font-[600]'
-                >At Cipco Limited, we are committed to delivering more than just products—</motion.p>
+                >
+                  <TypingText
+                        text="At Cipco Limited, we are committed to delivering more than just products—"
+                        speed={10}
+                        delay={0}
+                        
+                      /></motion.p>
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-[#4B5563] text-[17px] text-justify':'text-[#4B5563] text-[17px]'}
-                >We deliver trust, quality, and care. Our offerings reflect our dedication to excellence in pharmaceutical manufacturing and customer satisfaction. Explore how we stand apart through our diverse product range, stringent quality standards, and personalized service.</motion.p>
+                >
+                  <TypingText
+                        text="We deliver trust, quality, and care. Our offerings reflect our dedication to excellence in pharmaceutical manufacturing and customer satisfaction. Explore how we stand apart through our diverse product range, stringent quality standards, and personalized service."
+                        speed={2}
+                        delay={0}
+                        
+                      /></motion.p>
             </motion.div>
 
         </motion.section>
@@ -174,7 +244,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[10px]':'mx-[100px] mt-[80px]'}
+          className={isMobile?'mt-[10px]':'mx-[100px] mt-[70px]'}
         >
             <motion.div variants={childVariants}>
                 <Features/>
@@ -186,9 +256,9 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[60px]':'mx-[100px] mt-[100px] px-[50px]'}
+          className={isMobile?'mt-[60px]':'mx-[100px] border rounded-[20px] bg-[#dae6e8] border-[#98d2de] mt-[70px] pl-[50px]'}
         >
-            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex justify-center items-center gap-[20px]'}>
+            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex  justify-center items-center gap-[20px]'}>
                  
                     <motion.div variants={childVariants}>
                         <motion.img
@@ -201,19 +271,31 @@ export default function Home() {
                         />
                     </motion.div>
                 
-                <motion.div variants={childVariants} className={isMobile ? 'w-full' : 'w-[50%] ml-[80px] pr-[4px]'}>
+                <motion.div variants={childVariants} className={isMobile ? 'w-full' : 'w-[50%] border rounded-[20px] border-[#b6d6db] bg-[#b6d6db] py-[10px] mr-[10px] my-[10px] px-[8px]'}>
                 <motion.p
                   variants={childVariants}
-                  className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold'
+                  className='inline-block py-[10px] px-[8px] text-left text-[18px]  rounded-[10px] text-[#4B5563] bg-[white] font-bold'
                 >WHAT WE ARE</motion.p>
                 <motion.p
                   variants={childVariants}
                   className='text-left text-[40px] mt-[8px] font-[600]'
-                >A WHO AND GMP CERTIFIED UNIT</motion.p>
+                >
+                  <TypingText
+                    text="A WHO AND GMP CERTIFIED UNIT"
+                    speed={5}
+                    delay={0}
+                  />
+                </motion.p>
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] text-[20px]'}
-                >Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible.</motion.p>
+                >
+                  <TypingText
+                    text="Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible."
+                    speed={2}
+                    delay={1000}
+                  />
+                </motion.p>
                 <motion.div
                   variants={containerVariants}
                   className={isMobile?'grid grid-cols-2 gap-[0px] mt-[50px]':'grid grid-cols-2 gap-[20px] mt-[50px]'}
@@ -258,13 +340,13 @@ export default function Home() {
                         className={isMobile?'bg-[#305d94] text-[white] inline-block px-[8px] py-[20px] rounded-[40px] cursor-pointer':'bg-[#305d94] text-[white] inline-block px-[20px] py-[20px] rounded-[40px] cursor-pointer'}
                       >All Certificates</motion.p>
                       <motion.svg
-                        whileHover={{ scale: 1.05, rotate: 360 }}
+                        whileHover={{ scale: 1.05, rotate: [0, 360], y: [0, 0, -20, 0] }}
                         className='bg-[#305d94] p-[10px] my-[20px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="30"
                         height="29"
                         fill="none"
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
                       >
                         <path d="M 3.311 14.292 L 25.598 14.292" fill="transparent" stroke-width="2.34608" stroke="rgb(255, 255, 255)" stroke-miterlimit="10" stroke-dasharray=""></path>
                         <path d="M 26.772 14.292 L 25.599 14.292 C 22.359 14.292 19.733 16.918 19.733 20.157 L 19.733 23.677" fill="transparent" stroke-width="2.34608" stroke="rgb(255, 255, 255)" stroke-miterlimit="10" stroke-dasharray=""></path>
@@ -283,7 +365,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[10px]':'mx-[100px] mt-[100px]'}
+          className={isMobile?'mt-[10px]':'mx-[100px] mt-[70px]'}
         >
             <motion.div variants={childVariants} className={!isMobile&&'grid grid-cols-2 items-center'}>
                 <motion.div variants={childVariants}>
@@ -442,7 +524,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className=' mt-[100px]'
+          className=' mt-[70px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-row bg-[#F3F4F6] pb-[10px] rounded-[40px]':'flex flex-row bg-[#F3F4F6] p-[80px] rounded-[40px]'}>
                 <motion.div variants={childVariants}>
@@ -487,7 +569,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[100px]'
+          className='mt-[70px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-col bg-[#0057A0] p-[0px] rounded-[40px]  items-center':'flex flex-row bg-[#0057A0] p-[80px] rounded-[40px] pl-[120px] items-center'}>
                 <motion.div variants={childVariants} className={isMobile?'w-[90%]':'w-[60%]'}>
@@ -565,14 +647,15 @@ export default function Home() {
             </motion.div>
         </motion.section>
 
+        
         {!isMobile&&<motion.section
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[100px] mx-[100px]'
+          className='mt-[70px] mx-[100px] border rounded-[20px] border-[#b6d6db]'
         >
-            <motion.div variants={childVariants}>
+            <motion.div  variants={childVariants}>
                 <Map/>
             </motion.div>
         </motion.section>}
@@ -582,8 +665,9 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[20px] mx-[0px]':'mt-[100px] mx-[100px]'}
+          className={isMobile?'mt-[20px] mx-[0px]':'mt-[70px] mx-[100px]'}
         >
+          
             <motion.div variants={childVariants}>
                 <Contact/>
             </motion.div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -11,6 +12,27 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Animation variants for form fields
+  const formVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        duration: 0.5
+      }
+    }
+  };
+
+  const fieldVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' }
+    }
+  };
 
   useEffect(() => {
           const handleResize = () => {
@@ -113,8 +135,15 @@ export default function Contact() {
 
         {/* Right - Form */}
         <div className="bg-gray-50 pt-[40px] border border-[#D1D5DB] p-[20px] pr-[50px] rounded-[20px] shadow-md">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
+          <motion.form
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={formVariants}
+          >
+            <motion.div variants={fieldVariants}>
               <label className="block text-sm font-medium mb-[8px]">
                 Name<span className="text-[red]">*</span>
               </label>
@@ -127,9 +156,9 @@ export default function Contact() {
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
                 required
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fieldVariants}>
               <label className="block text-sm font-medium mb-[8px]">
                 Email<span className="text-[red]">*</span>
               </label>
@@ -142,9 +171,9 @@ export default function Contact() {
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
                 required
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fieldVariants}>
               <label className="block text-sm font-medium mb-[8px]">Phone Number</label>
               <input
                 type="text"
@@ -154,9 +183,9 @@ export default function Contact() {
                 placeholder="+44789 123456"
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fieldVariants}>
               <label className="block text-sm font-medium mb-[8px]">Subject</label>
               <input
                 type="text"
@@ -166,9 +195,9 @@ export default function Contact() {
                 placeholder="Inquiry about products"
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none"
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div variants={fieldVariants}>
               <label className="block text-sm font-medium mb-[8px]">
                 Message<span className="text-red-500">*</span>
               </label>
@@ -181,28 +210,36 @@ export default function Contact() {
                 className="w-full mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none resize-none"
                 required
               ></textarea>
-            </div>
+            </motion.div>
 
             {submitStatus === 'success' && (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+              <motion.div
+                variants={fieldVariants}
+                className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
+              >
                 Thank you for your message! We will get back to you soon.
-              </div>
+              </motion.div>
             )}
 
             {submitStatus === 'error' && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <motion.div
+                variants={fieldVariants}
+                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4"
+              >
                 There was an error submitting your message. Please try again.
-              </div>
+              </motion.div>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#111827] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? 'Sending...' : 'Send message'}
-            </button>
-          </form>
+            <motion.div variants={fieldVariants}>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#111827] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send message'}
+              </button>
+            </motion.div>
+          </motion.form>
         </div>
       </div>
     </div>

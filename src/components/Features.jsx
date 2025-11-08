@@ -1,10 +1,55 @@
 import logo1 from '../assets/features/logo1.png';
 import logo2 from '../assets/features/logo2.png';
-import logo3 from '../assets/features/logo3.png';   
+import logo3 from '../assets/features/logo3.png';
 import dataimg1 from '../assets/features/dataimg1.jpg';
 import dataimg2 from '../assets/features/dataimg2.jpg';
 import dataimg3 from '../assets/features/dataimg3.jpg';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+
+// TypingText component for typewriter effect
+const TypingText = ({ text, speed = 50, delay = 0, style, className }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [index, setIndex] = useState(0);
+  const ref = useRef();
+  const firstTime = useRef(true);
+
+  const isInView = useInView(ref, { once: false });
+
+  useEffect(() => {
+    if (isInView) {
+      if (firstTime.current) {
+        firstTime.current = false;
+        // Start with delay on first view
+        const startTimeout = setTimeout(() => {
+          setIndex(0);
+          setDisplayedText('');
+        }, delay);
+        return () => clearTimeout(startTimeout);
+      } else {
+        // Restart immediately on subsequent views
+        setIndex(0);
+        setDisplayedText('');
+      }
+    }
+  }, [isInView, delay]);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text, speed]);
+
+  return (
+    <span ref={ref} style={style} className={className}>
+      {displayedText}
+    </span>
+  );
+};
 
 const data = [
     {
@@ -65,7 +110,7 @@ export default function Features() {
                                 {String(item.id).padStart(2, '0')}
                             </div>
                             <div className="feature-title-section">
-                                <img className='w-[30px] h-[30px] mb-2' src={item.logo} alt=""/>
+                                {/* <img className='w-[30px] h-[30px] mb-2' src={item.logo} alt=""/> */}
                                 <h3 className="feature-title">{item.title}</h3>
                             </div>
                         </div>
@@ -75,8 +120,20 @@ export default function Features() {
                             <div className="feature-content">
                                 <div className="feature-text">
                                 <img className='w-[50px] h-[50px]' src={item.logo} alt=""/>
-                                    <h3 className={isMobile?'font-[10px]':"feature-title-expanded"}>{item.title}</h3>
-                                    <p className="feature-description">{item.content}</p>
+                                    <h3 className={isMobile?'font-[10px]':"feature-title-expanded"}>
+                                        <TypingText
+                                            text={item.title}
+                                            speed={50}
+                                            delay={0}
+                                        />
+                                    </h3>
+                                    <p className="feature-description">
+                                        <TypingText
+                                            text={item.content}
+                                            speed={10}
+                                            delay={500}
+                                        />
+                                    </p>
                                 </div>
                                 <div className="feature-image">
                                     <img src={item.dataimg} alt={item.title} />

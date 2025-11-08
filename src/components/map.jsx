@@ -1,5 +1,6 @@
 import map from '../assets/images/map.png';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Map(){
     const [hoveredLocation, setHoveredLocation] = useState(null);
@@ -15,10 +16,11 @@ export default function Map(){
     ];
 
     return(
-        <div style={{ paddingLeft: '100px', paddingRight: '100px', position: 'relative' }}>
+        <div className='p-[0px]' style={{ paddingLeft: '100px', paddingRight: '100px', position: 'relative' }}>
+                <motion.h2 className='text-[30px] text-[#4a4f4e]'>Where We Are</motion.h2>
                 <img src={map} style={{ opacity: 0.5, width: '100%', height: '100%' }} alt="" />
                 {locations.map(location => (
-                    <div
+                    <motion.div
                         key={location.id}
                         style={{
                             position: 'absolute',
@@ -31,12 +33,28 @@ export default function Map(){
                             top: `${location.y}%`,
                             transform: 'translate(-50%, -50%)'
                         }}
+                        animate={{
+                            scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: 'easeInOut'
+                        }}
+                        whileHover={{
+                            scale: 1.5,
+                            transition: { duration: 0.2 }
+                        }}
                         onMouseEnter={() => setHoveredLocation(location)}
                         onMouseLeave={() => setHoveredLocation(null)}
                     />
                 ))}
                 {hoveredLocation && (
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.2 }}
                         style={{
                             position: 'absolute',
                             backgroundColor: 'white',
@@ -52,7 +70,7 @@ export default function Map(){
                     >
                         <h3 style={{ fontWeight: 'bold' }}>{hoveredLocation.name}</h3>
                         <p style={{ fontSize: '14px', whiteSpace: 'pre-line' }}>{hoveredLocation.info}</p>
-                    </div>
+                    </motion.div>
                 )}
             </div>
     );
