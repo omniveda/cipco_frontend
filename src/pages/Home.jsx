@@ -491,6 +491,7 @@ export default function Home() {
         src={item.img}
         alt="image"
         className="w-full h-[250px] object-cover"
+        whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
       />
 
       {/* Overlapping Label */}
@@ -498,6 +499,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="absolute top-[220px] left-1/2 transform -translate-x-1/2 z-10 bg-[white] rounded-[10px] pl-[14px] pr-[12px] py-[15px] shadow flex items-center gap-2 shadow"
+        whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
       >
         {item.svg}
         <span className="text-[#1F2937] ml-[6px] font-semibold text-[16px]">{item.title}</span>
