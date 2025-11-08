@@ -32,6 +32,7 @@ const data = [
 
 export default function Features() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [mobileExpandedIndex, setMobileExpandedIndex] = useState(-1);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
@@ -54,8 +55,9 @@ export default function Features() {
                 {data.map((item, index) => (
                     <div
                         key={item.id}
-                        className={`feature-item ${activeIndex === index ? 'active' : ''}`}
-                        onMouseEnter={() => setActiveIndex(index)}
+                        className={`feature-item ${isMobile ? (mobileExpandedIndex === index ? 'mobile-expanded' : '') : (activeIndex === index ? 'active' : '')}`}
+                        onMouseEnter={!isMobile ? () => setActiveIndex(index) : undefined}
+                        onClick={isMobile ? () => setMobileExpandedIndex(mobileExpandedIndex === index ? -1 : index) : undefined}
                     >
                         {/* Collapsed State */}
                         <div className="feature-collapsed">
@@ -63,6 +65,7 @@ export default function Features() {
                                 {String(item.id).padStart(2, '0')}
                             </div>
                             <div className="feature-title-section">
+                                <img className='w-[30px] h-[30px] mb-2' src={item.logo} alt=""/>
                                 <h3 className="feature-title">{item.title}</h3>
                             </div>
                         </div>
@@ -151,6 +154,35 @@ export default function Features() {
                     flex: 4.5;
                     background: #ffffff;
                     // box-shadow: inset 0 0 0 2px rgba(59, 130, 246, 0.2);
+                }
+
+                .feature-item.mobile-expanded {
+                    height: auto;
+                    background: #ffffff;
+                }
+
+                .feature-item.mobile-expanded .feature-collapsed {
+                    display: none;
+                }
+
+                .feature-item.mobile-expanded .feature-expanded {
+                    position: static;
+                    opacity: 1;
+                    transform: none;
+                    pointer-events: auto;
+                }
+
+                .feature-item.mobile-expanded .feature-content {
+                    height: auto;
+                    flex-direction: column;
+                }
+
+                .feature-item.mobile-expanded .feature-text {
+                    padding: 30px 20px;
+                }
+
+                .feature-item.mobile-expanded .feature-image {
+                    height: 200px;
                 }
 
                 .feature-collapsed {

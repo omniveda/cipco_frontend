@@ -137,6 +137,11 @@ const Blog = () => {
       lineHeight: '1.6',
       marginBottom: '20px',
     },
+    blogSummary2: {
+      color: '#555',
+      lineHeight: '1.6',
+      marginBottom: '20px',
+    },
     readMoreButton: {
       background: 'transparent',
       border: 'none',
@@ -220,7 +225,7 @@ const Blog = () => {
               <span style={styles.blogCategory}>{post.category}</span>
               <h3 style={styles.blogTitle}>{post.title}</h3>
               <p style={styles.blogDate}>{post.date}</p>
-              <p style={styles.blogSummary}>{post.summary}</p>
+              <p style={isMobile?styles.blogSummary2:styles.blogSummary}>{post.summary}</p>
               {/* <button style={styles.readMoreButton}>Read More →</button> */}
             </div>
           </div>

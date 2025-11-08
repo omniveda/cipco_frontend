@@ -142,7 +142,7 @@ export default function AboutUs(){
                         transform: whoWeAreVisible ? 'translateX(0)' : 'translateX(-30px)',
                         transition: 'all 0.8s ease-out 0.2s'
                     }}>Who We Are</h1>
-                    <p className={`${isMobile ? 'text-[18px]' : 'text-[20px]'} font-[400] text-[#6B7280] ${isMobile ? 'pr-0' : 'pr-[20px]'}`} style={{
+                    <p className={`${isMobile ? 'text-[18px]' : 'text-[20px]'} font-[400] text-[#6B7280] ${isMobile ? 'pr-0 text-justify' : 'pr-[20px]'}`} style={{
                         opacity: whoWeAreVisible ? 1 : 0,
                         transform: whoWeAreVisible ? 'translateY(0)' : 'translateY(20px)',
                         transition: 'all 0.8s ease-out 0.4s'
@@ -255,7 +255,7 @@ export default function AboutUs(){
                     transform: qualityVisible ? 'scale(1)' : 'scale(0.8)',
                     transition: 'all 0.8s ease-out 0.8s'
                 }}/></div>
-                <div className={`font-[600] ${isMobile ? 'text-[20px]' : 'text-[22px]'} ${isMobile ? 'pr-0' : 'pr-[200px]'} mt-[30px]`} style={{
+                <div className={`font-[600] ${isMobile ? 'text-[20px] text-justify' : 'text-[22px]'} ${isMobile ? 'pr-0' : 'pr-[200px]'} mt-[30px]`} style={{
                     opacity: qualityVisible ? 1 : 0,
                     transform: qualityVisible ? 'translateX(0)' : 'translateX(30px)',
                     transition: 'all 0.8s ease-out 1s'

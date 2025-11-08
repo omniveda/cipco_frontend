@@ -254,7 +254,13 @@ const Manufacturing = () => {
               color: '#305d94',
               marginBottom: '1.5rem'
             }}>About CIPCO LIMITED</h2>
-            <p style={{
+            <p style={isMobile?{
+              color: '#374151',
+              fontSize: '1.125rem',
+              lineHeight: '1.75',
+              marginBottom: '1.5rem',
+              textAlign: 'justify'
+            }:{
               color: '#374151',
               fontSize: '1.125rem',
               lineHeight: '1.75',
@@ -262,7 +268,12 @@ const Manufacturing = () => {
             }}>
               CIPCO LIMITED is a trusted pharmaceutical manufacturer with over three decades of experience in delivering high-quality medicines to domestic and international markets. Our state-of-the-art WHO-GMP certified manufacturing facility at Pigdamber, Indore (Madhya Pradesh) is designed to meet the highest standards of quality, safety, and regulatory compliance.
             </p>
-            <p style={{
+            <p style={isMobile?{
+              color: '#374151',
+              fontSize: '1.125rem',
+              lineHeight: '1.75',
+              textAlign: 'justify'
+            }:{
               color: '#374151',
               fontSize: '1.125rem',
               lineHeight: '1.75'
@@ -704,7 +715,11 @@ const Manufacturing = () => {
             }}>People Behind the Excellence</h2>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👥</div>
-              <p style={{
+              <p style={isMobile?{
+                color: '#374151',
+                lineHeight: '1.75',
+                textAlign: 'justify'
+              }:{
                 color: '#374151',
                 lineHeight: '1.75'
               }}>
@@ -767,7 +782,14 @@ const Manufacturing = () => {
               fontWeight: 'bold',
               marginBottom: '1.5rem'
             }}>Global Reach, Trusted Quality</h2>
-            <p style={{
+            <p style={isMobile?{
+              fontSize: '1.25rem',
+              lineHeight: '1.75',
+              maxWidth: '56rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              textAlign: 'justify'
+            }:{
               fontSize: '1.25rem',
               lineHeight: '1.75',
               maxWidth: '56rem',

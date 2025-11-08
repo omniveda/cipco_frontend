@@ -114,8 +114,8 @@ const Media = () => {
             <div style={styles.newsContent}>
               <h3 style={styles.newsTitle}>{item.title}</h3>
               <p style={styles.newsDate}>{item.date}</p>
-              <p style={styles.newsSummary}>{item.summary}</p>
-              <button style={styles.readMoreButton}>Read More →</button>
+              <p style={isMobile?styles.newsSummary2:styles.newsSummary}>{item.summary}</p>
+              {/* <button style={styles.readMoreButton}>Read More →</button> */}
             </div>
           </div>
         ))}
@@ -259,6 +259,13 @@ const styles = {
     lineHeight: '1.6',
     marginBottom: '20px',
     flex: '1',
+  },
+  newsSummary2: {
+    color: '#555',
+    lineHeight: '1.6',
+    marginBottom: '20px',
+    flex: '1',
+    textAlign: 'justify',
   },
   readMoreButton: {
     background: 'transparent',
