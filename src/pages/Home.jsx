@@ -566,6 +566,172 @@ export default function Home() {
             </motion.div>
         </motion.section>
 
+          <motion.section
+         variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className={isMobile ? 'mt-[60px] mx-[10px]' : 'mt-[70px] mx-[100px]'}
+        >
+          <motion.div variants={childVariants} className="text-center mb-[50px]">
+            <motion.p
+              variants={childVariants}
+              className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold mb-[20px]'
+            >OUR PRODUCTS</motion.p>
+            <motion.h2
+              variants={childVariants}
+              className={isMobile ? 'text-[30px] font-[600] text-[#305d94]' : 'text-[40px] font-[600] text-[#305d94]'}
+            >
+              <TypingText
+                text="Featured Pharmaceutical Solutions"
+                speed={20}
+                delay={0}
+              />
+            </motion.h2>
+            <motion.p
+              variants={childVariants}
+              className={isMobile ? 'text-[#4B5563] text-[16px] mt-[10px]' : 'text-[#4B5563] text-[18px] mt-[10px]'}
+            >
+              Discover our range of high-quality medications designed for better health outcomes
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            className={isMobile ? 'grid grid-cols-1 gap-[20px]' : 'grid grid-cols-2 lg:grid-cols-4 gap-[30px]'}
+          >
+            {[
+              {
+                id: 1,
+                image: 'otab1',
+                name: 'Cipcor 500 Tablets',
+                description: 'Advanced antibiotic formulation for effective treatment',
+                features: ['Fast-acting', 'High bioavailability', 'GMP certified'],
+                category: 'Antibiotics'
+              },
+              {
+                id: 2,
+                image: 'otab2',
+                name: 'Cipcet Tablets',
+                description: 'Premium antihistamine for allergy relief',
+                features: ['Non-drowsy formula', '24-hour relief', 'Child-safe'],
+               category: 'Antihistamines'
+              },
+              {
+                id: 3,
+                image: 'otab3',
+                name: 'Anadol Tablets',
+                description: 'Powerful analgesic for pain management',
+                features: ['Rapid pain relief', 'Non-addictive', 'Multi-symptom'],
+                category: 'Analgesics'
+              },
+              {
+                id: 4,
+                image: 'otab7',
+                name: 'Vitavion Forte Tablets',
+                description: 'Comprehensive vitamin supplement for daily health',
+                features: ['Vitamin B1', 'Vitamin B6', 'Vitamin B12'],
+                category: 'Supplements'
+              }
+            ].map((product, index) => (
+              <motion.div
+                key={product.id}
+                variants={cardVariants}
+                custom={index}
+                className="bg-[white] rounded-[20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -10, scale: 1.02 }}
+                onClick={() => navigate('/products')}
+                style={{ cursor: 'pointer' }}
+              >
+                <motion.div
+                  className="relative h-[200px] bg-gradient-to-br from-[#b8c9d4] to-[#a0b4c0] flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <motion.img
+                    src={new URL(`../assets/product/${product.image}.webp`, import.meta.url).href}
+                    alt={product.name}
+                    className="max-w-full max-h-full object-contain"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  />
+                  <motion.div
+                    className="absolute top-[10px] right-[10px] bg-[#305d94] text-[white] px-[10px] py-[5px] rounded-[15px] text-[12px] font-semibold"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                  >
+                    {product.category}
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="p-[20px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                >
+                  <motion.h3
+                    className="text-[18px] font-semibold text-[#33b0c5] mb-[10px]"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {product.name}
+                  </motion.h3>
+                  <motion.p
+                    className="text-[#4B5563] text-[14px] mb-[15px] leading-relaxed"
+                  >
+                    {product.description}
+                  </motion.p>
+
+                  <motion.div
+                    className="flex flex-wrap gap-[8px] mb-[15px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.4 }}
+                  >
+                    {product.features.map((feature, featureIndex) => (
+                      <motion.span
+                        key={featureIndex}
+                        className="bg-[#e8f5e8] text-[#305d94] px-[8px] py-[4px] rounded-[10px] text-[12px] font-medium"
+                        whileHover={{ scale: 1.1, backgroundColor: '#d1fae5' }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {feature}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+
+                  <motion.button
+                    className="w-full bg-gradient-to-r from-[#123662ff] to-[#305d94] text-[white] py-[10px] rounded-[25px] font-semibold hover:from-[#305d94] hover:to-[#123662ff] transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/products');
+                    }}
+                  >
+                    View Details
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={childVariants}
+            className="text-center mt-[50px]"
+          >
+            <motion.button
+              className="bg-gradient-to-r from-[#046171ff] to-[#33b0c5] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(46, 125, 50, 0.3)' }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/products')}
+            >
+              Explore All Products
+            </motion.button>
+          </motion.div>
+         </motion.section>
+
         <motion.section
           variants={containerVariants}
           initial="hidden"
