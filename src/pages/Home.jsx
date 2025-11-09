@@ -701,7 +701,7 @@ export default function Home() {
                     ))}
                   </motion.div>
 
-                  <motion.button
+                  {/* <motion.button
                     className="w-full bg-gradient-to-r from-[#123662ff] to-[#305d94] text-[white] py-[10px] rounded-[25px] font-semibold hover:from-[#305d94] hover:to-[#123662ff] transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -711,7 +711,7 @@ export default function Home() {
                     }}
                   >
                     View Details
-                  </motion.button>
+                  </motion.button> */}
                 </motion.div>
               </motion.div>
             ))}
