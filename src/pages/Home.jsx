@@ -207,7 +207,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[0px]':'mx-[100px] mt-[70px] '}
+          className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] mt-[70px] '}
         >
             <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%] border border-[#98d2de] bg-[#e8f7fa] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
@@ -271,7 +271,7 @@ export default function Home() {
                         />
                     </motion.div>
                 
-                <motion.div variants={childVariants} className={isMobile ? 'w-full' : 'w-[50%] border rounded-[20px] border-[#b6d6db] bg-[#b6d6db] py-[10px] mr-[10px] my-[10px] px-[8px]'}>
+                <motion.div variants={childVariants} className={isMobile ? 'w-full h-[40rem]' : 'w-[50%] border rounded-[20px] border-[#b6d6db] bg-[#b6d6db] py-[10px] mr-[10px] my-[10px] px-[8px]'}>
                 <motion.p
                   variants={childVariants}
                   className='inline-block py-[10px] px-[8px] text-left text-[18px]  rounded-[10px] text-[#4B5563] bg-[white] font-bold'
@@ -288,7 +288,7 @@ export default function Home() {
                 </motion.p>
                 <motion.p
                   variants={childVariants}
-                  className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] text-[20px]'}
+                  className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] h-[5rem] text-[20px]'}
                 >
                   <TypingText
                     text="Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible."
@@ -573,14 +573,14 @@ export default function Home() {
           viewport={{ once: false, margin: "-100px" }}
           className={isMobile ? 'mt-[60px] mx-[10px]' : 'mt-[70px] mx-[100px]'}
         >
-          <motion.div variants={childVariants} className="text-center mb-[50px]">
+          <motion.div variants={childVariants} className="text-center height-[20rem] mb-[50px]">
             <motion.p
               variants={childVariants}
               className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold mb-[20px]'
             >OUR PRODUCTS</motion.p>
             <motion.h2
               variants={childVariants}
-              className={isMobile ? 'text-[30px] font-[600] text-[#305d94]' : 'text-[40px] font-[600] text-[#305d94]'}
+              className={isMobile ? 'text-[30px] h-[94px] font-[600] text-[#305d94]' : 'text-[40px] h-[44px] font-[600] text-[#305d94]'}
             >
               <TypingText
                 text="Featured Pharmaceutical Solutions"
