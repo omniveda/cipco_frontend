@@ -815,6 +815,154 @@ export default function Home() {
             </motion.div>
         </motion.section>
 
+        <motion.section
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-100px" }}
+          className={isMobile ? 'mt-[60px] mx-[10px]' : 'mt-[70px] mx-[100px]'}
+        >
+          <motion.div variants={childVariants} className="text-center mb-[50px]">
+            <motion.p
+              variants={childVariants}
+              className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px] text-[#4B5563] font-bold mb-[20px]'
+            >LATEST BLOGS</motion.p>
+            <motion.h2
+              variants={childVariants}
+              className={isMobile ? 'text-[30px] font-[600] text-[#305d94]' : 'text-[40px] font-[600] text-[#305d94]'}
+            >
+              Insights & Updates
+            </motion.h2>
+            <motion.p
+              variants={childVariants}
+              className={isMobile ? 'text-[#4B5563] text-[16px] mt-[10px]' : 'text-[#4B5563] text-[18px] mt-[10px]'}
+            >
+              Stay informed with our latest thoughts on healthcare and pharmaceuticals
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            className={isMobile ? 'grid grid-cols-1 gap-[20px]' : 'grid grid-cols-3 gap-[30px]'}
+          >
+            {[
+              {
+                id: 1,
+                title: "From Humble Beginnings to a Trusted Healthcare Partner: The Inspiring Journey of CIPCO LIMITED",
+                date: "October 20, 2023",
+                summary: "Every great company starts with a dream. At CIPCO LTD, that dream began with Mr. Arun Kumar Jhawar, whose vision was simple yet profound — to provide affordable, high-quality healthcare for everyone.",
+                image: "🌟",
+                category: "Journey"
+              },
+              {
+                id: 2,
+                title: "Why Quality is Non-Negotiable in Pharma — A Core Value at CIPCO LIMITED",
+                date: "September 25, 2023",
+                summary: "In healthcare, quality isn’t optional — it’s life-saving. At CIPCO, every step of our production process is guided by rigorous quality standards.",
+                image: "✅",
+                category: "Quality"
+              },
+              {
+                id: 3,
+                title: "Partnering for Health: How Collaborations Drive Better Access to Medicines",
+                date: "August 10, 2023",
+                summary: "Healthcare transformation happens when organizations work together. That’s why partnerships are central to CIPCO’s mission.",
+                image: "🤝",
+                category: "Partnership"
+              }
+            ].map((post, index) => (
+              <motion.div
+                key={post.id}
+                variants={cardVariants}
+                custom={index}
+                className="bg-[white] rounded-[20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -10, scale: 1.02, rotateY: 5 }}
+                onClick={() => navigate('/blog')}
+                style={{ cursor: 'pointer' }}
+              >
+                <motion.div
+                  className="relative h-[150px] bg-gradient-to-br from-[#b8c9d4] to-[#a0b4c0] flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <motion.span
+                    className="text-[3rem]"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {post.image}
+                  </motion.span>
+                  <motion.div
+                    className="absolute top-[10px] right-[10px] bg-[#305d94] text-[white] px-[10px] py-[5px] rounded-[15px] text-[12px] font-semibold"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {post.category}
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="p-[20px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                >
+                  <motion.h3
+                    className="text-[18px] font-semibold text-[#33b0c5] mb-[10px] line-clamp-2"
+                    whileHover={{ scale: 1.05, color: '#305d94' }}
+                  >
+                    {post.title}
+                  </motion.h3>
+                  <motion.p
+                    className="text-[#888] text-[14px] mb-[10px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.4 }}
+                  >
+                    {post.date}
+                  </motion.p>
+                  <motion.p
+                    className="text-[#4B5563] text-[14px] mb-[15px] leading-relaxed line-clamp-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.1 + 0.5 }}
+                  >
+                    {post.summary}
+                  </motion.p>
+
+                  <motion.button
+                    className="w-full bg-gradient-to-r from-[#305d94] to-[#33b0c5] text-[white] py-[10px] rounded-[25px] font-semibold hover:from-[#33b0c5] hover:to-[#305d94] transition-all duration-300"
+                    whileHover={{ scale: 1.05, boxShadow: '0 5px 15px rgba(48, 93, 148, 0.3)' }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/blog');
+                    }}
+                  >
+                    Read More
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={childVariants}
+            className="text-center mt-[50px]"
+          >
+            <motion.button
+              className="bg-gradient-to-r from-[#046171ff] to-[#33b0c5] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(46, 125, 50, 0.3)' }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/blog')}
+            >
+              View All Blogs
+            </motion.button>
+          </motion.div>
+        </motion.section>
+
         
         {!isMobile&&<motion.section
           variants={containerVariants}
