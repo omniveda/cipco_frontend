@@ -3,6 +3,23 @@ import React, { useState, useEffect } from 'react';
 const ShareholdingPattern = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
+      useEffect(()=>{
+        const handleResize = () =>{
+          const mobile=window.innerWidth < 768;
+          setIsMobile(mobile);
+          if(!mobile){
+            setIsMobile(false);
+          }
+        };
+        window.addEventListener('resize',handleResize);
+        return()=>window.removeEventListener('resize',handleResize);
+      },[]);
+  
+    useEffect(() => {
+      setIsVisible(true);
+    }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -25,10 +42,12 @@ const ShareholdingPattern = () => {
     nonPublic: "0%",
   };
 
+
   return (
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(to bottom right, #eff6ff, #ffffff, #f0fdf4)',
+      marginTop:isMobile?'70px':'',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -48,7 +67,7 @@ const ShareholdingPattern = () => {
           transform: isVisible ? 'translateY(0)' : 'translateY(2rem)'
         }}>
           <h1 style={{
-            fontSize: '3.5rem',
+            fontSize: isMobile?'2rem':'3.5rem',
             fontWeight: 'bold',
             background: 'linear-gradient(to right, #305d94, #33b0c5)',
             WebkitBackgroundClip: 'text',

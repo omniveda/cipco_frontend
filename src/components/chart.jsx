@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import chartimage from "../assets/aboutnewchart.png";
 
 export default function Chart() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -17,7 +18,9 @@ export default function Chart() {
     }, []);
   return (
     <div className="chart-wrapper">
-      <svg className="chart-lines" xmlns="http://www.w3.org/2000/svg">
+<img src={chartimage} alt="" />
+
+      {/* <svg className="chart-lines" xmlns="http://www.w3.org/2000/svg">
         <line x1="50%" y1="50%" x2="30%" y2="13%" />
         <line x1="50%" y1="50%" x2="30%" y2="42%" />
         <line x1="50%" y1="50%" x2="30%" y2="88%" />
@@ -36,14 +39,19 @@ export default function Chart() {
         <div className="item upper-right">Instrumental Analysis laboratories</div>
         <div className="item lower-right">In-process Quality Control facilities</div>
         <div className="item bottom-right">Microbiology Lab</div>
-      </div>
+      </div> */}
 
       <style jsx>{`
         .chart-wrapper {
           position: relative;
           width: 80%;
-          height: 600px;
+          height: auto;
           margin: 40px auto;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
         }
 
         .chart-lines {

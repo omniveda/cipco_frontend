@@ -150,8 +150,8 @@ const Media = () => {
           For press releases, interviews, or media partnerships, please contact our media relations team.
         </p>
         <div style={styles.contactInfo}>
-          <p style={styles.contactEmail}>📧 media@cipco.com</p>
-          <p style={styles.contactPhone}>📞 +1 (555) 123-MEDIA</p>
+          <p style={styles.contactEmail}>📧info@cipcopharma.com</p>
+          <p style={styles.contactPhone}>📞 0731 4020311</p>
         </div>
         <button style={styles.contactButton}>Contact Media Team</button>
       </div>

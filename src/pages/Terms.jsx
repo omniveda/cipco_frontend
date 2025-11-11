@@ -6,7 +6,7 @@ export default function Terms() {
             <p style={{ marginBottom: '1rem', color: '#374151', fontSize: '1.1rem', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 0.2s both' }}><strong style={{ color: '#374151' }}>Effective Date:</strong> 13/10/2025</p>
             <p style={{ marginBottom: '1rem', color: '#374151', fontSize: '1.1rem', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 0.2s both' }}><strong style={{ color: '#374151' }}>Last Updated:</strong> 13/10/2025</p>
             <p style={{ marginBottom: '1rem', color: '#374151', fontSize: '1.1rem', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 0.4s both' }}>
-                Welcome to CIPCO LIMITED by accessing or using our website [insert website URL] (“Website”), you agree to comply with and be bound by these Terms of Use (“Terms”). If you do not agree to these Terms, please refrain from using the Website.
+                Welcome to CIPCO LIMITED by accessing or using our website www.cipcopharma.com, you agree to comply with and be bound by these Terms of Use (“Terms”). If you do not agree to these Terms, please refrain from using the Website.
             </p>
             <p style={{ marginBottom: '1rem', color: '#374151', fontSize: '1.1rem', lineHeight: '1.6', animation: 'fadeInUp 1s ease-out 0.4s both' }}>
                 These Terms govern your use of the Website and all content, services, and information made available through it.

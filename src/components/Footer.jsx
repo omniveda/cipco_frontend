@@ -119,6 +119,10 @@ export default function Footer() {
                     <div className='cursor-pointer'><Link to="/terms" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Terms & Condition</Link></div>
                 </div>
             </div>
+            <div className='text-[12px] flex text-right justify-right'>
+                <p className='text-[#6B7280]'>Developed by </p>
+                <p className='text-[#fe1981]'> Cybite</p>
+            </div>
         </div>
     );
 }
