@@ -30,7 +30,7 @@ export default function AboutContent(){
         {data.map((item) => (
           <div
             key={item.id}
-            className="flex items-start  gap-[10px] bg-[#f5fbf1] px-[20px] py-[20px] rounded-[10px] border border-transparent hover:border-[#3c8c4f]"
+            className="flex items-start  gap-[10px] bg-[#F3F4F6] px-[20px] py-[20px] rounded-[10px] border border-transparent hover:border-[#3c8c4f]"
           >
             <div className="mr-[10px]">{item.svg}</div>
             <div>
@@ -42,7 +42,7 @@ export default function AboutContent(){
       </div>
 
       {/* Right column */}
-      <div className={isMobile?"bg-[#f5fbf1] py-[20px] rounded-[10px] w-[100%]":"bg-[#f5fbf1] px-[40px] py-[40px] rounded-[10px] w-[55%]"}>
+      <div className={isMobile?"bg-[#F3F4F6] py-[20px] rounded-[10px] w-[100%]":"bg-[#f5fbf1] px-[40px] py-[40px] rounded-[10px] w-[55%]"}>
         <div className={isMobile?"flex flex-col items-center gap-3 mb-4":"flex items-center gap-3 mb-4"}>
           <svg xmlns="http://www.w3.org/2000/svg" width="66.667" height="66.667" fill="none" overflow="visible"><path d="M 0 66.667 L 0 26.583 L 23.333 16.667 L 23.333 23.333 L 40 16.667 L 40 26.667 L 66.667 26.667 L 66.667 66.667 Z M 30 53.333 L 36.667 53.333 L 36.667 40 L 30 40 Z M 16.667 53.333 L 23.333 53.333 L 23.333 40 L 16.667 40 Z M 43.333 53.333 L 50 53.333 L 50 40 L 43.333 40 Z M 66 21.667 L 50.583 21.667 L 53.417 0 L 63.333 0 Z" fill="#305d94"></path></svg>
           <div className={isMobile?"text-[30px] font-[700] pl-[30px] text-[#0e0e0e]":"text-[40px] font-[700] pl-[30px] text-[#0e0e0e]"}>Advanced Facility Systems</div>

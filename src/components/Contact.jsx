@@ -61,7 +61,7 @@ export default function Contact() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/contacts', {
+      const response = await fetch('https://cipco-backend.onrender.com/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,19 +93,19 @@ export default function Contact() {
             For any inquiries or to explore your vision further, we invite you to contact our professional team using the details provided below.
           </p>
 
-          <div className={isMobile?"mb-6 flex":"mb-6 flex"}>
-            <p className="font-[600]">Office </p>
+          <div className={isMobile?"mb-6 flex":"mb-6 gap-[4px] flex"}>
+            <p className="font-[600]">Office: </p>
             <p className={isMobile?"text-gray-700 w-[80%]":"text-gray-700"}>
-              : 35-36/1 A.B. Road, Pigdamber , Indore – 453331 (MP) INDIA
+              35-36/1 A.B. Road, Pigdamber , Indore – 453331 (MP) India
             </p>
           </div>
 
-          <div className={isMobile?"mb-6 flex":"mb-6 flex  items-center"}>
-            <p className="font-[600]">Email </p>
-            <p className="text-gray-700">: info@cipcopharma.com</p>
+          <div className={isMobile?"mb-6 flex":"mb-6 flex gap-[4px] items-center"}>
+            <p className="font-[600]">Email: </p>
+            <p className="text-gray-700">info@cipcopharma.com</p>
           </div>
 
-          <div className={isMobile?"mb-6 flex":"mb-6 flex items-center"}>
+          <div className={isMobile?"mb-6 flex":"mb-6 flex gap-[4px] items-center"}>
             <p className="font-[600]">Phone Number:</p>
             <p className="text-gray-700">0731 4020311, 07869920311</p>
             
@@ -134,7 +134,7 @@ export default function Contact() {
         </div>
 
         {/* Right - Form */}
-        <div className="bg-gray-50 pt-[40px] border border-[#D1D5DB] p-[20px] pr-[50px] rounded-[20px] shadow-md">
+        <div className="bg-[#F3F4F6] pt-[40px]  border-[#D1D5DB] p-[20px] pr-[50px] rounded-[20px] shadow-md">
           <motion.form
             onSubmit={handleSubmit}
             className="space-y-4"
@@ -234,7 +234,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-[106%] bg-[#111827] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="w-[106%] bg-[#305d94] text-[white] font-semibold cursor-pointer py-[8px] px-4 rounded-[4px] hover:bg-[#333] transition duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}
               </button>

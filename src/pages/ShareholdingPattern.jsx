@@ -202,7 +202,7 @@ const ShareholdingPattern = () => {
           marginBottom: '3rem'
         }}>
           <button
-            onClick={() => window.open('/src/assets/document/Shareholding Pattern.pdf', '_blank')}
+            onClick={() => window.open('https://cipcopharma.com/Shareholding_Pattern.pdf', '_blank')}
             style={{
               backgroundColor: '#2563eb',
               color: 'white',

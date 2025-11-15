@@ -52,17 +52,17 @@ export default function Production(){
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     return (
-    <div className={isMobile?"px-[0px] mt-[60px] mb-[20px]":"px-[100px] mt-[60px]"}>
+    <div className={isMobile?"px-[0px] mt-[60px] mb-[20px]":"px-[100px] mb-[70px] mt-[60px]"}>
       <h2 className="text-[40px] text-center font-bold mb-8">Production Excellence</h2>
-      <p className="text-[18px] mb-[50px]">
+      <p className="text-[18px] text-center mb-[50px]">
         We specialize in producing both tablets and liquid formulations to the highest standards.
       </p>
       
-      <div className={isMobile?"flex flex-col gap-[50px]":"flex gap-[50px]"}>
+      <div className={isMobile?"flex flex-col gap-[50px]":"flex justify-center gap-[50px]"}>
         {data.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center gap-4 bg-[#f5fbf1] p-6 rounded-[10px] shadow-lg hover:shadow-xl transition-all ease-in-out relative"
+            className="flex flex-col items-center gap-4 bg-[#F3F4F6] p-6 rounded-[10px] shadow-lg hover:shadow-xl transition-all ease-in-out relative"
           >
             {/* Image/Icon Section */}
             <div className=" rounded-full absolute top-[-30px] left-1/2 transform -translate-x-1/2">
@@ -72,7 +72,7 @@ export default function Production(){
             <h3 className="text-xl font-[600] text-[#333] pt-[80px]">{item.title}</h3>
             <div className="space-y-2 px-[35px]">
               {item.content.map((desc, index) => (
-                <p key={index} className="text-sm text-[#555]">{desc.desc}</p>
+                <p key={index} className="text-sm text-justify text-[#555]">{desc.desc}</p>
               ))}
             </div>
           </div>

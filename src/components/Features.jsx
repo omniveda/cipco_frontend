@@ -169,7 +169,7 @@ export default function Features() {
                     width: 100%;
                     max-width: 1200px;
                     margin: 0 auto;
-                    padding: 50px 20px;
+                    padding: 0px 20px;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
                 }
 

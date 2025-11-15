@@ -4,7 +4,7 @@ import mission from '../assets/images/mission.jpg';
 import vision from '../assets/images/vission.jpg';
 import whogmpcert from '../assets/images/whogmpcert.png';
 import colon from '../assets/element/colon.png';
-import about from '../assets/images/about.jpg';
+import about from '../assets/images/about2.jpg';
 import Map from '../components/map.jsx';
 import Contact from '../components/Contact.jsx';
 
@@ -209,7 +209,7 @@ export default function Home() {
           viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] mt-[70px] '}
         >
-            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%] border border-[#98d2de] bg-[#e8f7fa] pl-[20px] py-[20px]  rounded-[20px]'}>
+            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]  border-[#98d2de] bg-[#F3F4F6] h-[12.5rem] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
                   variants={childVariants}
                   className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px]  text-[#4B5563] font-bold mt-10'
@@ -256,9 +256,9 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[60px]':'mx-[100px] border rounded-[20px] bg-[#dae6e8] border-[#98d2de] mt-[70px] pl-[50px]'}
+          className={isMobile?'mt-[60px]':'mx-[100px]  rounded-[20px] bg-[#F3F4F6] border-[#98d2de] mt-[70px]'}
         >
-            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex  justify-center items-center gap-[20px]'}>
+            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex  justify-center items-center'}>
                  
                     <motion.div variants={childVariants}>
                         <motion.img
@@ -271,7 +271,7 @@ export default function Home() {
                         />
                     </motion.div>
                 
-                <motion.div variants={childVariants} className={isMobile ? 'w-full h-[40rem]' : 'w-[50%] border rounded-[20px] border-[#b6d6db] bg-[#b6d6db] py-[10px] mr-[10px] my-[10px] px-[8px]'}>
+                <motion.div variants={childVariants} className={isMobile ? 'w-full h-[40rem]' : 'w-[50%] rounded-[20px] border-[#b6d6db] bg-[#F3F4F6] py-[10px] mr-[10px] my-[10px] px-[8px]'}>
                 <motion.p
                   variants={childVariants}
                   className='inline-block py-[10px] px-[8px] text-left text-[18px]  rounded-[10px] text-[#4B5563] bg-[white] font-bold'
@@ -288,7 +288,7 @@ export default function Home() {
                 </motion.p>
                 <motion.p
                   variants={childVariants}
-                  className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] h-[5rem] text-[20px]'}
+                  className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] h-[5rem] text-justify text-[20px]'}
                 >
                   <TypingText
                     text="Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible."
@@ -307,7 +307,7 @@ export default function Home() {
                       whileInView={{ opacity: 1 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1 }}
-                    >32+</motion.div>
+                    >36+</motion.div>
                     <div className={isMobile?'text-[#4B5563] text-[16px] pr-[10px]':'text-[#4B5563] text-[20px] pr-[10px]'}>Years of Serving Excellence</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='flex flex-col '>
@@ -330,10 +330,12 @@ export default function Home() {
                     >10,000+</motion.div>
                     <div className={isMobile?'text-[#4B5563] text-[16px] pr-[10px]':'text-[#4B5563] text-[20px] pr-[10px]'}>Orders Delivered</div>
                 </motion.div>
-                <motion.div variants={statVariants} className='mt-[20px]'>
+                <motion.div variants={statVariants} className='flex flex-col mt-[20px]'>
                     <motion.div
-                      className='flex text-center justify-center'
+                      className='flex '
                       whileHover={{ scale: 1.05 }}
+                      onClick={() => navigate('/certificates')}
+                      style={{ cursor: 'pointer' }}
                     >
                       <motion.p
                         whileHover={{ scale: 1.05 }}
@@ -406,7 +408,7 @@ export default function Home() {
                     >
                       <motion.svg
                         whileHover={{ scale: 1.1 }}
-                        className='bg-[#2A9CB6] p-[16px] rounded-full'
+                        className='bg-[#305d94] p-[16px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.463"
                         height="11.225"
@@ -423,7 +425,7 @@ export default function Home() {
                     >
                       <motion.svg
                         whileHover={{ scale: 1.1 }}
-                        className='bg-[#2A9CB6] p-[16px] rounded-full'
+                        className='bg-[#305d94] p-[16px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.463"
                         height="11.225"
@@ -441,7 +443,7 @@ export default function Home() {
                     >
                       <motion.svg
                         whileHover={{ scale: 1.1 }}
-                        className='bg-[#2A9CB6] p-[16px] rounded-full'
+                        className='bg-[#305d94] p-[16px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.463"
                         height="11.225"
@@ -459,7 +461,7 @@ export default function Home() {
                     >
                       <motion.svg
                         whileHover={{ scale: 1.1 }}
-                        className='bg-[#2A9CB6] p-[16px] rounded-full'
+                        className='bg-[#305d94] p-[16px] rounded-full'
                         xmlns="http://www.w3.org/2000/svg"
                         width="15.463"
                         height="11.225"
@@ -474,7 +476,7 @@ export default function Home() {
                 </motion.div>
                {!isMobile &&  <motion.div
                   variants={childVariants}
-                  className="flex ml-[60px] gap-[40px] justify-center items-start flex-wrap"
+                  className="flex gap-[40px] justify-center items-start flex-wrap"
                 >
 {data.map((item, index) => (
     <motion.div
@@ -526,7 +528,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className=' mt-[70px]'
+          className=' mt-[70px] mx-[100px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-row bg-[#F3F4F6] pb-[10px] rounded-[40px]':'flex flex-row bg-[#F3F4F6] p-[80px] rounded-[40px]'}>
                 <motion.div variants={childVariants}>
@@ -534,7 +536,7 @@ export default function Home() {
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ opacity: 1, x: 0 }}
                       src={about}
-                      className='w-[500px] h-[500px]'
+                      className='w-[600px] h-[500px]'
                       alt="hello is this is about"
                     />}
                 </motion.div>
@@ -722,7 +724,7 @@ export default function Home() {
             className="text-center mt-[50px]"
           >
             <motion.button
-              className="bg-gradient-to-r from-[#046171ff] to-[#33b0c5] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
+              className="bg-gradient-to-r from-[#305d94] to-[#305d94] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
               whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(46, 125, 50, 0.3)' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/products')}
@@ -737,7 +739,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[70px]'
+          className='mt-[70px] mx-[100px]'
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-col bg-[#0057A0] p-[0px] rounded-[40px]  items-center':'flex flex-row bg-[#0057A0] p-[80px] rounded-[40px] pl-[120px] items-center'}>
                 <motion.div variants={childVariants} className={isMobile?'w-[90%]':'w-[60%]'}>
@@ -933,7 +935,7 @@ export default function Home() {
                   </motion.p>
 
                   <motion.button
-                    className="w-full bg-gradient-to-r from-[#305d94] to-[#33b0c5] text-[white] py-[10px] rounded-[25px] font-semibold hover:from-[#33b0c5] hover:to-[#305d94] transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-[#305d94] to-[#305d94] text-[white] py-[10px] rounded-[25px] font-semibold hover:from-[#33b0c5] hover:to-[#305d94] transition-all duration-300"
                     whileHover={{ scale: 1.05, boxShadow: '0 5px 15px rgba(48, 93, 148, 0.3)' }}
                     whileTap={{ scale: 0.95 }}
                     onClick={(e) => {
@@ -953,7 +955,7 @@ export default function Home() {
             className="text-center mt-[50px]"
           >
             <motion.button
-              className="bg-gradient-to-r from-[#046171ff] to-[#33b0c5] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
+              className="bg-gradient-to-r from-[#305d94] to-[#305d94] text-[white] px-[30px] py-[15px] rounded-[30px] font-semibold text-[16px] hover:from-[#33b0c5] hover:to-[#046171ff] transition-all duration-300"
               whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(46, 125, 50, 0.3)' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/blog')}
@@ -969,7 +971,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[70px] mx-[100px] border rounded-[20px] border-[#b6d6db]'
+          className='mt-[70px] mx-[100px] pt-[10px] bg-[#F3F4F6] rounded-[20px] border-[#b6d6db]'
         >
             <motion.div  variants={childVariants}>
                 <Map/>

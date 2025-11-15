@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Manufacturing = () => {
+  const navigate = useNavigate();
   const [visibility, setVisibility] = useState({
     hero: false,
     introduction: false,
@@ -176,7 +178,7 @@ const Manufacturing = () => {
             <h1 style={{
               fontSize: isMobile ? '2rem' : '4rem',
               fontWeight: 'bold',
-              background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
+              background: '#305d94',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -288,7 +290,7 @@ const Manufacturing = () => {
           ref={manufacturingFacilityRef}
           data-section="manufacturingFacility"
           style={{
-            background: 'linear-gradient(to right, #305d94, #33b0c5)',
+            background: '#305d94',
             color: 'white',
             borderRadius: '1rem',
             padding: isMobile?'1rem':'2rem',
@@ -434,7 +436,7 @@ const Manufacturing = () => {
           ref={productPortfolioRef}
           data-section="productPortfolio"
           style={{
-            background: 'linear-gradient(to right, #dbeafe, #dcfce7)',
+            background: '#F3F4F6',
             borderRadius: '1rem',
             padding: '2px',
             marginBottom: '3rem',
@@ -468,7 +470,7 @@ const Manufacturing = () => {
               <div
                 key={index}
                 style={{
-                  background: product.color,
+                  background: "#305d94",
                   color: 'white',
                   borderRadius: '0.75rem',
                   padding: '1.5rem',
@@ -806,7 +808,7 @@ const Manufacturing = () => {
           ref={statsRef}
           data-section="stats"
           style={{
-            background: 'linear-gradient(to right, #305d94, #2563eb, #33b0c5)',
+            background: '#305d94',
             color: 'white',
             borderRadius: '1rem',
             padding: '2rem',
@@ -899,7 +901,7 @@ const Manufacturing = () => {
               Discover how our manufacturing capabilities can support your pharmaceutical needs.
             </p>
             <button style={{
-              background: 'linear-gradient(to right, #059669, #047857)',
+              background: '#305d94',
               color: 'white',
               padding: '1.25rem 2.5rem',
               borderRadius: '9999px',
@@ -923,10 +925,11 @@ const Manufacturing = () => {
               e.target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
             }}
             >
-              <span style={{
+              <span  style={{
                 position: 'relative',
-                zIndex: 10
-              }}>Get in Touch</span>
+                zIndex: 10,
+
+              }} onClick= {() =>navigate('/contact-us')}>Get in Touch</span>
               <div style={{
                 position: 'absolute',
                 top: 0,

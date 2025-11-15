@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { format } from 'date-fns';
 
 const AdminPanel = () => {
   const [activeTab, setActiveTab] = useState('blogs');
@@ -10,6 +11,7 @@ const AdminPanel = () => {
   const [error, setError] = useState('');
   const [editingItem, setEditingItem] = useState(null);
   const [formData, setFormData] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:4000/api/admin/${tab}/${id}`, {
+      const response = await fetch(`https://cipco-backend.onrender.com/api/admin/${tab}/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -69,6 +71,7 @@ const AdminPanel = () => {
   const handleEdit = (item, tab) => {
     setEditingItem(item);
     setFormData(item);
+    setSelectedImage(null);
   };
 
   const handleSave = async (tab) => {
@@ -78,20 +81,47 @@ const AdminPanel = () => {
       const url = editingItem
         ? `http://localhost:4000/api/admin/${tab}/${editingItem._id}`
         : `http://localhost:4000/api/admin/${tab}`;
+
+      // Validation for blogs
+      if (tab === 'blogs') {
+        if (!formData.image || !formData.tags || !formData.heading || !formData.date || !formData.content) {
+          setError('Please fill all required fields: image, tags, heading, date, content');
+          return;
+        }
+      }
+
+      let body;
+      let headers = {
+        'Authorization': `Bearer ${token}`,
+      };
+
+      if (tab === 'blogs' && selectedImage) {
+        const formDataWithImage = new FormData();
+        Object.keys(formData).forEach(key => {
+          if (formData[key] !== null && formData[key] !== undefined) {
+            formDataWithImage.append(key, formData[key]);
+          }
+        });
+        formDataWithImage.append('image', selectedImage);
+        body = formDataWithImage;
+      } else {
+        headers['Content-Type'] = 'application/json';
+        body = JSON.stringify(formData);
+      }
+
       const response = await fetch(url, {
         method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
+        headers,
+        body,
       });
       if (response.ok) {
         setEditingItem(null);
         setFormData({});
+        setSelectedImage(null);
         fetchData(tab);
       } else {
-        setError('Failed to save');
+        const errorData = await response.json();
+        setError(errorData.message || 'Failed to save');
       }
     } catch (err) {
       setError('Network error');
@@ -128,6 +158,23 @@ const AdminPanel = () => {
 
   const renderForm = (fields, tab) => (
     <div style={{ marginBottom: '1rem' }}>
+      {tab === 'blogs' && (
+        <div style={{ marginBottom: '1rem' }}>
+          <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setSelectedImage(e.target.files[0])}
+            style={{ display: 'block', width: '100%', marginBottom: '0.5rem', padding: '0.5rem', border: '1px solid #d1d5db' }}
+          />
+          {selectedImage && (
+            <img src={URL.createObjectURL(selectedImage)} alt="Preview" style={{ maxWidth: '200px', marginBottom: '0.5rem' }} />
+          )}
+          {editingItem && formData.image && !selectedImage && (
+            <img src={formData.image} alt="Current" style={{ maxWidth: '200px', marginBottom: '0.5rem' }} />
+          )}
+        </div>
+      )}
       {fields.map(field => {
         if (field === 'category') {
           return (
@@ -138,9 +185,9 @@ const AdminPanel = () => {
               style={{ display: 'block', width: '100%', marginBottom: '0.5rem', padding: '0.5rem', border: '1px solid #d1d5db' }}
             >
               <option value="">Select Category</option>
-              <option value="Research">Research</option>
-              <option value="Sustainability">Sustainability</option>
-              <option value="Innovation">Innovation</option>
+              <option value="Journey">Journey</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Vision">Vision</option>
               <option value="Future">Future</option>
               <option value="Quality">Quality</option>
               <option value="Global Health">Global Health</option>
@@ -157,6 +204,28 @@ const AdminPanel = () => {
               Published
             </label>
           );
+        } else if (field === 'tags') {
+          return (
+            <input
+              key={field}
+              type="text"
+              placeholder="Tags (comma separated)"
+              value={formData[field] || ''}
+              onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
+              style={{ display: 'block', width: '100%', marginBottom: '0.5rem', padding: '0.5rem', border: '1px solid #d1d5db' }}
+            />
+          );
+        } else if (field === 'date') {
+          return (
+            <input
+              key={field}
+              type="date"
+              placeholder={field}
+              value={formData[field] || ''}
+              onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
+              style={{ display: 'block', width: '100%', marginBottom: '0.5rem', padding: '0.5rem', border: '1px solid #d1d5db' }}
+            />
+          );
         } else {
           return (
             <input
@@ -170,45 +239,86 @@ const AdminPanel = () => {
           );
         }
       })}
-      <button onClick={() => handleSave(tab)} style={{ backgroundColor: '#2563eb', color: '#ffffff', padding: '0.5rem 1rem' }}>Save</button>
-      <button onClick={() => { setEditingItem(null); setFormData({}); }} style={{ marginLeft: '0.5rem', backgroundColor: '#4b5563', color: '#ffffff', padding: '0.5rem 1rem' }}>Cancel</button>
+      <button onClick={() => handleSave(tab)} className='rounded-[10px]' style={{ backgroundColor: '#2563eb', color: '#ffffff', padding: '0.5rem 1rem' }}>Save</button>
+      <button onClick={() => { setEditingItem(null); setFormData({}); setSelectedImage(null); }} className='rounded-[10px]' style={{ marginLeft: '0.5rem', backgroundColor: '#4b5563', color: '#ffffff', padding: '0.5rem 1rem' }}>Cancel</button>
     </div>
   );
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', backgroundColor: '#ffffff', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)' }}>
         <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Admin Panel</h1>
-        <button onClick={handleLogout} style={{ backgroundColor: '#dc2626', color: '#ffffff', padding: '0.5rem 1rem' }}>Logout</button>
+        <button onClick={handleLogout} className='rounded-[10px] hover:cursor-pointer' style={{ backgroundColor: '#dc2626', color: '#ffffff', padding: '0.5rem 1rem' }}>Logout</button>
       </div>
-      <div style={{ padding: '1rem' }}>
-        <div style={{ marginBottom: '1rem' }}>
-          <button onClick={() => setActiveTab('blogs')} style={{ marginRight: '0.5rem', padding: '0.5rem 1rem', backgroundColor: activeTab === 'blogs' ? '#2563eb' : '#e5e7eb', color: activeTab === 'blogs' ? '#ffffff' : '#000000' }}>Blogs</button>
-          <button onClick={() => setActiveTab('contacts')} style={{ marginRight: '0.5rem', padding: '0.5rem 1rem', backgroundColor: activeTab === 'contacts' ? '#2563eb' : '#e5e7eb', color: activeTab === 'contacts' ? '#ffffff' : '#000000' }}>Contacts</button>
-          <button onClick={() => setActiveTab('users')} style={{ padding: '0.5rem 1rem', backgroundColor: activeTab === 'users' ? '#2563eb' : '#e5e7eb', color: activeTab === 'users' ? '#ffffff' : '#000000' }}>Users</button>
+      {/* Main Layout */}
+      <div style={{ display: 'flex', height: 'calc(100vh - 64px)' }}>
+        {/* Left Navbar */}
+        <div style={{ width: '220px', backgroundColor: '#f1f5f9', padding: '2rem 1rem 1rem 1rem', borderRight: '1px solid #e5e7eb', display: 'flex', flexDirection: 'column' }}>
+          <button onClick={() => setActiveTab('blogs')}
+            style={{
+              marginBottom: '1rem',
+              padding: '0.75rem 1rem',
+              backgroundColor: activeTab === 'blogs' ? '#2563eb' : '#e5e7eb',
+              color: activeTab === 'blogs' ? '#ffffff' : '#000000',
+              border: 'none',
+              borderRadius: '0.375rem',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}>
+            Blogs
+          </button>
+          <button onClick={() => setActiveTab('contacts')}
+            style={{
+              marginBottom: '1rem',
+              padding: '0.75rem 1rem',
+              backgroundColor: activeTab === 'contacts' ? '#2563eb' : '#e5e7eb',
+              color: activeTab === 'contacts' ? '#ffffff' : '#000000',
+              border: 'none',
+              borderRadius: '0.375rem',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}>
+            Contacts
+          </button>
+{/*           <button onClick={() => setActiveTab('users')}
+            style={{
+              padding: '0.75rem 1rem',
+              backgroundColor: activeTab === 'users' ? '#2563eb' : '#e5e7eb',
+              color: activeTab === 'users' ? '#ffffff' : '#000000',
+              border: 'none',
+              borderRadius: '0.375rem',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}>
+            Users
+          </button> */}
         </div>
-        {error && <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fca5a5', color: '#dc2626', padding: '0.75rem 1rem', borderRadius: '0.25rem', marginBottom: '1rem' }}>{error}</div>}
-        {loading ? <div>Loading...</div> : (
-          <>
-            {activeTab === 'blogs' && (
-              <>
-                {renderForm(['title', 'content', 'author', 'category', 'summary', 'isPublished'], 'blogs')}
-                {renderTable(blogs, 'blogs', ['title', 'author', 'category', 'isPublished', 'createdAt'])}
-              </>
-            )}
-            {activeTab === 'contacts' && (
-              <>
-                {renderTable(contacts, 'contacts', ['name', 'email', 'phone', 'subject', 'message', 'status', 'priority', 'createdAt'])}
-              </>
-            )}
-            {activeTab === 'users' && (
-              <>
-                {renderForm(['name', 'email', 'role'], 'users')}
-                {renderTable(users, 'users', ['name', 'email', 'role', 'createdAt'])}
-              </>
-            )}
-          </>
-        )}
+        {/* Right Content */}
+        <div style={{ flex: 1, padding: '2rem 2rem', overflowY: 'auto' }}>
+          {error && <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fca5a5', color: '#dc2626', padding: '0.75rem 1rem', borderRadius: '0.25rem', marginBottom: '1rem' }}>{error}</div>}
+          {loading ? <div>Loading...</div> : (
+            <>
+              {activeTab === 'blogs' && (
+                <>
+                  {renderForm(['tags', 'heading', 'date', 'content'], 'blogs')}
+                  {renderTable(blogs, 'blogs', ['heading', 'tags', 'date'])}
+                </>
+              )}
+              {activeTab === 'contacts' && (
+                <>
+                  {renderTable(contacts, 'contacts', ['name', 'email', 'phone', 'subject', 'message', 'status', 'priority', 'createdAt'])}
+                </>
+              )}
+              {activeTab === 'users' && (
+                <>
+                  {renderForm(['name', 'email', 'role'], 'users')}
+                  {renderTable(users, 'users', ['name', 'email', 'role', 'createdAt'])}
+                </>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

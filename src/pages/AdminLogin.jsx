@@ -23,7 +23,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:4000/api/auth/login', {
+      const response = await fetch('https://cipco-backend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,9 +49,10 @@ const AdminLogin = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3rem 1.5rem' }}>
+    <>
+    <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0rem 1.5rem' }}>
       <div style={{ margin: '0 auto', width: '100%', maxWidth: '28rem' }}>
-        <h2 style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '1.875rem', fontWeight: '800', color: '#111827' }}>
+        <h2 style={{ marginTop: '0rem', textAlign: 'center', fontSize: '1.875rem', fontWeight: '800', color: '#111827' }}>
           Admin Login
         </h2>
         <p style={{ marginTop: '0.5rem', textAlign: 'center', fontSize: '0.875rem', color: '#4b5563' }}>
@@ -120,6 +121,7 @@ const AdminLogin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

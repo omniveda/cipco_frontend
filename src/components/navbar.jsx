@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Navbar() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [showPoliciesDropdown, setShowPoliciesDropdown] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -26,14 +28,33 @@ export default function Navbar() {
         { name: 'Products', path: '/products' },
         { name: 'Manufacturing',path: '/manufacturing' },
         { name: 'Media', path: '/media' },
-        { name: 'Certificate', path: '/certificates' },
+        // { name: 'Certificate', path: '/certificates' },
         { name: 'Contact Us', path: '/contact-us' },
         { name: 'Blog', path: '/blog' },
     ];
 
     const bottomMenuItems = [
+        { name: 'Investor Relation', path: '' },
+    ];
+
+    const superbottomMenuItems = [
         { name: 'RTA Details & Compliance officer details', path: '/rta-details-compliance-officer' },
         { name: 'Shareholding Pattern', path: '/Shareholding-Pattern' },
+        { name: 'Policies'}
+    ];
+
+    const policyItems = [
+        { name: 'Code of Business Conduct & Ethics', path: '/code-of-business-conduct-ethics' },
+        { name: 'Corporate Social Responsibility Policy', path: '/corporate-social-responsibility-policy' },
+        { name: 'Criteria for Making Payments to Non-Executive Directors', path: '/criteria-for-making-payments-to-non-executive-directors' },
+        { name: 'Familiarization Programme for Independent Directors', path: '/familiarization-programme-for-independent-directors' },
+        { name: 'Nomination and Remuneration Policy', path: '/nomination-and-remuneration-policy' },
+        { name: 'Policy for Preservation of Documents and Archival Policy', path: '/policy-for-preservation-of-documents-and-archival-policy' },
+        { name: 'Policy on Determining Material Subsidiaries', path: '/policy-on-determining-material-subsidiaries' },
+        { name: 'POSH Policy', path: '/posh-policy' },
+        { name: 'Related Party Transaction Policy', path: '/related-party-transaction-policy' },
+        { name: 'Risk Management Policy', path: '/risk-management-policy' },
+        { name: 'Whistle Blower Policy', path: '/whistle-blower-policy' },
     ];
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -96,25 +117,107 @@ export default function Navbar() {
 
                         <div style={{ borderTop: '2px solid #A4CAFE', margin: '0 32px' }}></div>
 
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px' }}>
-                            <nav style={{ display: 'flex'}}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 32px' }}>
+                            <nav style={{ display: 'flex', position: 'relative' }}>
                                 {bottomMenuItems.map((item, index) => (
-                                    <Link
+                                    <div
                                         key={index}
-                                        to={item.path}
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: '#1e40af',
-                                            fontSize: '14px',
-                                            margin: '16px 20px',
-                                            fontWeight: 600,
-                                            cursor: 'pointer'
-                                        }}
-                                        onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
-                                        onMouseOut={(e) => e.target.style.color = '#1e40af'}
+                                        style={{ position: 'relative' }}
+                                        onMouseEnter={() => item.name === 'Investor Relation' && setShowDropdown(true)}
+                                        onMouseLeave={() => item.name === 'Investor Relation' && setShowDropdown(false)}
                                     >
-                                        {item.name}
-                                    </Link>
+                                        <Link
+                                            to={item.path}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#305d94',
+                                                fontSize: '14px',
+                                                margin: '16px 20px',
+                                                fontWeight: 600,
+                                                cursor: 'pointer'
+                                            }}
+                                            onMouseOver={(e) => e.target.style.color = '#1d4ed8'}
+                                            onMouseOut={(e) => e.target.style.color = '#1e40af'}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                        {item.name === 'Investor Relation' && showDropdown && (
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '100%',
+                                                    left: 0,
+                                                    backgroundColor: '#F3F4F6',
+                                                    boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
+                                                    border: '1px solid #e5e7eb',
+                                                    borderRadius: '4px',
+                                                    zIndex: 60,
+                                                    minWidth: '300px'
+                                                }}
+                                            >
+                                                {superbottomMenuItems.map((subItem, subIndex) => (
+                                                    <div
+                                                        key={subIndex}
+                                                        style={{ position: 'relative' }}
+                                                        onMouseEnter={() => subItem.name === 'Policies' && setShowPoliciesDropdown(true)}
+                                                        onMouseLeave={() => subItem.name === 'Policies' && setShowPoliciesDropdown(false)}
+                                                    >
+                                                        <Link
+                                                            to={subItem.path}
+                                                            style={{
+                                                                display: 'block',
+                                                                textDecoration: 'none',
+                                                                color: '#374151',
+                                                                fontSize: '14px',
+                                                                padding: '10px 16px',
+                                                                fontWeight: 400,
+                                                                borderBottom: subIndex < superbottomMenuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                            }}
+                                                            onMouseOver={(e) => e.target.style.backgroundColor = '#f9fafb'}
+                                                            onMouseOut={(e) => e.target.style.backgroundColor = '#F3F4F6'}
+                                                        >
+                                                            {subItem.name}
+                                                        </Link>
+                                                        {subItem.name === 'Policies' && showPoliciesDropdown && (
+                                                            <div
+                                                                style={{
+                                                                    position: 'absolute',
+                                                                    top: 0,
+                                                                    left: '100%',
+                                                                    backgroundColor: '#e1e2e4ff',
+                                                                    boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
+                                                                    border: '1px solid #e5e7eb',
+                                                                    borderRadius: '4px',
+                                                                    zIndex: 70,
+                                                                    minWidth: '300px'
+                                                                }}
+                                                            >
+                                                                {policyItems.map((policyItem, policyIndex) => (
+                                                                    <Link
+                                                                        key={policyIndex}
+                                                                        to={policyItem.path}
+                                                                        style={{
+                                                                            display: 'block',
+                                                                            textDecoration: 'none',
+                                                                            color: '#374151',
+                                                                            fontSize: '14px',
+                                                                            padding: '10px 16px',
+                                                                            fontWeight: 400,
+                                                                            borderBottom: policyIndex < policyItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                                        }}
+                                                                        onMouseOver={(e) => e.target.style.backgroundColor = '#f9fafb'}
+                                                                        onMouseOut={(e) => e.target.style.backgroundColor = '#e1e2e4ff'}
+                                                                    >
+                                                                        {policyItem.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 ))}
                             </nav>
                             <Link to="/why-partner-with-us" onClick={closeMenu}>

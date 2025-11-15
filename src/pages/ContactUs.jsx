@@ -1,4 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+
+// TypingText component for typewriter effect
+const TypingText = ({ text, speed = 50, delay = 0, style, className }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [index, setIndex] = useState(0);
+  const ref = useRef();
+  const firstTime = useRef(true);
+
+  const isInView = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !firstTime.current) {
+          firstTime.current = true;
+          setIndex(0);
+          setDisplayedText('');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text, speed]);
+
+  return (
+    <span ref={ref} style={style} className={className}>
+      {displayedText}
+    </span>
+  );
+};
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +81,7 @@ const ContactUs = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/contacts', {
+      const response = await fetch('https://cipco-backend.onrender.com/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +108,12 @@ const ContactUs = () => {
       <div style={styles.firstcontainer}>
       <h1 style={styles.title}>Contact Us</h1>
       <p style={styles.description}>
-        We'd love to hear from you. Whether you have a question about our products, services, or anything else, our team is ready to assist you.
+        <TypingText
+          text="We'd love to hear from you. Whether you have a question about our products, services, or anything else, our team is ready to assist you."
+          speed={30}
+          delay={1000}
+          style={{ fontSize: '1em', color: '#555' }}
+        />
       </p>
       <div style={styles.contactInfo}>
         <div style={styles.infoItem}>
@@ -97,7 +146,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className={isMobile?'':'flex gap-[60px]'}>
+        <div className={isMobile?'':'flex w-[full] gap-[60px]'}>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Email<span className="text-[red]">*</span>
@@ -108,7 +157,7 @@ const ContactUs = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="johnsmith@gmail.com"
-            className={`${isMobile?"w-[90%]":"w-[245px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
             required
           />
         </div>
@@ -121,7 +170,7 @@ const ContactUs = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="+44789 123456"
-            className={`${isMobile?"w-[90%]":"w-[245px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
           />
         </div>
         </div>
@@ -180,18 +229,21 @@ const ContactUs = () => {
 const styles = {
   container: {
     padding: '20px',
-    // textAlign: 'center',
     animation: 'fadeIn 1s',
     marginTop: '100px',
+    background: 'linear-gradient(to bottom right, #f0fdf4, #ffffff, #dbeafe)',
+    minHeight: '100vh',
   },
   container2: {
     padding: '0px',
-    // textAlign: 'center',
     animation: 'fadeIn 1s',
     marginTop: '100px',
+    background: 'linear-gradient(to bottom right, #f0fdf4, #ffffff, #dbeafe)',
+    minHeight: '100vh',
   },
-  firstcontainer:{
+  firstcontainer: {
     textAlign: 'center',
+    marginBottom: '40px',
   },
   title: {
     fontSize: '2.5em',
@@ -202,6 +254,8 @@ const styles = {
     fontSize: '1.2em',
     color: '#555',
     marginBottom: '20px',
+    maxWidth: '600px',
+    margin: '0 auto 40px',
   },
   contactInfo: {
     display: 'flex',
@@ -210,18 +264,21 @@ const styles = {
     margin: '20px 0',
   },
   infoItem: {
-    backgroundColor: '#f9f9f9',
-    padding: '15px',
+    backgroundColor: '#ffffff',
+    padding: '20px',
     margin: '10px',
-    borderRadius: '5px',
+    borderRadius: '15px',
     flex: '1',
-    minWidth: '200px',
-    animation: 'slideIn 0.5s',
+    minWidth: '250px',
+    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+    border: '1px solid #e0e0e0',
+    transition: 'all 0.3s ease',
   },
   infoTitle: {
     fontSize: '1.2em',
     color: '#305d94',
     margin: '0 0 10px 0',
+    fontWeight: 'bold',
   },
   infoText: {
     fontSize: '1em',
@@ -230,48 +287,103 @@ const styles = {
   form: {
     maxWidth: '600px',
     margin: '0 auto',
+    padding: '30px',
+    backgroundColor: '#cce4e8',
+    borderRadius: '15px',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+    border: '1px solid #b8c9d4',
+  },
+  formMobile: {
+    width: '90%',
+    margin: '0 auto',
     padding: '20px',
-    backgroundColor: '#f9f9f9',
-    borderRadius: '10px',
-    animation: 'slideIn 0.5s',
+    backgroundColor: '#cce4e8',
+    borderRadius: '15px',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+    border: '1px solid #b8c9d4',
+    marginBottom: '20px',
   },
-  formGroup: {
-    marginBottom: '15px',
-    textAlign: 'left',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '5px',
+  formTitle: {
+    fontSize: '1.5em',
+    color: '#305d94',
+    marginBottom: '20px',
+    textAlign: 'center',
     fontWeight: 'bold',
-    color: '#333',
+  },
+  flexRow: {
+    display: 'flex',
+    gap: '20px',
+  },
+  flexItem: {
+    flex: 1,
   },
   input: {
     width: '100%',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
+    padding: '12px',
+    border: '1px solid #D1D5DB',
+    borderRadius: '8px',
     fontSize: '1em',
+    marginBottom: '14px',
+    transition: 'border-color 0.3s',
+  },
+  inputMobile: {
+    width: '90%',
+    padding: '12px',
+    border: '1px solid #D1D5DB',
+    borderRadius: '8px',
+    fontSize: '1em',
+    marginBottom: '14px',
+    transition: 'border-color 0.3s',
   },
   textarea: {
     width: '100%',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
+    padding: '12px',
+    border: '1px solid #D1D5DB',
+    borderRadius: '8px',
     fontSize: '1em',
     minHeight: '100px',
+    marginBottom: '14px',
+    transition: 'border-color 0.3s',
+  },
+  textareaMobile: {
+    width: '90%',
+    padding: '12px',
+    border: '1px solid #D1D5DB',
+    borderRadius: '8px',
+    fontSize: '1em',
+    minHeight: '100px',
+    marginBottom: '14px',
+    transition: 'border-color 0.3s',
+  },
+  successMessage: {
+    backgroundColor: '#BCF0DA',
+    border: '1px solid #0E9F6E',
+    color: '#046C4E',
+    padding: '10px',
+    borderRadius: '8px',
+    marginBottom: '10px',
+    textAlign: 'center',
+  },
+  errorMessage: {
+    backgroundColor: '#FBD5D5',
+    border: '1px solid #F05252',
+    color: '#C81E1E',
+    padding: '10px',
+    borderRadius: '8px',
+    marginBottom: '10px',
+    textAlign: 'center',
   },
   button: {
-    padding: '10px 20px',
+    width: '100%',
+    padding: '12px',
     backgroundColor: '#305d94',
     color: 'white',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '8px',
     fontSize: '1em',
+    fontWeight: 'bold',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  buttonHover: {
-    backgroundColor: '#305d94',
+    transition: 'all 0.3s',
   },
 };
 

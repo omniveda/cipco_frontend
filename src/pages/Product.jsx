@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import med1 from '../assets/product/otab5.webp';
 import med2 from '../assets/product/otab6.webp';
 import med3 from '../assets/product/otab7.webp';
@@ -10,6 +11,7 @@ import medi from '../assets/product/medi.webp';
 
 
 const Products = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState('tablets');
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -706,8 +708,8 @@ const Products = () => {
           Contact us to learn more about our complete offerings.
         </p>
         <div style={styles.ctaButtons}>
-          <button style={styles.primaryCtaButton}>Browse Full Catalog</button>
-          <button style={styles.secondaryCtaButton}>Contact Sales</button>
+          {/* <button style={styles.primaryCtaButton} >Browse Full Catalog</button> */}
+          <button style={styles.secondaryCtaButton} onClick={() => navigate('/contact-us')}>Contact Sales</button>
         </div>
       </div>
     </div>
@@ -910,7 +912,7 @@ const styles = {
   ctaSection: {
     textAlign: 'center',
     padding: '60px 30px',
-    background: 'linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%)',
+    background: '#F3F4F6',
     borderRadius: '20px',
   },
   ctaTitle: {

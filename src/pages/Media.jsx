@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Media = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState('news');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const navigate = useNavigate();
 
     useEffect(()=>{
       const handleResize = () =>{
@@ -153,7 +155,7 @@ const Media = () => {
           <p style={styles.contactEmail}>📧info@cipcopharma.com</p>
           <p style={styles.contactPhone}>📞 0731 4020311</p>
         </div>
-        <button style={styles.contactButton}>Contact Media Team</button>
+        <button onClick={()=>navigate('/contact-us')} style={styles.contactButton}>Contact Us</button>
       </div>
     </div>
   );
