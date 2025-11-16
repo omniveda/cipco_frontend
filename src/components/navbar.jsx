@@ -400,7 +400,9 @@ export default function Navbar() {
                             backgroundColor: 'white',
                             boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
                             zIndex: 40,
-                            padding: '20px'
+                            padding: '20px',
+                            maxHeight: 'calc(100vh - 100px)',
+                            overflowY: 'auto'
                         }}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
