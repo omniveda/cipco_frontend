@@ -222,10 +222,10 @@ const Blog = () => {
               )}
             </div>
             <div style={styles.blogContent}>
-              <span style={styles.blogCategory}>{post.category}</span>
-              <h3 style={styles.blogTitle}>{post.title}</h3>
-              <p style={styles.blogDate}>{new Date(post.createdAt).toLocaleDateString()}</p>
-              <p style={isMobile?styles.blogSummary2:styles.blogSummary}>{post.summary}</p>
+              <span style={styles.blogCategory}>{post.tags}</span>
+              <h3 style={styles.blogTitle}>{post.heading}</h3>
+              <p style={styles.blogDate}>{post.date}</p>
+              <p style={isMobile?styles.blogSummary2:styles.blogSummary}>{post.content}</p>
               {/* <button style={styles.readMoreButton}>Read More →</button> */}
             </div>
           </div>

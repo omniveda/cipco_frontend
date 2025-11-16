@@ -528,7 +528,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className=' mt-[70px] mx-[100px]'
+          className= {isMobile?' mt-[70px]':' mt-[70px] mx-[100px]'}
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-row bg-[#F3F4F6] pb-[10px] rounded-[40px]':'flex flex-row bg-[#F3F4F6] p-[80px] rounded-[40px]'}>
                 <motion.div variants={childVariants}>
@@ -739,7 +739,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[70px] mx-[100px]'
+          className={isMobile?'mt-[70px]':'mt-[70px] mx-[100px]'}
         >
             <motion.div variants={childVariants} className={isMobile?'flex flex-col bg-[#0057A0] p-[0px] rounded-[40px]  items-center':'flex flex-row bg-[#0057A0] p-[80px] rounded-[40px] pl-[120px] items-center'}>
                 <motion.div variants={childVariants} className={isMobile?'w-[90%]':'w-[60%]'}>

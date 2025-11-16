@@ -84,7 +84,8 @@ const AdminPanel = () => {
 
       // Validation for blogs
       if (tab === 'blogs') {
-        if (!formData.image || !formData.tags || !formData.heading || !formData.date || !formData.content) {
+        if ( !formData.tags || !formData.heading || !formData.date || !formData.content) {
+          console.log(formData)
           setError('Please fill all required fields: image, tags, heading, date, content');
           return;
         }
@@ -219,8 +220,8 @@ const AdminPanel = () => {
           return (
             <input
               key={field}
-              type="date"
-              placeholder={field}
+              type="text"
+              placeholder={"11 month 2024"}
               value={formData[field] || ''}
               onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
               style={{ display: 'block', width: '100%', marginBottom: '0.5rem', padding: '0.5rem', border: '1px solid #d1d5db' }}

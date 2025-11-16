@@ -8,6 +8,7 @@ export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const [showPoliciesDropdown, setShowPoliciesDropdown] = useState(false);
+    const [showAboutDropdown, setShowAboutDropdown]=useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -24,13 +25,18 @@ export default function Navbar() {
     }, []);
 
     const topMenuItems = [
-        { name: 'About Us' , path: '/about-us'},
+        { name: 'About' , path:''},
         { name: 'Products', path: '/products' },
         { name: 'Manufacturing',path: '/manufacturing' },
         { name: 'Media', path: '/media' },
         // { name: 'Certificate', path: '/certificates' },
         { name: 'Contact Us', path: '/contact-us' },
         { name: 'Blog', path: '/blog' },
+    ];
+
+    const aboutBottomMenuItems = [
+        {name: "About us", path:'/about-us'},
+        {name: "Teams", path:'/teams'},
     ];
 
     const bottomMenuItems = [
@@ -96,22 +102,82 @@ export default function Navbar() {
                     <div>
                         <nav style={{ display: 'flex'}}>
                             {topMenuItems.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    to={item.path}
-                                    style={{
-                                        textDecoration: 'none',
-                                        color: '#374151',
-                                        fontSize: '14px',
-                                        margin: '10px 18px',
-                                        fontWeight: 400,
-                                        cursor: 'pointer'
-                                    }}
-                                    onMouseOver={(e) => e.target.style.color = '#374151'}
-                                    onMouseOut={(e) => e.target.style.color = '#374151'}
-                                >
-                                    {item.name}
-                                </Link>
+                                item.name === 'About' ? (
+                                    <div
+                                        key={index}
+                                        style={{ position: 'relative', margin: '10px 18px' }}
+                                        onMouseEnter={() => setShowAboutDropdown(true)}
+                                        onMouseLeave={() => setShowAboutDropdown(false)}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#374151',
+                                                fontSize: '14px',
+                                                // margin: '10px 18px',
+                                                fontWeight: 400,
+                                                cursor: 'pointer'
+                                            }}
+                                            onMouseOver={(e) => e.target.style.color = '#374151'}
+                                            onMouseOut={(e) => e.target.style.color = '#374151'}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                        {showAboutDropdown && (
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '100%',
+                                                    left: 0,
+                                                    backgroundColor: '#F3F4F6',
+                                                    boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
+                                                    border: '1px solid #e5e7eb',
+                                                    borderRadius: '4px',
+                                                    zIndex: 60,
+                                                    minWidth: '200px'
+                                                }}
+                                            >
+                                                {aboutBottomMenuItems.map((subItem, subIndex) => (
+                                                    <Link
+                                                        key={subIndex}
+                                                        to={subItem.path}
+                                                        style={{
+                                                            display: 'block',
+                                                            textDecoration: 'none',
+                                                            color: '#374151',
+                                                            fontSize: '14px',
+                                                            padding: '10px 16px',
+                                                            fontWeight: 400,
+                                                            borderBottom: subIndex < aboutBottomMenuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                        }}
+                                                        onMouseOver={(e) => e.target.style.backgroundColor = '#f9fafb'}
+                                                        onMouseOut={(e) => e.target.style.backgroundColor = '#F3F4F6'}
+                                                    >
+                                                        {subItem.name}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <Link
+                                        key={index}
+                                        to={item.path}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: '#374151',
+                                            fontSize: '14px',
+                                            margin: '10px 18px',
+                                            fontWeight: 400,
+                                            cursor: 'pointer'
+                                        }}
+                                        onMouseOver={(e) => e.target.style.color = '#374151'}
+                                        onMouseOut={(e) => e.target.style.color = '#374151'}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                )
                             ))}
                         </nav>
 
