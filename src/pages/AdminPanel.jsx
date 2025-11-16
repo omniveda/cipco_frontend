@@ -7,6 +7,7 @@ const AdminPanel = () => {
   const [blogs, setBlogs] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [editingItem, setEditingItem] = useState(null);
@@ -38,6 +39,7 @@ const AdminPanel = () => {
         if (tab === 'blogs') setBlogs(data);
         else if (tab === 'contacts') setContacts(data);
         else if (tab === 'users') setUsers(data);
+        else if (tab === 'teams') setTeams(data);
       } else {
         setError('Failed to fetch data');
       }
@@ -91,12 +93,20 @@ const AdminPanel = () => {
         }
       }
 
+      // Validation for teams
+      if (tab === 'teams') {
+        if (!formData.name || !formData.designation) {
+          setError('Please fill all required fields: name, designation');
+          return;
+        }
+      }
+
       let body;
       let headers = {
         'Authorization': `Bearer ${token}`,
       };
 
-      if (tab === 'blogs' && selectedImage) {
+      if ((tab === 'blogs' || tab === 'teams') && selectedImage) {
         const formDataWithImage = new FormData();
         Object.keys(formData).forEach(key => {
           if (formData[key] !== null && formData[key] !== undefined) {
@@ -159,7 +169,7 @@ const AdminPanel = () => {
 
   const renderForm = (fields, tab) => (
     <div style={{ marginBottom: '1rem' }}>
-      {tab === 'blogs' && (
+      {(tab === 'blogs' || tab === 'teams') && (
         <div style={{ marginBottom: '1rem' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>Image</label>
           <input
@@ -282,6 +292,19 @@ const AdminPanel = () => {
             }}>
             Contacts
           </button>
+          <button onClick={() => setActiveTab('teams')}
+            style={{
+              marginBottom: '1rem',
+              padding: '0.75rem 1rem',
+              backgroundColor: activeTab === 'teams' ? '#2563eb' : '#e5e7eb',
+              color: activeTab === 'teams' ? '#ffffff' : '#000000',
+              border: 'none',
+              borderRadius: '0.375rem',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}>
+            Teams
+          </button>
 {/*           <button onClick={() => setActiveTab('users')}
             style={{
               padding: '0.75rem 1rem',
@@ -309,6 +332,12 @@ const AdminPanel = () => {
               {activeTab === 'contacts' && (
                 <>
                   {renderTable(contacts, 'contacts', ['name', 'email', 'phone', 'subject', 'message', 'status', 'priority', 'createdAt'])}
+                </>
+              )}
+              {activeTab === 'teams' && (
+                <>
+                  {renderForm(['name', 'designation'], 'teams')}
+                  {renderTable(teams, 'teams', ['name', 'designation'])}
                 </>
               )}
               {activeTab === 'users' && (
