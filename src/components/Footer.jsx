@@ -135,9 +135,15 @@ export default function Footer() {
                     <div className='cursor-pointer'><Link to="/terms" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Terms & Condition</Link></div>
                 </div>
             </div>
-            <div className='text-[12px] flex gap-[3px] text-right justify-right'>
+            <div className='text-[12px] flex text-right justify-between'>
+                <div className='flex gap-[3px]'>
                 <p className='text-[#6B7280]'>Developed by </p>
-                <p className='text-[#fe1981]'> Cybite</p>
+                <p className='text-[#fe1981] cursor-pointer' onClick={()=>window.open("https://cybite.in/","_blank")}> Cybite</p>
+                </div>
+                <div className='flex gap-[3px]'>
+                    <p className='text-[#6B7280]'>Marketing by </p>
+                <p className='text-[#FFAF00] cursor-pointer' onClick={() => window.open("https://www.goldengallopm.com/", "_blank")}> GoldenGallop</p>
+                </div>
             </div>
         </div>
     );

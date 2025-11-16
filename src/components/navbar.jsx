@@ -9,6 +9,9 @@ export default function Navbar() {
     const [showDropdown, setShowDropdown] = useState(false);
     const [showPoliciesDropdown, setShowPoliciesDropdown] = useState(false);
     const [showAboutDropdown, setShowAboutDropdown]=useState(false);
+    const [showMobileAboutDropdown, setShowMobileAboutDropdown] = useState(false);
+    const [showMobileInvestorDropdown, setShowMobileInvestorDropdown] = useState(false);
+    const [showMobilePoliciesDropdown, setShowMobilePoliciesDropdown] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -393,7 +396,7 @@ export default function Navbar() {
                             position: 'absolute',
                             top: '100%',
                             left: 0,
-                            width: '100%',
+                            width: '90%',
                             backgroundColor: 'white',
                             boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
                             zIndex: 40,
@@ -411,27 +414,89 @@ export default function Navbar() {
                             transition={{ delay: 0.1, duration: 0.3 }}
                         >
                             {topMenuItems.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.05, duration: 0.3 }}
-                                >
-                                    <Link
-                                        to={item.path}
-                                        onClick={closeMenu}
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: '#374151',
-                                            fontSize: '16px',
-                                            fontWeight: 400,
-                                            padding: '8px 0',
-                                            display: 'block'
-                                        }}
+                                item.name === 'About' ? (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.05, duration: 0.3 }}
                                     >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
+                                        <div
+                                            onClick={() => setShowMobileAboutDropdown(!showMobileAboutDropdown)}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#374151',
+                                                fontSize: '16px',
+                                                fontWeight: 400,
+                                                padding: '8px 0',
+                                                display: 'block',
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            {item.name}
+                                            <span style={{ marginLeft: '8px' }}>
+                                                {showMobileAboutDropdown ? '▲' : '▼'}
+                                            </span>
+                                        </div>
+                                        <AnimatePresence>
+                                            {showMobileAboutDropdown && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    style={{
+                                                        backgroundColor: '#F3F4F6',
+                                                        borderRadius: '4px',
+                                                        marginTop: '8px',
+                                                        overflow: 'hidden'
+                                                    }}
+                                                >
+                                                    {aboutBottomMenuItems.map((subItem, subIndex) => (
+                                                        <Link
+                                                            key={subIndex}
+                                                            to={subItem.path}
+                                                            onClick={closeMenu}
+                                                            style={{
+                                                                display: 'block',
+                                                                textDecoration: 'none',
+                                                                color: '#374151',
+                                                                fontSize: '16px',
+                                                                padding: '10px 16px',
+                                                                fontWeight: 400,
+                                                                borderBottom: subIndex < aboutBottomMenuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                            }}
+                                                        >
+                                                            {subItem.name}
+                                                        </Link>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            onClick={closeMenu}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#374151',
+                                                fontSize: '16px',
+                                                fontWeight: 400,
+                                                padding: '8px 0',
+                                                display: 'block'
+                                            }}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    </motion.div>
+                                )
                             ))}
                             <motion.div
                                 style={{ borderTop: '1px solid #e5e7eb', margin: '8px 0' }}
@@ -440,27 +505,150 @@ export default function Navbar() {
                                 transition={{ delay: 0.3, duration: 0.3 }}
                             ></motion.div>
                             {bottomMenuItems.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: (topMenuItems.length + index) * 0.05, duration: 0.3 }}
-                                >
-                                    <Link
-                                        to={item.path}
-                                        onClick={closeMenu}
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: '#1e40af',
-                                            fontSize: '16px',
-                                            fontWeight: 600,
-                                            padding: '8px 0',
-                                            display: 'block'
-                                        }}
+                                item.name === 'Investor Relation' ? (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: (topMenuItems.length + index) * 0.05, duration: 0.3 }}
                                     >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
+                                        <div
+                                            onClick={() => setShowMobileInvestorDropdown(!showMobileInvestorDropdown)}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#1e40af',
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                padding: '8px 0',
+                                                display: 'block',
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            {item.name}
+                                            <span style={{ marginLeft: '8px' }}>
+                                                {showMobileInvestorDropdown ? '▲' : '▼'}
+                                            </span>
+                                        </div>
+                                        <AnimatePresence>
+                                            {showMobileInvestorDropdown && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    style={{
+                                                        backgroundColor: '#F3F4F6',
+                                                        borderRadius: '4px',
+                                                        marginTop: '8px',
+                                                        overflow: 'hidden'
+                                                    }}
+                                                >
+                                                    {superbottomMenuItems.map((subItem, subIndex) => (
+                                                        subItem.name === 'Policies' ? (
+                                                            <div
+                                                                key={subIndex}
+                                                                style={{ position: 'relative' }}
+                                                            >
+                                                                <div
+                                                                    onClick={() => setShowMobilePoliciesDropdown(!showMobilePoliciesDropdown)}
+                                                                    style={{
+                                                                        display: 'block',
+                                                                        textDecoration: 'none',
+                                                                        color: '#374151',
+                                                                        fontSize: '16px',
+                                                                        padding: '10px 16px',
+                                                                        fontWeight: 400,
+                                                                        cursor: 'pointer',
+                                                                        borderBottom: subIndex < superbottomMenuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                                    }}
+                                                                >
+                                                                    {subItem.name}
+                                                                    <span style={{ marginLeft: '8px' }}>
+                                                                        {showMobilePoliciesDropdown ? '▲' : '▼'}
+                                                                    </span>
+                                                                </div>
+                                                                <AnimatePresence>
+                                                                    {showMobilePoliciesDropdown && (
+                                                                        <motion.div
+                                                                            initial={{ opacity: 0, height: 0 }}
+                                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                                            exit={{ opacity: 0, height: 0 }}
+                                                                            transition={{ duration: 0.3 }}
+                                                                            style={{
+                                                                                backgroundColor: '#e1e2e4ff',
+                                                                                borderRadius: '4px',
+                                                                                marginTop: '4px',
+                                                                                overflow: 'hidden'
+                                                                            }}
+                                                                        >
+                                                                            {policyItems.map((policyItem, policyIndex) => (
+                                                                                <Link
+                                                                                    key={policyIndex}
+                                                                                    to={policyItem.path}
+                                                                                    onClick={closeMenu}
+                                                                                    style={{
+                                                                                        display: 'block',
+                                                                                        textDecoration: 'none',
+                                                                                        color: '#374151',
+                                                                                        fontSize: '16px',
+                                                                                        padding: '10px 20px',
+                                                                                        fontWeight: 400,
+                                                                                        borderBottom: policyIndex < policyItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                                                    }}
+                                                                                >
+                                                                                    {policyItem.name}
+                                                                                </Link>
+                                                                            ))}
+                                                                        </motion.div>
+                                                                    )}
+                                                                </AnimatePresence>
+                                                            </div>
+                                                        ) : (
+                                                            <Link
+                                                                key={subIndex}
+                                                                to={subItem.path}
+                                                                onClick={closeMenu}
+                                                                style={{
+                                                                    display: 'block',
+                                                                    textDecoration: 'none',
+                                                                    color: '#374151',
+                                                                    fontSize: '16px',
+                                                                    padding: '10px 16px',
+                                                                    fontWeight: 400,
+                                                                    borderBottom: subIndex < superbottomMenuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                                                }}
+                                                            >
+                                                                {subItem.name}
+                                                            </Link>
+                                                        )
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: (topMenuItems.length + index) * 0.05, duration: 0.3 }}
+                                    >
+                                        <Link
+                                            to={item.path}
+                                            onClick={closeMenu}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#1e40af',
+                                                fontSize: '16px',
+                                                fontWeight: 600,
+                                                padding: '8px 0',
+                                                display: 'block'
+                                            }}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    </motion.div>
+                                )
                             ))}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
