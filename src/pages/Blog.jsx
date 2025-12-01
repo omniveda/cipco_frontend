@@ -21,7 +21,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/blogs');
+        const response = await fetch('https://cipcopharma.com/api/blogs');
         if (response.ok) {
           const data = await response.json();
           setBlogPosts(data.blogs || []);
@@ -232,21 +232,6 @@ const Blog = () => {
         ))}
       </div>
 
-      {/* Newsletter Subscription */}
-      <div style={styles.newsletterSection}>
-        <h2 style={styles.newsletterTitle}>Stay Updated</h2>
-        <p style={styles.newsletterText}>
-          Subscribe to our newsletter for the latest blog posts and industry insights.
-        </p>
-        <div style={styles.newsletterForm}>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            style={styles.newsletterInput}
-          />
-          <button style={styles.newsletterButton}>Subscribe</button>
-        </div>
-      </div>
     </div>
   );
 };

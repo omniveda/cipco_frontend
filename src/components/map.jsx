@@ -17,7 +17,7 @@ export default function Map(){
 
     return(
         <div className='p-[0px]' style={{ paddingLeft: '100px', paddingRight: '100px', position: 'relative' }}>
-                <motion.h2 className='text-[30px] text-[#4a4f4e]'>Where We Are</motion.h2>
+                <motion.h2 className='text-[30px] text-[#4a4f4e]'>Global Footprint</motion.h2>
                 <img src={map} style={{ opacity: 0.5, width: '100%', height: '100%' }} alt="" />
                 {locations.map(location => (
                     <motion.div

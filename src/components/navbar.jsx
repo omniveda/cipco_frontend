@@ -49,22 +49,10 @@ export default function Navbar() {
     const superbottomMenuItems = [
         { name: 'RTA Details & Compliance officer details', path: '/rta-details-compliance-officer' },
         { name: 'Shareholding Pattern', path: '/Shareholding-Pattern' },
-        { name: 'Policies'}
+        { name: 'Policies', path: '/policies' },
     ];
 
-    const policyItems = [
-        { name: 'Code of Business Conduct & Ethics', path: '/code-of-business-conduct-ethics' },
-        { name: 'Corporate Social Responsibility Policy', path: '/corporate-social-responsibility-policy' },
-        { name: 'Criteria for Making Payments to Non-Executive Directors', path: '/criteria-for-making-payments-to-non-executive-directors' },
-        { name: 'Familiarization Programme for Independent Directors', path: '/familiarization-programme-for-independent-directors' },
-        { name: 'Nomination and Remuneration Policy', path: '/nomination-and-remuneration-policy' },
-        { name: 'Policy for Preservation of Documents and Archival Policy', path: '/policy-for-preservation-of-documents-and-archival-policy' },
-        { name: 'Policy on Determining Material Subsidiaries', path: '/policy-on-determining-material-subsidiaries' },
-        { name: 'POSH Policy', path: '/posh-policy' },
-        { name: 'Related Party Transaction Policy', path: '/related-party-transaction-policy' },
-        { name: 'Risk Management Policy', path: '/risk-management-policy' },
-        { name: 'Whistle Blower Policy', path: '/whistle-blower-policy' },
-    ];
+    
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -228,8 +216,7 @@ export default function Navbar() {
                                                     <div
                                                         key={subIndex}
                                                         style={{ position: 'relative' }}
-                                                        onMouseEnter={() => subItem.name === 'Policies' && setShowPoliciesDropdown(true)}
-                                                        onMouseLeave={() => subItem.name === 'Policies' && setShowPoliciesDropdown(false)}
+                                                        
                                                     >
                                                         <Link
                                                             to={subItem.path}
@@ -247,41 +234,6 @@ export default function Navbar() {
                                                         >
                                                             {subItem.name}
                                                         </Link>
-                                                        {subItem.name === 'Policies' && showPoliciesDropdown && (
-                                                            <div
-                                                                style={{
-                                                                    position: 'absolute',
-                                                                    top: 0,
-                                                                    left: '100%',
-                                                                    backgroundColor: '#e1e2e4ff',
-                                                                    boxShadow: '0 4px 6px -4px rgba(0, 0, 0, 0.2)',
-                                                                    border: '1px solid #e5e7eb',
-                                                                    borderRadius: '4px',
-                                                                    zIndex: 70,
-                                                                    minWidth: '300px'
-                                                                }}
-                                                            >
-                                                                {policyItems.map((policyItem, policyIndex) => (
-                                                                    <Link
-                                                                        key={policyIndex}
-                                                                        to={policyItem.path}
-                                                                        style={{
-                                                                            display: 'block',
-                                                                            textDecoration: 'none',
-                                                                            color: '#374151',
-                                                                            fontSize: '14px',
-                                                                            padding: '10px 16px',
-                                                                            fontWeight: 400,
-                                                                            borderBottom: policyIndex < policyItems.length - 1 ? '1px solid #e5e7eb' : 'none'
-                                                                        }}
-                                                                        onMouseOver={(e) => e.target.style.backgroundColor = '#f9fafb'}
-                                                                        onMouseOut={(e) => e.target.style.backgroundColor = '#e1e2e4ff'}
-                                                                    >
-                                                                        {policyItem.name}
-                                                                    </Link>
-                                                                ))}
-                                                            </div>
-                                                        )}
                                                     </div>
                                                 ))}
                                             </div>

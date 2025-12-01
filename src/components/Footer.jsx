@@ -27,19 +27,18 @@ export default function Footer() {
                         <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <div className='mb-[20px] font-[600]'>Quick Links</div>
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/about-us" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>About Us</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/manufacturing" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Facilities</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/products" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Resources</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Careers</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/manufacturing" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Manufacturing</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/products" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Products</Link></li>
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/rnd-innovation" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Drug Discovery</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/manufacturing" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Drug Substance</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/manufacturing" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Drug Product</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/teams" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Teams</Link></li>
                         </ul>
                         <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <h4></h4>
                             <li className='text-[#6B7280] mb-[13px] mt-[40px]'><Link to="/media" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>News & Media</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/blog" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Events</Link></li>
-                            <li className='text-[#6B7280] mb-[13px]'><Link to="/" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Sustainability</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/blog" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Blogs</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/Shareholding-Pattern" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Shareholding Pattern</Link></li>
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/contact-us" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Contact Us</Link></li>
+                            <li className='text-[#6B7280] mb-[13px]'><Link to="/rta-details-compliance-officer" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>RTA Details Compliance Officer</Link></li>
                         </ul>
                         {/* <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <h4></h4>
@@ -48,7 +47,7 @@ export default function Footer() {
                             <li className='text-[#6B7280] mb-[13px]'>Nutrition Solutions</li>
                             <li className='text-[#6B7280] mb-[13px]'>Why Partner With Us?</li>
                         </ul> */}
-                        <ul style={{ listStyleType: 'none', padding: 0 }}>
+                        {/* <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <div className='mb-[15px] font-[600]'>Policies</div>
                             <li className='mb-[15px]'><Link to="/code-of-business-conduct-ethics" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Code of Business Conduct & Ethics</Link></li>
                             <li className='mb-[15px]'><Link to="/corporate-social-responsibility-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Corporate Social Responsibility Policy</Link></li>
@@ -61,7 +60,7 @@ export default function Footer() {
                             <li className='mb-[15px]'><Link to="/related-party-transaction-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Related Party Transaction Policy</Link></li>
                             <li className='mb-[15px]'><Link to="/risk-management-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Risk Management Policy</Link></li>
                             <li className='mb-[15px]'><Link to="/whistle-blower-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Whistle Blower Policy</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             )}
@@ -87,7 +86,7 @@ export default function Footer() {
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Sustainability</Link></li>
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/contact-us" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Contact Us</Link></li>
                         </ul>
-                        <ul style={{ listStyleType: 'none', padding: 0 }}>
+                        {/* <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <div className='mb-[10px] font-[600]'>Policies</div>
                             <li className='mb-[8px]'><Link to="/code-of-business-conduct-ethics" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Code of Business Conduct & Ethics</Link></li>
                             <li className='mb-[8px]'><Link to="/corporate-social-responsibility-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Corporate Social Responsibility Policy</Link></li>
@@ -100,7 +99,7 @@ export default function Footer() {
                             <li className='mb-[8px]'><Link to="/related-party-transaction-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Related Party Transaction Policy</Link></li>
                             <li className='mb-[8px]'><Link to="/risk-management-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Risk Management Policy</Link></li>
                             <li className='mb-[8px]'><Link to="/whistle-blower-policy" className='text-[#6B7280] block' style={{ textDecoration: 'none' }}>Whistle Blower Policy</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             )}

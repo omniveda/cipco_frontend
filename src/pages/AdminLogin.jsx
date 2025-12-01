@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import backgroundGif from '../assets/background/Blue White Abstract Color and Style Video Background.gif';
+import logo from '../assets/logo/logo-nav.png';
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +25,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const response = await fetch('https://cipco-backend.onrender.com/api/auth/login', {
+      const response = await fetch('https://cipcopharma.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +52,13 @@ const AdminLogin = () => {
 
   return (
     <>
-    <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0rem 1.5rem' }}>
+    <div style={{ minHeight: '100vh', backgroundImage: `url(${backgroundGif})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0rem 1.5rem', position: 'relative' }}>
+      <Link to="/">
+        <img src={logo} alt="Logo" style={{ position: 'absolute', top: '1rem', left: '1rem', width: '200px', height: 'auto', cursor: 'pointer' }} />
+      </Link>
+      <Link to="/">
+        <p className='bg-[white] text-[gray] text-[20px] p-[4px] rounded-[10px] mr-[6px]' style={{ position: 'absolute', top: '0rem', right: '0rem', width: 'auto', height: 'auto', cursor: 'pointer' }}>Back to Home</p>
+      </Link>
       <div style={{ margin: '0 auto', width: '100%', maxWidth: '28rem' }}>
         <h2 style={{ marginTop: '0rem', textAlign: 'center', fontSize: '1.875rem', fontWeight: '800', color: '#111827' }}>
           Admin Login
@@ -61,10 +69,10 @@ const AdminLogin = () => {
       </div>
 
       <div style={{ marginTop: '2rem', margin: '0 auto', width: '100%', maxWidth: '28rem' }}>
-        <div style={{ backgroundColor: '#ffffff', padding: '2rem 2.5rem', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)', borderRadius: '0.5rem' }}>
+        <div style={{ backgroundColor: '#F3F4F6', padding: '2rem 2.5rem', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)', borderRadius: '0.5rem' }}>
           <form onSubmit={handleSubmit}>
             {error && (
-              <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fca5a5', color: '#dc2626', padding: '0.75rem 1rem', borderRadius: '0.25rem' }}>
+              <div style={{ backgroundColor: '#F3F4F6', border: '1px solid #fca5a5', color: '#dc2626', padding: '0.75rem 1rem', borderRadius: '0.25rem' }}>
                 {error}
               </div>
             )}

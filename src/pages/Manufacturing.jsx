@@ -487,12 +487,12 @@ const Manufacturing = () => {
                   alignItems: 'center',
                   marginBottom: '1rem'
                 }}>
-                  <div style={{
+                  {/* <div style={{
                     fontSize: '2.5rem',
                     marginRight: '1rem',
                     animation: 'bounce 1s infinite'
-                  }}>{product.icon}</div>
-                  <div style={{
+                  }}>{product.icon}</div> */}
+                  {/* <div style={{
                     width: '3rem',
                     height: '3rem',
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -502,7 +502,7 @@ const Manufacturing = () => {
                     justifyContent: 'center'
                   }}>
                     <span style={{ fontSize: '1.5rem' }}>💊</span>
-                  </div>
+                  </div> */}
                 </div>
                 <h3 style={{
                   fontSize: '1.125rem',

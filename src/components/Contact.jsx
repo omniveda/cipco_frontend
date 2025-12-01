@@ -61,7 +61,7 @@ export default function Contact() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://cipco-backend.onrender.com/api/contacts', {
+      const response = await fetch('https://cipcopharma.com/api/contacts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

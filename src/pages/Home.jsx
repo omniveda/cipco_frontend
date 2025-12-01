@@ -7,6 +7,10 @@ import colon from '../assets/element/colon.png';
 import about from '../assets/images/about2.jpg';
 import Map from '../components/map.jsx';
 import Contact from '../components/Contact.jsx';
+import otab1 from '../assets/product/otab1.webp';
+import otab2 from '../assets/product/otab2.webp';
+import otab3 from '../assets/product/otab3.webp';
+import otab4 from '../assets/product/otab4.webp';
 
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -207,9 +211,9 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] mt-[70px] '}
+          className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] flex gap-[20px] mt-[70px] '}
         >
-            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]  border-[#98d2de] bg-[#F3F4F6] h-[12.5rem] pl-[20px] py-[20px]  rounded-[20px]'}>
+            <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]  border-[#98d2de] bg-[#F3F4F6] h-[10%] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
                   variants={childVariants}
                   className='inline-block py-[10px] px-[8px] text-left text-[18px] border rounded-[10px]  text-[#4B5563] font-bold mt-10'
@@ -234,6 +238,9 @@ export default function Home() {
                         delay={0}
                         
                       /></motion.p>
+            </motion.div>
+            <motion.div className='bg-[pink] w-[auto] flex justify-center  items-center'>
+              <motion.p>HELLO</motion.p>
             </motion.div>
 
         </motion.section>

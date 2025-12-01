@@ -29,7 +29,7 @@ const AdminPanel = () => {
     setError('');
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:4000/api/admin/${tab}`, {
+      const response = await fetch(`https://cipcopharma.com/api/admin/${tab}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -54,7 +54,7 @@ const AdminPanel = () => {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`https://cipco-backend.onrender.com/api/admin/${tab}/${id}`, {
+      const response = await fetch(`https://cipcopharma.com/api/admin/${tab}/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -81,8 +81,8 @@ const AdminPanel = () => {
       const token = localStorage.getItem('adminToken');
       const method = editingItem ? 'PUT' : 'POST';
       const url = editingItem
-        ? `http://localhost:4000/api/admin/${tab}/${editingItem._id}`
-        : `http://localhost:4000/api/admin/${tab}`;
+        ? `https://cipcopharma.com/api/admin/${tab}/${editingItem._id}`
+        : `https://cipcopharma.com/api/admin/${tab}`;
 
       // Validation for blogs
       if (tab === 'blogs') {
@@ -292,7 +292,7 @@ const AdminPanel = () => {
             }}>
             Contacts
           </button>
-          <button onClick={() => setActiveTab('teams')}
+          {/* <button onClick={() => setActiveTab('teams')}
             style={{
               marginBottom: '1rem',
               padding: '0.75rem 1rem',
@@ -304,7 +304,7 @@ const AdminPanel = () => {
               cursor: 'pointer'
             }}>
             Teams
-          </button>
+          </button> */}
 {/*           <button onClick={() => setActiveTab('users')}
             style={{
               padding: '0.75rem 1rem',

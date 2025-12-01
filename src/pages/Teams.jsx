@@ -20,57 +20,48 @@ const Typewriter = ({ text, speed = 50 }) => {
 };
 
 export default function Teams() {
-    const [teams, setTeams] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [expanded, setExpanded] = useState({});
 
     useEffect(() => {
-        fetchTeams();
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const fetchTeams = async () => {
-        try {
-            const response = await fetch('http://localhost:4000/api/teams');
-            if (response.ok) {
-                const data = await response.json();
-                setTeams(data);
-            } else {
-                setError('Failed to fetch teams');
-            }
-        } catch (err) {
-            setError('Network error');
-        } finally {
-            setLoading(false);
+    const teams = [
+        {
+            name: 'Mr. Gaurav Jhawar',
+            designation: 'Managing Director, Cipco Limited',
+            Details: 'Mr. Gaurav Jhawar serves as the Managing Director of Cipco Ltd., bringing over 25 years of rich experience and deep industry insight to the organization. A postgraduate in Commerce from Gujarati College, Indore, he has been an integral part of the company’s journey since its early days, contributing significantly to its evolution into a trusted name in the pharmaceutical sector. With a keen eye for operational excellence and a strong command over the intricacies of the business, Mr. Jhawar has played a pivotal role in strengthening Cipco’s foundation and scaling its growth across key verticals. His leadership has been central to streamlining internal processes, enhancing supply chain efficiencies, and fostering sustainable business practices that align with the company’s long-term goals. Known for his steady vision and people-centric approach, Mr. Jhawar emphasizes collaboration, accountability, and continuous improvement at every level of the organization. His ability to balance strategic thinking with hands-on management has helped Cipco navigate complex market dynamics while maintaining a consistent focus on quality, compliance, and customer satisfaction. “Success is built on strong fundamentals. At Cipco, we don’t just aim for growth—we build it on trust, performance, and a commitment to doing what’s right for our people, partners, and patients.”'
+        },
+        {
+            name: 'Mr. Lakhan Lal Chouhan',
+            designation: 'Director, Cipco Limited.',
+            Details: 'Mr. Lakhan Lal Chouhan is a Director at Cipco Limited., bringing with him over 19 years of comprehensive experience in the pharmaceutical industry. He holds an MBA in Pharmaceutical Management from Eastern Institute, which has equipped him with a unique blend of scientific knowledge and strategic business acumen. Over the course of nearly two decades, Mr. Chouhan has played a pivotal role in steering operations, optimizing supply chains, and ensuring compliance with global regulatory standards. His deep industry insight and practical leadership have contributed significantly to the consistent growth and operational excellence of Cipco Limited. His core strengths lie in business process improvement, strategic planning, and cross-functional team leadership, all of which have been vital in expanding the company’s presence across competitive markets. Mr. Chouhan continues to drive initiatives that align with Cipco’s vision of delivering accessible and high-quality healthcare solutions. Passionate about organizational development, he advocates for a leadership style centered on accountability, collaboration, and sustainable progress. “Sustainable success in pharma lies in precision, purpose, and people. Every challenge is an opportunity to raise the standards of healthcare delivery—and that’s the commitment we work towards every day.”'
+        },
+        {
+            name: 'Mr. Mahavir Birle',
+            designation: 'Director, Cipco Ltd.',
+            Details: 'Mr. Mahavir Birle serves as the Director of Cipco Ltd., bringing over 16 years of extensive experience in the pharmaceutical industry. A graduate in Bachelor of Pharmacy from RGPV University, Bhopal, and a Master’s in Pharmacy (Pharmaceutics) from VM University, Salem, his strong academic foundation is complemented by a deep understanding of the scientific and operational aspects of the pharma sector. Throughout his career, Mr. Birle has contributed significantly to product development, quality management, and regulatory compliance—key pillars of a successful pharmaceutical enterprise. His hands-on expertise and technical insight have been instrumental in strengthening Cipco’s manufacturing and product innovation capabilities. With a deep commitment to healthcare excellence, Mr. Birle focuses on ensuring the highest standards of product quality, safety, and efficacy. He plays a crucial role in driving the company’s efforts to meet global regulatory benchmarks and expand its footprint in both domestic and international markets. A firm believer in continuous improvement and collaborative growth, Mr. Birle fosters a work culture grounded in discipline, responsibility, and professional development. “Pharma is more than an industry—it s a commitment to life. Every formulation we deliver carries our responsibility to quality, ethics, and the wellbeing of people around the world.” '
+        },
+        {
+            name: 'Mr. Keshav Jhawar',
+            designation: 'Director, Cipco Ltd.',
+            Details: 'Mr. Keshav Jhawar serves as the Director of Cipco Ltd. A business graduate from Daly College of Business Management and an alumnus of the Global Family Managed Business Program at SP Jain Institute of Management and Research, Mumbai, he brings a balanced approach rooted in both traditional business values and modern strategic thinking. With a strong focus on international business development, institutional supply, and government procurement, he has played a key role in expanding Cipco’s presence across domestic and global markets. His leadership continues to guide the company’s growth into regulated, semi-regulated, and emerging markets through structured strategies and long-term vision. Mr. Jhawar believes that true progress is measured not only by organizational achievements but also by the growth of individuals within it. He encourages a leadership culture based on transparency, innovation, and shared success.  “When the company grows, every individual should grow with it. I believe in delivering not just medicines, but a promise of quality healthcare—with innovation, integrity, and impact.” '
+        },
+        {
+            name: 'Mr. Shripati Jhawar',
+            designation: 'Chief Financial Officer & Director, Cipco Ltd.',
+            Details: 'Mr. Shripati Jhawar is the CFO and Director of Cipco Limited., representing the next generation of leadership with a fresh perspective and forward-thinking approach. A BBA graduate from De Montfort University, London, he joined the business at a young age and brings a unique blend of global academic exposure and homegrown business understanding. With a focus on financial strategy and business insights, Mr. Jhawar plays a key role in identifying new growth opportunities and strengthening Cipco’s financial health. His enthusiasm, energy, and data-driven decision-making contribute to agile operations and long-term value creation. Dedicated to innovation and continuous progress, he is committed to aligning the company’s financial direction with its broader vision for expansion and impact in the healthcare sector. “I believe in combining insight with action. At Cipco, we’re not just building a company—we’re building a future driven by smart growth, innovation, and purpose.” '
         }
-    };
-
-    if (loading) {
-        return (
-            <section className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                        <p className="mt-4 text-gray-600">Loading our amazing team...</p>
-                    </div>
-                </div>
-            </section>
-        );
-    }
-
-    if (error) {
-        return (
-            <section className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto text-center">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-                        <p className="text-red-600 font-medium">{error}</p>
-                    </div>
-                </div>
-            </section>
-        );
-    }
+    ];
 
     return (
-        <section className="min-h-screen mt-[120px] mx-[100px] bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8">
+        <section className={isMobile ? "min-h-screen mt-[120px] bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8" : "min-h-screen mt-[120px] mx-[100px] bg-gradient-to-br from-blue-50 to-indigo-100 py-16 px-4 sm:px-6 lg:px-8"}>
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-16">
@@ -82,61 +73,34 @@ export default function Teams() {
                     </p>
                 </div>
 
-                {/* Team Grid */}
-                <div className="grid grid-cols-3 xl:grid-cols-4 gap-[100px]">
-                    {teams.map(team => (
-                        <div
-                            key={team._id}
-                            className="bg-[#F3F4F6] p-[20px] rounded-[20px] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
-                        >
-                            {/* Image Section */}
-                            <div className="relative h-64 bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center">
-                                {team.image ? (
-                                    <img
-                                        src={team.image}
-                                        alt={team.name}
-                                        className="w-[200px] h-[200px] rounded-full object-cover  border-white shadow-lg group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                ) : (
-                                    <div className="w-[250px] h-[250px] rounded-full bg-gray-300 flex items-center justify-center border-4 border-white shadow-lg">
-                                        <span className="text-4xl font-bold text-gray-600">
-                                            {team.name.charAt(0).toUpperCase()}
-                                        </span>
-                                    </div>
-                                )}
-                                {/* Decorative elements */}
-                                <div className="absolute top-4 right-4 w-3 h-3 bg-blue-500 rounded-full opacity-60"></div>
-                                <div className="absolute bottom-4 left-4 w-2 h-2 bg-indigo-400 rounded-full opacity-60"></div>
-                            </div>
+                {/* Team List */}
+                <div className="space-y-8 grid grid-cols-3 gap-[20px]">
+                    {teams.map(team => {
+                        const isExpanded = expanded[team.name];
+                        const truncatedDetails = team.Details.length > 300 ? team.Details.substring(0, 300) + '...' : team.Details;
 
-                            {/* Content Section */}
-                            <div className="p-6 text-center">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                                    {team.name}
-                                </h3>
-                                <p className="text-blue-600 inline-block px-[10px] text-[white] rounded-[20px] py-[2px] bg-[#8CA9FF] font-medium text-lg mb-4">
-                                    {team.designation}
+                        return (
+                            <div
+                                key={team.name}
+                                className="bg-white p-[20px] bg-[#F3F4F6] rounded-[20px] shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            >
+                                <h2 className="text-3xl font-bold text-gray-900 mb-2">{team.name}</h2>
+                                <p className="text-xl text-blue-600 mb-4 font-medium">{team.designation}</p>
+                                <p className="text-gray-700 leading-relaxed text-justify">
+                                    {isExpanded ? team.Details : truncatedDetails}
                                 </p>
-                                <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
+                                {team.Details.length > 300 && (
+                                    <button
+                                        onClick={() => setExpanded(prev => ({ ...prev, [team.name]: !prev[team.name] }))}
+                                        className="mt-4 px-[10px] py-[6px] bg-[#1C64F2] text-[white] rounded-[20px] shadow-md hover:bg-blue-700 hover:shadow-lg transition-all duration-200 font-medium"
+                                    >
+                                        {isExpanded ? 'Read Less ∧' : 'Read More ∨'} 
+                                    </button>
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
-
-                {/* Empty State */}
-                {teams.length === 0 && (
-                    <div className="text-center py-16">
-                        <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md mx-auto">
-                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">No Team Members Yet</h3>
-                            <p className="text-gray-600">We're working on building our amazing team. Check back soon!</p>
-                        </div>
-                    </div>
-                )}
             </div>
         </section>
     );

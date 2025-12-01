@@ -600,7 +600,6 @@ const Products = () => {
           >
             <span style={styles.categoryIcon}>{category.icon}</span>
             <span style={styles.categoryName}>{category.name}</span>
-            <span style={styles.categoryCount}>({category.count})</span>
           </button>
         ))}
       </div>

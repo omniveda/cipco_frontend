@@ -31,6 +31,7 @@ import WhyPartnerWithUs from './pages/WhyPartnerWithUs';
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
 import Teams from './pages/Teams';
+import Policies from './pages/Policies';
 
 import './App.css'
 
@@ -75,6 +76,7 @@ function App() {
       <Route path="/admin/login" element={<AdminLogin/>}/>
       <Route path="/admin/panel" element={<AdminPanel/>}/>
       <Route path="/teams" element={<Teams/>}/>
+      <Route path="/policies" element={<Policies/>}/>
     </Routes>
     {!isAdminRoute && <Footer/>}
     </Suspense>

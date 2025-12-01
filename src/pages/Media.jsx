@@ -37,7 +37,7 @@ const Media = () => {
       title: "Partnership with Global Health Organization",
       date: "September 20, 2023",
       summary: "We are proud to announce our partnership with a leading global health organization to improve access to essential medicines worldwide.",
-      image: "🤝",
+      image: "🫱🏻‍🫲🏻",
       category: "news"
     },
     {
