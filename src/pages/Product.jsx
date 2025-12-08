@@ -570,8 +570,8 @@ const Products = () => {
   };
 
   const categories = [
-    { id: 'tablets', name: 'Tablets', icon: '💊', count: productData.tablets.length },
-    { id: 'liquid', name: 'Liquid', icon: '🧴', count: productData.liquid.length },
+    { id: 'tablets', name: 'Tablets', icon: '', count: productData.tablets.length },
+    { id: 'liquid', name: 'Liquid', icon: '', count: productData.liquid.length },
   ];
 
   const currentProducts = productData[activeCategory] || [];
@@ -596,7 +596,7 @@ const Products = () => {
                 ? {...styles.categoryButton, ...styles.activeCategory}
                 : styles.categoryButton
             }
-            onClick={() => setActiveCategory(category.id)}
+            onClick={() => {setActiveCategory(category.id),setShowViewMore(false)}}
           >
             <span style={styles.categoryIcon}>{category.icon}</span>
             <span style={styles.categoryName}>{category.name}</span>

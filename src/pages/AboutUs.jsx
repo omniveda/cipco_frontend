@@ -119,7 +119,7 @@ export default function AboutUs(){
                                 transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
                                 transition: 'all 0.8s ease-out 0.4s'
                             }}>Delivering high-quality pharmaceutical formulations with precision and care.</p>
-                            <div className={`mt-[8px] text-[white] ${isMobile ? 'px-[15px] py-[15px]' : 'px-[20px] py-[20px]'} rounded-[40px] ${isMobile ? 'text-[13px]' : 'text-[15px]'} font-semibold bg-[#305d94] hover:bg-[#76ac4e] transition-all duration-300 ease-in-out hover:scale-105 items-center flex gap-[8px] font-[500] cursor-pointer`} style={{
+                            <div className={`mt-[8px] text-[white] ${isMobile ? 'px-[15px] py-[15px]' : 'px-[20px] py-[20px]'} rounded-[40px] ${isMobile ? 'text-[13px]' : 'text-[15px]'} font-semibold bg-[#305d94] hover:bg-[#33b0c5] transition-all duration-30 ease-in-out hover:scale-105 items-center flex gap-[8px] font-[500] cursor-pointer`} style={{
                                 opacity: heroVisible ? 1 : 0,
                                 transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
                                 transition: 'all 0.8s ease-out 0.6s'
@@ -146,7 +146,7 @@ export default function AboutUs(){
                         opacity: whoWeAreVisible ? 1 : 0,
                         transform: whoWeAreVisible ? 'translateY(0)' : 'translateY(20px)',
                         transition: 'all 0.8s ease-out 0.4s'
-                    }}>Cipco Limited is a partnership firm founded in 1939, building ISO-quality pharmaceutical formulations with WHO-GMP standards</p>
+                    }}>Cipco Limited is a partnership firm founded in 1989, building ISO-quality pharmaceutical formulations with WHO-GMP standards</p>
                 </div>
 
 

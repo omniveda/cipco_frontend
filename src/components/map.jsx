@@ -10,21 +10,22 @@ export default function Map(){
         {
             id: 1,
             name: "Indore Office",
-            x: 64.2, // 30% from left
-            y: 58, // 40% from top
+            x: 66.5, // 30% from left
+            y: 57, // 40% from top
             info: "Address: 123 Main St, Mumbai, India\nDescription: Our main office location handling operations and customer support."
         }
     ];
 
     return(
-        <div className='p-[0px] text-center' style={{ paddingLeft: '40px', paddingRight: '40px', position: 'relative',height:"600px", overflow: 'hidden'}}>
-                <div style={{zoom:'1.4', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div className=' text-center' style={{ position: 'relative',height:"100%", overflow: 'hidden'}}>
+                <div style={{zoom:'1.6', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <WorldMap
-                    data={[]}
+                    data={[{ country: "IN", value: 1, color: "#2d7737ff" }]}
                     backgroundColor="#EAEAEC"
                     borderColor="#060606ff"
                     size="xl"
-                /></div>
+                />
+                </div>
                 <div className='text-left' style={{ position: 'absolute', top: '20px', left: '8%', transform: 'translateX(-50%)', zIndex: 20 }}>
                 <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Global</motion.h2>
                 <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Footprint :</motion.h2>

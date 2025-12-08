@@ -88,19 +88,19 @@ const Manufacturing = () => {
   ];
 
   const infrastructureHighlights = [
-    { text: "Controlled AHU system with minimum 20 air changes per hour", icon: "🌬️" },
-    { text: "RLAF stations for sampling and dispensing", icon: "🔬" },
-    { text: "Separate zones for \"Under Test,\" \"Approved,\" and \"Rejected\" materials", icon: "🏷️" },
-    { text: "In-house water treatment and preventive maintenance systems", icon: "💧" },
-    { text: "Comprehensive pest control, sanitation, and safety measures", icon: "🧹" },
-    { text: "Secure finished goods warehouse with FIFO distribution system", icon: "📦" }
+    { text: "Controlled AHU system with minimum 20 air changes per hour", icon: "" },
+    { text: "RLAF stations for sampling and dispensing", icon: "" },
+    { text: "Separate zones for \"Under Test,\" \"Approved,\" and \"Rejected\" materials", icon: "" },
+    { text: "In-house water treatment and preventive maintenance systems", icon: "" },
+    { text: "Comprehensive pest control, sanitation, and safety measures", icon: "" },
+    { text: "Secure finished goods warehouse with FIFO distribution system", icon: "" }
   ];
 
   const stats = [
-    { number: "35+", label: "Years of Experience", icon: "📅" },
-    { number: "200+", label: "Qualified Professionals", icon: "👥" },
-    { number: "42,000", label: "Sq. Ft. Facility", icon: "🏭" },
-    { number: "100%", label: "Quality Compliance", icon: "✅" }
+    { number: "35+", label: "Years of Experience", icon: "" },
+    { number: "200+", label: "Qualified Professionals", icon: "" },
+    { number: "42,000", label: "Sq. Ft. Facility", icon: "" },
+    { number: "100%", label: "Quality Compliance", icon: "" }
   ];
 
   return (
@@ -266,7 +266,8 @@ const Manufacturing = () => {
               color: '#374151',
               fontSize: '1.125rem',
               lineHeight: '1.75',
-              marginBottom: '1.5rem'
+              marginBottom: '1.5rem',
+              textAlign:"justify"
             }}>
               CIPCO LIMITED is a trusted pharmaceutical manufacturer with over three decades of experience in delivering high-quality medicines to domestic and international markets. Our state-of-the-art WHO-GMP certified manufacturing facility at Pigdamber, Indore (Madhya Pradesh) is designed to meet the highest standards of quality, safety, and regulatory compliance.
             </p>
@@ -278,7 +279,8 @@ const Manufacturing = () => {
             }:{
               color: '#374151',
               fontSize: '1.125rem',
-              lineHeight: '1.75'
+              lineHeight: '1.75',
+              textAlign: 'justify'
             }}>
               We specialize in the development and production of non-sterile, non-β-lactam, non-hormonal formulations in tablet and liquid oral dosage forms.
             </p>
@@ -509,20 +511,20 @@ const Manufacturing = () => {
                   fontWeight: '600',
                   marginBottom: '0.5rem'
                 }}>{product.name}</h3>
-                <div style={{
+                {/* <div style={{
                   width: '100%',
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                   height: '0.25rem',
                   borderRadius: '9999px'
                 }}>
-                  <div style={{
+                  {/* <div style={{
                     backgroundColor: 'white',
                     height: '0.25rem',
                     borderRadius: '9999px',
                     animation: 'pulse 2s infinite',
                     width: `${Math.random() * 60 + 40}%`
-                  }}></div>
-                </div>
+                  }}></div> */}
+                {/* </div>  */}
               </div>
             ))}
           </div>
@@ -594,7 +596,7 @@ const Manufacturing = () => {
               justifyContent:isMobile?'flex-start': 'center'
             }}>
               <div style={{ textAlign:'center', paddingLeft:isMobile?'32px':'0'}}>
-                <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔬</div>
+                {/* <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔬</div> */}
                 <p style={{ color: '#4b5563' }}>Advanced Quality Control</p>
               </div>
             </div>
@@ -716,7 +718,7 @@ const Manufacturing = () => {
               textAlign: 'center'
             }}>People Behind the Excellence</h2>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👥</div>
+              {/* <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👥</div> */}
               <p style={isMobile?{
                 color: '#374151',
                 lineHeight: '1.75',
@@ -724,7 +726,7 @@ const Manufacturing = () => {
               }:{
                 color: '#374151',
                 lineHeight: '1.75'
-              }}>
+              }} className='text-justify'>
                 With a team of over 200 trained and qualified professionals, CIPCO LIMITED combines technical expertise with a commitment to quality. Continuous training and internal audits ensure adherence to best manufacturing practices and regulatory standards.
               </p>
             </div>
@@ -797,7 +799,7 @@ const Manufacturing = () => {
               maxWidth: '56rem',
               marginLeft: 'auto',
               marginRight: 'auto'
-            }}>
+            }} className='text-justify'>
               CIPCO LIMITED serves both domestic and international markets, delivering trusted medicines to governments, institutions, and healthcare providers. Our manufacturing excellence and quality systems enable us to meet diverse market needs with reliability and consistency.
             </p>
           </div>

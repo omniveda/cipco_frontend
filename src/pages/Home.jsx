@@ -2,7 +2,7 @@ import heroimg from '../assets/images/hero.png';
 import Features from '../components/Features';
 import mission from '../assets/images/mission.jpg';
 import vision from '../assets/images/vission.jpg';
-import whogmpcert from '../assets/images/whogmpcert.png';
+import whogmpcert from '../assets/1.png';
 import colon from '../assets/element/colon.png';
 import about from '../assets/images/about2.jpg';
 import Map from '../components/map.jsx';
@@ -233,7 +233,7 @@ export default function Home() {
                           transition={{ duration: 0.8 }}
                           src={whogmpcert}
                           alt="who gmp certificate"
-                          className={isMobile?'w-[300px] h-[260px]':'w-[600px] h-[500px]'}
+                          className={isMobile?'w-[300px] h-[260px]':'w-[500px] h-[500px] rounded-[15px]'}
                         />
                     </motion.div>
                 
@@ -925,7 +925,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className='mt-[70px] mx-[100px] pt-[10px] bg-[#F3F4F6] rounded-[20px] border-[#b6d6db]'
+          className='mt-[70px] mx-[100px] bg-[#EAEAEC] rounded-[20px] border-[#b6d6db]'
         >
             <motion.div  variants={childVariants}>
                 <Map/>

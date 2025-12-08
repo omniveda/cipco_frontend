@@ -115,6 +115,8 @@ const ContactUs = () => {
           style={{ fontSize: '1em', color: '#555' }}
         />
       </p>
+      </div>
+      <div className={isMobile?"":'flex gap-[20px] px-[100px]'}>
       <div style={styles.contactInfo}>
         <div style={styles.infoItem}>
           <h3 style={styles.infoTitle}>Address</h3>
@@ -129,8 +131,7 @@ const ContactUs = () => {
           <p style={styles.infoText}>info@cipcopharma.com</p>
         </div>
       </div>
-      </div>
-      <form onSubmit={handleSubmit} className={isMobile?"space-y-4 bg-[#cce4e8] w-[90%] justify-center mx-auto p-[10px] pt-[20px] mb-[20px] rounded-[10px]":"space-y-4 bg-[#cce4e8] p-[30px] rounded-[10px] w-1/2 mx-auto"}>
+      <form onSubmit={handleSubmit} style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}} className={isMobile?"space-y-4 bg-[#F3F4F6] w-[90%] justify-center mx-auto p-[10px] pt-[20px] mb-[20px] rounded-[10px]":"space-y-4 bg-[#F3F4F6] p-[30px] rounded-[10px] w-1/2 mx-auto"}>
       <div className='text-[20px] mb-[20px] '>Send us a Message</div>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
@@ -141,12 +142,13 @@ const ContactUs = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}}
             placeholder="John Smith"
-            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[8px] focus:outline-none shadow-md`}
             required
           />
         </div>
-        <div className={isMobile?'':'flex w-[full] gap-[60px]'}>
+        <div className={isMobile?'':'flex w-[full] gap-[10px]'}>
         <div>
           <label className="block text-sm font-medium mb-[8px]">
             Email<span className="text-[red]">*</span>
@@ -155,9 +157,10 @@ const ContactUs = () => {
             type="email"
             name="email"
             value={formData.email}
+            style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}}
             onChange={handleChange}
             placeholder="johnsmith@gmail.com"
-            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[8px] focus:outline-none shadow-md`}
             required
           />
         </div>
@@ -169,8 +172,9 @@ const ContactUs = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
+            style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}}
             placeholder="+44789 123456"
-            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[285px]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[8px] focus:outline-none shadow-md`}
           />
         </div>
         </div>
@@ -182,8 +186,9 @@ const ContactUs = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
+            style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}}
             placeholder="Inquiry about products"
-            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[8px] focus:outline-none shadow-md`}
           />
         </div>
 
@@ -196,8 +201,9 @@ const ContactUs = () => {
             name="message"
             value={formData.message}
             onChange={handleChange}
+            style={{boxShadow: '0 10px 30px rgba(0,0,0,0.1)',}}
             placeholder="Hello, I'd like to enquire about..."
-            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[4px] focus:outline-none`}
+            className={`${isMobile?"w-[90%]":"w-[96%]"} mb-[14px] px-[14px] py-[10px] border border-[#D1D5DB] rounded-[8px] focus:outline-none shadow-md`}
             required
           ></textarea>
         </div>
@@ -222,6 +228,7 @@ const ContactUs = () => {
           {isSubmitting ? 'Sending...' : 'Send message'}
         </button>
       </form>
+      </div>
     </div>
   );
 };
