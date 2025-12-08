@@ -1,11 +1,13 @@
-# TODO: Apply Zoom Out Animation to Policies Page Text
+# TODO: Implement Automatic Slideshow for Product Images in Home.jsx
 
-## Completed Tasks
-- [x] Read Policies.jsx to locate the target div with class "relative z-10 text-center text-white"
-- [x] Read animations.css to understand existing animation structure
-- [x] Add zoomOut keyframe animation (starts at scale 1.2 with opacity 0, ends at scale 1 with opacity 1)
-- [x] Add .animate-zoomOut class to animations.css
-- [x] Apply animate-zoomOut class to the content overlay div in Policies.jsx
+## Pending Tasks
+- [ ] Update Framer Motion import to include AnimatePresence
+- [ ] Add currentImageIndex state variable
+- [ ] Add useEffect hook for automatic image cycling every 3 seconds
+- [ ] Define images array with otab1, otab2, otab3, otab4
+- [ ] Replace target div content with AnimatePresence and motion.img for slideshow
+- [ ] Remove bg-[pink] class and HELLO text from target div
+- [ ] Test slideshow functionality and smooth transitions
 
 ## Summary
-The zoom out animation has been successfully applied to the policy text section. The animation will make the text appear by zooming out from a larger scale to its normal size, creating a smooth entrance effect.
+Replace the pink div with "HELLO" text in the "what we offer" section with an automatic slideshow of product images (otab1-otab4) that cycles every 3 seconds with smooth fade animations.

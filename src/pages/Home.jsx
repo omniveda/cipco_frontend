@@ -12,53 +12,9 @@ import otab2 from '../assets/product/otab2.webp';
 import otab3 from '../assets/product/otab3.webp';
 import otab4 from '../assets/product/otab4.webp';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
-
-// TypingText component for typewriter effect
-const TypingText = ({ text, speed = 50, delay = 0, style, className }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [index, setIndex] = useState(0);
-  const ref = useRef();
-  const firstTime = useRef(true);
-
-  const isInView = useInView(ref, { once: false });
-
-  useEffect(() => {
-    if (isInView) {
-      if (firstTime.current) {
-        firstTime.current = false;
-        // Start with delay on first view
-        const startTimeout = setTimeout(() => {
-          setIndex(0);
-          setDisplayedText('');
-        }, delay);
-        return () => clearTimeout(startTimeout);
-      } else {
-        // Restart immediately on subsequent views
-        setIndex(0);
-        setDisplayedText('');
-      }
-    }
-  }, [isInView, delay]);
-
-  useEffect(() => {
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[index]);
-        setIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, text, speed]);
-
-  return (
-    <span ref={ref} style={style} className={className}>
-      {displayedText}
-    </span>
-  );
-};
+import { useState, useEffect } from 'react';
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -112,6 +68,8 @@ const statVariants = {
 };
 
 
+const images = [otab1, otab2, otab3, otab4];
+
 const data = [
     {
         img:mission,
@@ -129,6 +87,7 @@ const data = [
 export default function Home() {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(()=>{
       const handleResize = () =>{
@@ -141,6 +100,14 @@ export default function Home() {
       window.addEventListener('resize',handleResize);
       return()=>window.removeEventListener('resize',handleResize);
     },[]);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000); // Change image every 3 seconds
+
+      return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
@@ -173,23 +140,13 @@ export default function Home() {
                       variants={childVariants}
                       style={{ fontSize: isMobile ? '30px' : '50px', fontWeight: 'bold', color: 'white', marginBottom: isMobile ? '10px' : '10px' }}
                     >
-                      <TypingText
-                        text="Precision Formulations for Better Health"
-                        speed={20}
-                        delay={0}
-                        style={{ fontSize: isMobile ? '30px' : '50px', fontWeight: 'bold', color: 'white' }}
-                      />
+                      Precision Formulations for Better Health
                     </motion.h1>
                     <motion.p
                       variants={childVariants}
                       style={{ marginTop: '4px', fontSize: isMobile ? '16px' : '18px', color: 'white', marginBottom: isMobile ? '20px' : '20px' }}
                     >
-                      <TypingText
-                        text="From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose."
-                        speed={20}
-                        delay={2000}
-                        style={{ fontSize: isMobile ? '16px' : '18px', color: 'white' }}
-                      />
+                      From essential generics to advanced therapeutics, our products are engineered for performance and trust. Quality, compliance, and care in every dose.
                     </motion.p>
                     <motion.button
                       variants={childVariants}
@@ -211,7 +168,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
-          className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] flex gap-[20px] mt-[70px] '}
+          className={isMobile?'mt-[0px] h-[341px]':'mx-[100px] flex justify-center gap-[20px] mt-[70px] '}
         >
             <motion.div variants={childVariants} className={isMobile?'w-0':'w-[60%]  border-[#98d2de] bg-[#F3F4F6] h-[10%] pl-[20px] py-[20px]  rounded-[20px]'}>
                 <motion.p
@@ -222,26 +179,28 @@ export default function Home() {
                   variants={childVariants}
                   className='text-left text-[19px] mt-4 font-[600]'
                 >
-                  <TypingText
-                        text="At Cipco Limited, we are committed to delivering more than just products—"
-                        speed={10}
-                        delay={0}
-                        
-                      /></motion.p>
+                  At Cipco Limited, we are committed to delivering more than just products—</motion.p>
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-[#4B5563] text-[17px] text-justify':'text-[#4B5563] text-[17px]'}
                 >
-                  <TypingText
-                        text="We deliver trust, quality, and care. Our offerings reflect our dedication to excellence in pharmaceutical manufacturing and customer satisfaction. Explore how we stand apart through our diverse product range, stringent quality standards, and personalized service."
-                        speed={2}
-                        delay={0}
-                        
-                      /></motion.p>
+                  We deliver trust, quality, and care. Our offerings reflect our dedication to excellence in pharmaceutical manufacturing and customer satisfaction. Explore how we stand apart through our diverse product range, stringent quality standards, and personalized service.</motion.p>
             </motion.div>
-            <motion.div className='bg-[pink] w-[auto] flex justify-center  items-center'>
-              <motion.p>HELLO</motion.p>
-            </motion.div>
+            {!isMobile  && <motion.div className='w-[auto] flex justify-center items-center'>
+              <AnimatePresence mode="wait">
+                
+                <motion.img
+                  key={currentImageIndex}
+                  src={images[currentImageIndex]}
+                  alt={`Product ${currentImageIndex + 1}`}
+                  className="w-[250px] h-[250px] object-cover rounded-[20px]"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </AnimatePresence>
+            </motion.div>}
 
         </motion.section>
 
@@ -287,21 +246,13 @@ export default function Home() {
                   variants={childVariants}
                   className='text-left text-[40px] mt-[8px] font-[600]'
                 >
-                  <TypingText
-                    text="A WHO AND GMP CERTIFIED UNIT"
-                    speed={5}
-                    delay={0}
-                  />
+                  A WHO AND GMP CERTIFIED UNIT
                 </motion.p>
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-[#4B5563] text-justify text-[20px]':'text-[#4B5563] h-[5rem] text-justify text-[20px]'}
                 >
-                  <TypingText
-                    text="Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible."
-                    speed={2}
-                    delay={1000}
-                  />
+                  Our vision is to make pharma products more accessible, affordable, and assuring for patients. Our people are passionate, hard working, and committed to ensuring we deliver the highest level of care possible.
                 </motion.p>
                 <motion.div
                   variants={containerVariants}
@@ -591,11 +542,7 @@ export default function Home() {
               variants={childVariants}
               className={isMobile ? 'text-[30px] h-[94px] font-[600] text-[#305d94]' : 'text-[40px] h-[44px] font-[600] text-[#305d94]'}
             >
-              <TypingText
-                text="Featured Pharmaceutical Solutions"
-                speed={20}
-                delay={0}
-              />
+              Featured Pharmaceutical Solutions
             </motion.h2>
             <motion.p
               variants={childVariants}

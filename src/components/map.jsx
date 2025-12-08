@@ -1,6 +1,7 @@
-import map from '../assets/images/map.png';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import WorldMap from 'react-svg-worldmap';
+
 
 export default function Map(){
     const [hoveredLocation, setHoveredLocation] = useState(null);
@@ -9,16 +10,25 @@ export default function Map(){
         {
             id: 1,
             name: "Indore Office",
-            x: 71, // 30% from left
-            y: 40, // 40% from top
+            x: 64.2, // 30% from left
+            y: 58, // 40% from top
             info: "Address: 123 Main St, Mumbai, India\nDescription: Our main office location handling operations and customer support."
         }
     ];
 
     return(
-        <div className='p-[0px]' style={{ paddingLeft: '100px', paddingRight: '100px', position: 'relative' }}>
-                <motion.h2 className='text-[30px] text-[#4a4f4e]'>Global Footprint</motion.h2>
-                <img src={map} style={{ opacity: 0.5, width: '100%', height: '100%' }} alt="" />
+        <div className='p-[0px] text-center' style={{ paddingLeft: '40px', paddingRight: '40px', position: 'relative',height:"600px", overflow: 'hidden'}}>
+                <div style={{zoom:'1.4', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <WorldMap
+                    data={[]}
+                    backgroundColor="#EAEAEC"
+                    borderColor="#060606ff"
+                    size="xl"
+                /></div>
+                <div className='text-left' style={{ position: 'absolute', top: '20px', left: '8%', transform: 'translateX(-50%)', zIndex: 20 }}>
+                <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Global</motion.h2>
+                <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Footprint :</motion.h2>
+                </div>
                 {locations.map(location => (
                     <motion.div
                         key={location.id}

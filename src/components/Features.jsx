@@ -123,15 +123,15 @@ export default function Features() {
                                     <h3 className={isMobile?'font-[10px]':"feature-title-expanded"}>
                                         <TypingText
                                             text={item.title}
-                                            speed={50}
+                                            speed={0}
                                             delay={0}
                                         />
                                     </h3>
                                     <p className="feature-description">
                                         <TypingText
                                             text={item.content}
-                                            speed={10}
-                                            delay={500}
+                                            speed={0}
+                                            delay={0}
                                         />
                                     </p>
                                 </div>

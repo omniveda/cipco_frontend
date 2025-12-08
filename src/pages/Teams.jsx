@@ -69,7 +69,7 @@ export default function Teams() {
                         Meet Our <span className="text-blue-600">Expert Team</span>
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        <Typewriter text="Dedicated professionals committed to excellence in pharmaceutical innovation and healthcare solutions." speed={30} />
+                        <Typewriter text="Dedicated professionals committed to excellence in pharmaceutical innovation and healthcare solutions." speed={0} />
                     </p>
                 </div>
 

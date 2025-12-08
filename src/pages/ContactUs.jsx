@@ -110,8 +110,8 @@ const ContactUs = () => {
       <p style={styles.description}>
         <TypingText
           text="We'd love to hear from you. Whether you have a question about our products, services, or anything else, our team is ready to assist you."
-          speed={30}
-          delay={1000}
+          speed={0}
+          delay={0}
           style={{ fontSize: '1em', color: '#555' }}
         />
       </p>
