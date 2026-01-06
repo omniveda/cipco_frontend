@@ -229,7 +229,19 @@ const ContactUs = () => {
         </button>
       </form>
       </div>
+      <div className={isMobile?'text-center':'text-center flex justify-center items-center mt-[60px]  '} style={styles.mapContainer}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43285.163364948865!2d75.72287836545566!3d22.624153177772463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962f9605a74b079%3A0xe8b47d5c2ffbf89c!2sCipco%20Pharmaceuticals!5e0!3m2!1sen!2sin!4v1765440658372!5m2!1sen!2sin"
+          style={styles.mapIframe}
+          allowFullScreen=""
+          loading="lazy"
+          className={isMobile?'rounded-[10px] mb-[20px]':'items-center inline-block border rounded-[10px] h-[256px] w-[480px] p-[32px] border-[gray]'}
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Cipco Pharmaceuticals Location"
+        ></iframe>
+      </div>
     </div>
+    
   );
 };
 
@@ -280,6 +292,9 @@ const styles = {
     boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
     border: '1px solid #e0e0e0',
     transition: 'all 0.3s ease',
+  },
+  mapIframe:{
+    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
   },
   infoTitle: {
     fontSize: '1.2em',

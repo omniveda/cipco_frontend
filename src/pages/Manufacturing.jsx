@@ -603,7 +603,7 @@ const Manufacturing = () => {
           </div>
           <p style={{
             color: '#4b5563',
-            textAlign: 'center',
+            textAlign: 'justify',
             marginTop: '1.5rem',
             fontStyle: 'italic'
           }}>

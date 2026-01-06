@@ -24,7 +24,7 @@ const Blog = () => {
         const response = await fetch('https://cipcopharma.com/api/blogs');
         if (response.ok) {
           const data = await response.json();
-          setBlogPosts(data.blogs || []);
+          setBlogPosts((data.blogs || []).slice(0, 3));
         }
       } catch (error) {
         console.error('Error fetching blogs:', error);
@@ -67,7 +67,7 @@ const Blog = () => {
     subtitle: {
       fontSize: '1.3rem',
       color: '#666',
-      maxWidth: '600px',
+      maxWidth: '800px',
       margin: '0 auto',
       lineHeight: '1.6',
     },

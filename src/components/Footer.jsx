@@ -34,7 +34,7 @@ export default function Footer() {
                         </ul>
                         <ul style={{ listStyleType: 'none', padding: 0 }}>
                             <h4></h4>
-                            <li className='text-[#6B7280] mb-[13px] mt-[40px]'><Link to="/media" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>News & Media</Link></li>
+                            {/* <li className='text-[#6B7280] mb-[13px] mt-[40px]'><Link to="/media" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>News & Media</Link></li> */}
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/blog" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Blogs</Link></li>
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/Shareholding-Pattern" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Shareholding Pattern</Link></li>
                             <li className='text-[#6B7280] mb-[13px]'><Link to="/contact-us" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Contact Us</Link></li>
@@ -81,7 +81,7 @@ export default function Footer() {
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/manufacturing" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Drug Product</Link></li>
                         </ul>
                         <ul style={{ listStyleType: 'none', padding: 0 }}>
-                            <li className='text-[#6B7280] mb-[8px]'><Link to="/media" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>News & Media</Link></li>
+                            {/* <li className='text-[#6B7280] mb-[8px]'><Link to="/media" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>News & Media</Link></li> */}
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/blog" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Events</Link></li>
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Sustainability</Link></li>
                             <li className='text-[#6B7280] mb-[8px]'><Link to="/contact-us" className='text-[#6B7280] hover:text-white' style={{ textDecoration: 'none' }}>Contact Us</Link></li>

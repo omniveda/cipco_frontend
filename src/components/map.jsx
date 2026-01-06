@@ -18,7 +18,7 @@ export default function Map(){
 
     return(
         <div className=' text-center' style={{ position: 'relative',height:"100%", overflow: 'hidden'}}>
-                <div style={{zoom:'1.6', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <div style={{zoom:'1.6', backgroundColor:"#EAEAEC",borderRadius:"10px", height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <WorldMap
                     data={[{ country: "IN", value: 1, color: "#2d7737ff" }]}
                     backgroundColor="#EAEAEC"
@@ -26,9 +26,8 @@ export default function Map(){
                     size="xl"
                 />
                 </div>
-                <div className='text-left' style={{ position: 'absolute', top: '20px', left: '8%', transform: 'translateX(-50%)', zIndex: 20 }}>
-                <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Global</motion.h2>
-                <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' >Footprint :</motion.h2>
+                <div className='text-left' style={{ position: 'absolute', top: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }}>
+                <motion.h2 className='text-[30px] text-[#4a4f4e] text-[justify]' animate={{scale:[1,1.2,1]}} >Global Footprint</motion.h2>
                 </div>
                 {locations.map(location => (
                     <motion.div

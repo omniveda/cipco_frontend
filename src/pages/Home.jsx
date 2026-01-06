@@ -2,7 +2,7 @@ import heroimg from '../assets/images/hero.png';
 import Features from '../components/Features';
 import mission from '../assets/images/mission.jpg';
 import vision from '../assets/images/vission.jpg';
-import whogmpcert from '../assets/1.png';
+import whogmpcert22 from '../assets/whogmpcert22.png';
 import colon from '../assets/element/colon.png';
 import about from '../assets/images/about2.jpg';
 import Map from '../components/map.jsx';
@@ -74,12 +74,12 @@ const data = [
     {
         img:mission,
         title:'Our Mission',
-        content:"At CIPCO LTD, our mission is to deliver accessible, high-quality pharmaceutical solutions that heal and empower communities worldwide. Rooted in our founders value's, we foster innovation, integrity, and inclusivity, ensuring healthcare as a fundamental right through government partnerships and global exports.",
+        content:"At CIPCO LIMITED, our mission is to deliver accessible, high-quality pharmaceutical solutions that heal and empower communities worldwide. Rooted in our founders value's, we foster innovation, integrity, and inclusivity, ensuring healthcare as a fundamental right through government partnerships and global exports.",
     },
     {
         img:vision,
         title:'Our Vision',
-        content:'We envision CIPCO LTD as a global leader in equitable healthcare, conquering frontiers with cutting-edge technologies and sustainable growth. We aim to bridge health gaps, inspire generations, and build resilient societies worldwide.',
+        content:'We envision CIPCO LIMITED as a global leader in equitable healthcare, conquering frontiers with cutting-edge technologies and sustainable growth. We aim to bridge health gaps, inspire generations, and build resilient societies worldwide.',
         svg: <svg xmlns="http://www.w3.org/2000/svg" width="21.45" height="15" fill="none" overflow="visible"><g><path d="M 10.725 12 C 11.975 12 13.038 11.563 13.913 10.688 C 14.788 9.813 15.225 8.75 15.225 7.5 C 15.225 6.25 14.788 5.188 13.913 4.313 C 13.038 3.438 11.975 3 10.725 3 C 9.475 3 8.412 3.438 7.537 4.313 C 6.662 5.188 6.225 6.25 6.225 7.5 C 6.225 8.75 6.662 9.813 7.537 10.688 C 8.412 11.563 9.475 12 10.725 12 Z M 10.725 10.2 C 9.975 10.2 9.338 9.938 8.813 9.413 C 8.287 8.888 8.025 8.25 8.025 7.5 C 8.025 6.75 8.287 6.113 8.813 5.588 C 9.338 5.063 9.975 4.8 10.725 4.8 C 11.475 4.8 12.113 5.063 12.638 5.588 C 13.163 6.113 13.425 6.75 13.425 7.5 C 13.425 8.25 13.163 8.888 12.638 9.413 C 12.113 9.938 11.475 10.2 10.725 10.2 Z M 10.725 15 C 8.492 15 6.454 14.4 4.612 13.2 C 2.771 12 1.317 10.417 0.25 8.45 C 0.167 8.3 0.104 8.146 0.063 7.988 C 0.021 7.829 0 7.667 0 7.5 C 0 7.333 0.021 7.171 0.063 7.012 C 0.104 6.854 0.167 6.7 0.25 6.55 C 1.317 4.583 2.771 3 4.612 1.8 C 6.454 0.6 8.492 0 10.725 0 C 12.958 0 14.996 0.6 16.838 1.8 C 18.679 3 20.133 4.583 21.2 6.55 C 21.283 6.7 21.346 6.854 21.388 7.012 C 21.429 7.171 21.45 7.333 21.45 7.5 C 21.45 7.667 21.429 7.829 21.388 7.988 C 21.346 8.146 21.283 8.3 21.2 8.45 C 20.133 10.417 18.679 12 16.838 13.2 C 14.996 14.4 12.958 15 10.725 15 Z" fill="rgb(0, 87, 160)"></path></g></svg>
     }
 ];
@@ -88,6 +88,26 @@ export default function Home() {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [blogPosts, setBlogPosts] = useState([]);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+          try {
+            const response = await fetch('https://cipcopharma.com/api/blogs');
+            if (response.ok) {
+              const data = await response.json();
+              setBlogPosts((data.blogs || []).slice(0, 3));
+            }
+          } catch (error) {
+            console.error('Error fetching blogs:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+        fetchBlogs();
+      }, []);
+      console.log("blogs data", blogPosts);
 
     useEffect(()=>{
       const handleResize = () =>{
@@ -193,7 +213,7 @@ export default function Home() {
                   key={currentImageIndex}
                   src={images[currentImageIndex]}
                   alt={`Product ${currentImageIndex + 1}`}
-                  className="w-[250px] h-[250px] object-cover rounded-[20px]"
+                  className="w-[360px] h-[250px] object-cover rounded-[20px]"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -224,14 +244,14 @@ export default function Home() {
           viewport={{ once: false, margin: "-100px" }}
           className={isMobile?'mt-[60px]':'mx-[100px]  rounded-[20px] bg-[#F3F4F6] border-[#98d2de] mt-[70px]'}
         >
-            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex  justify-center items-center'}>
+            <motion.div variants={childVariants} className={isMobile?'flex flex-col justify-center items-center gap-[20px]':'flex gap-[2%] justify-center items-center'}>
                  
                     <motion.div variants={childVariants}>
                         <motion.img
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.8 }}
-                          src={whogmpcert}
+                          src={whogmpcert22}
                           alt="who gmp certificate"
                           className={isMobile?'w-[300px] h-[260px]':'w-[500px] h-[500px] rounded-[15px]'}
                         />
@@ -289,7 +309,7 @@ export default function Home() {
                     <div className={isMobile?'text-[#4B5563] text-[16px] pr-[10px]':'text-[#4B5563] text-[20px] pr-[10px]'}>Orders Delivered</div>
                 </motion.div>
                 <motion.div variants={statVariants} className='flex flex-col mt-[20px]'>
-                    <motion.div
+                    {/* <motion.div
                       className='flex '
                       whileHover={{ scale: 1.05 }}
                       onClick={() => navigate('/certificates')}
@@ -312,7 +332,7 @@ export default function Home() {
                         <path d="M 26.772 14.292 L 25.599 14.292 C 22.359 14.292 19.733 16.918 19.733 20.157 L 19.733 23.677" fill="transparent" stroke-width="2.34608" stroke="rgb(255, 255, 255)" stroke-miterlimit="10" stroke-dasharray=""></path>
                         <path d="M 26.772 14.292 L 25.599 14.292 C 22.359 14.292 19.733 11.666 19.733 8.427 L 19.733 4.908" fill="transparent" stroke-width="2.34608" stroke="rgb(255, 255, 255)" stroke-miterlimit="10" stroke-dasharray=""></path>
                       </motion.svg>
-                    </motion.div>
+                    </motion.div> */}
                 </motion.div>
                 </motion.div>
             </motion.div>
@@ -336,7 +356,7 @@ export default function Home() {
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-left text-[30px] mt-[8px] font-[500]':'text-left text-[40px] mt-[8px] font-[500]'}
-                >About Cipco Ltd: Our Commitment</motion.p>
+                >About Cipco Limited: Our Commitment</motion.p>
                 <motion.p
                   variants={childVariants}
                   className={isMobile?'text-[#4B5563] text-justify text-[20px] mt-[8px]':'text-[#4B5563] text-[20px] mt-[8px]'}
@@ -801,32 +821,7 @@ export default function Home() {
             variants={containerVariants}
             className={isMobile ? 'grid grid-cols-1 gap-[20px]' : 'grid grid-cols-3 gap-[30px]'}
           >
-            {[
-              {
-                id: 1,
-                title: "From Humble Beginnings to a Trusted Healthcare Partner: The Inspiring Journey of CIPCO LIMITED",
-                date: "October 20, 2023",
-                summary: "Every great company starts with a dream. At CIPCO LTD, that dream began with Mr. Arun Kumar Jhawar, whose vision was simple yet profound — to provide affordable, high-quality healthcare for everyone.",
-                image: "🌟",
-                category: "Journey"
-              },
-              {
-                id: 2,
-                title: "Why Quality is Non-Negotiable in Pharma — A Core Value at CIPCO LIMITED",
-                date: "September 25, 2023",
-                summary: "In healthcare, quality isn’t optional — it’s life-saving. At CIPCO, every step of our production process is guided by rigorous quality standards.",
-                image: "✅",
-                category: "Quality"
-              },
-              {
-                id: 3,
-                title: "Partnering for Health: How Collaborations Drive Better Access to Medicines",
-                date: "August 10, 2023",
-                summary: "Healthcare transformation happens when organizations work together. That’s why partnerships are central to CIPCO’s mission.",
-                image: "🤝",
-                category: "Partnership"
-              }
-            ].map((post, index) => (
+            {blogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 variants={cardVariants}
@@ -840,14 +835,15 @@ export default function Home() {
                   className="relative h-[150px] bg-gradient-to-br from-[#b8c9d4] to-[#a0b4c0] flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <motion.span
-                    className="text-[3rem]"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {post.image}
-                  </motion.span>
+                  <img
+                  src={post.image}
+                  alt={post.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
                   <motion.div
                     className="absolute top-[10px] right-[10px] bg-[#305d94] text-[white] px-[10px] py-[5px] rounded-[15px] text-[12px] font-semibold"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -855,7 +851,7 @@ export default function Home() {
                     transition={{ delay: index * 0.1 + 0.2 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    {post.category}
+                    {post.tags}
                   </motion.div>
                 </motion.div>
 
@@ -869,7 +865,7 @@ export default function Home() {
                     className="text-[18px] font-semibold text-[#33b0c5] mb-[10px] line-clamp-2"
                     whileHover={{ scale: 1.05, color: '#305d94' }}
                   >
-                    {post.title}
+                    {post.heading}
                   </motion.h3>
                   <motion.p
                     className="text-[#888] text-[14px] mb-[10px]"
@@ -885,7 +881,7 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.1 + 0.5 }}
                   >
-                    {post.summary}
+                    {post.content}
                   </motion.p>
 
                   <motion.button
